@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        jumped = context.ReadValue<bool>();
+        //jumped = context.ReadValue<bool>();
         jumped = context.action.triggered;
     }
     
