@@ -16,10 +16,6 @@ public class CheckCollisionWithLight : MonoBehaviour
     [SerializeField] private Collider coneCollider;
     [SerializeField] private float colliderRange;
     
-    [Space]
-    [NaughtyAttributes.Layer]
-    [SerializeField] private int layerMask;
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
