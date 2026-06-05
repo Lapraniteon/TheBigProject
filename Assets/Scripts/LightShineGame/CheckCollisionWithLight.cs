@@ -35,6 +35,9 @@ public class CheckCollisionWithLight : MonoBehaviour
     {
         if (!other.CompareTag("Player"))
             return;
+
+        if (!detectionEnabled)
+            return;
         
         Debug.Log("Player Enter Light");
     }
