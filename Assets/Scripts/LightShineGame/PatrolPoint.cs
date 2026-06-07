@@ -8,7 +8,8 @@ public class PatrolPoint : MonoBehaviour
     private enum PatrolShapes
     {
         Circle,
-        Line,
+        LineHorizontal,
+        LineVertical,
         FigureEight
     };
 
@@ -20,19 +21,16 @@ public class PatrolPoint : MonoBehaviour
     [Space]
     
     [ShowIf("patrolShape", PatrolShapes.Circle)]
-    [Label("Radius")] [SerializeField] private float circleRadius;
+    [Label("Radius")] [SerializeField] private float circleRadius = 5f;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [ShowIf("patrolShape", PatrolShapes.FigureEight)]
+    [Label("Radius")] [SerializeField] private float figureEightRadius = 5f;
+    
+    [ShowIf("patrolShape", PatrolShapes.LineVertical)]
+    [Label("Length")] [SerializeField] private float lineLength = 5f;
+    
+    [ShowIf("patrolShape", PatrolShapes.LineHorizontal)]
+    [Label("Length")] [SerializeField] private float lineWidth = 5f;
 
     public Vector3 GetPatrolStartPoint()
     {
@@ -42,6 +40,15 @@ public class PatrolPoint : MonoBehaviour
         {
             case PatrolShapes.Circle:
                 patrolPoint = new Vector3(transform.position.x + circleRadius, transform.position.y, transform.position.z);
+                break;
+            case PatrolShapes.FigureEight:
+                patrolPoint = transform.position;
+                break;
+            case PatrolShapes.LineVertical:
+                patrolPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z + lineLength / 2f);
+                break;
+            case PatrolShapes.LineHorizontal:
+                patrolPoint = new Vector3(transform.position.x - lineWidth / 2f, transform.position.y, transform.position.z);
                 break;
         }
         
@@ -56,6 +63,12 @@ public class PatrolPoint : MonoBehaviour
         {
             case PatrolShapes.Circle:
                 return GetPatrolPatternMotionCircle(lightShineTransform);
+            case PatrolShapes.FigureEight:
+                return GetPatrolPatternMotionFigureEight(lightShineTransform);
+            case PatrolShapes.LineHorizontal:
+                return GetPatrolPatternMotionLineHorizontal(lightShineTransform);
+            case PatrolShapes.LineVertical:
+                return GetPatrolPatternMotionLineVertical(lightShineTransform);
             default:
                 return GetPatrolPatternMotionCircle(lightShineTransform);
         }
@@ -79,6 +92,63 @@ public class PatrolPoint : MonoBehaviour
 
         return sequence;
     }
+    
+    public Sequence GetPatrolPatternMotionFigureEight(Transform lightShineTransform)
+    {
+        Sequence sequence = DOTween.Sequence();
+        
+        sequence.Insert(0f, lightShineTransform.DOLocalMoveX(transform.position.x + figureEightRadius / 2f, 0.5f / movementSpeedMultiplier)
+            .SetEase(Ease.OutSine));
+        sequence.Insert(0f, lightShineTransform.DOLocalMoveZ(transform.position.z + figureEightRadius, 1f / movementSpeedMultiplier)
+            .SetEase(Ease.InOutSine));
+        sequence.Insert(0.5f / movementSpeedMultiplier, lightShineTransform.DOLocalMoveX(transform.position.x - figureEightRadius / 2f, 1f / movementSpeedMultiplier)
+            .SetEase(Ease.InOutSine));
+        sequence.Insert(1f / movementSpeedMultiplier, lightShineTransform.DOLocalMoveZ(transform.position.z, 1f / movementSpeedMultiplier)
+            .SetEase(Ease.InOutSine));
+        sequence.Insert(1.5f / movementSpeedMultiplier, lightShineTransform.DOLocalMoveX(transform.position.x, 0.5f / movementSpeedMultiplier)
+            .SetEase(Ease.InSine));
+        
+        sequence.Insert(2f / movementSpeedMultiplier, lightShineTransform.DOLocalMoveX(transform.position.x + figureEightRadius / 2f, 0.5f / movementSpeedMultiplier)
+            .SetEase(Ease.OutSine));
+        sequence.Insert(2f / movementSpeedMultiplier, lightShineTransform.DOLocalMoveZ(transform.position.z - figureEightRadius, 1f / movementSpeedMultiplier)
+            .SetEase(Ease.InOutSine));
+        sequence.Insert(2.5f / movementSpeedMultiplier, lightShineTransform.DOLocalMoveX(transform.position.x - figureEightRadius / 2f, 1f / movementSpeedMultiplier)
+            .SetEase(Ease.InOutSine));
+        sequence.Insert(3f / movementSpeedMultiplier, lightShineTransform.DOLocalMoveZ(transform.position.z, 1f / movementSpeedMultiplier)
+            .SetEase(Ease.InOutSine));
+        sequence.Insert(3.5f / movementSpeedMultiplier, lightShineTransform.DOLocalMoveX(transform.position.x, 0.5f / movementSpeedMultiplier)
+            .SetEase(Ease.InSine));
+        
+        sequence.SetLoops(-1, LoopType.Restart);
+
+        return sequence;
+    }
+    
+    public Sequence GetPatrolPatternMotionLineVertical(Transform lightShineTransform)
+    {
+        Sequence sequence = DOTween.Sequence();
+        
+        sequence.Insert(0f, lightShineTransform.DOLocalMoveZ(transform.position.z - lineLength / 2f, 1f / movementSpeedMultiplier)
+            .SetEase(Ease.InOutSine));
+        sequence.Insert(1f / movementSpeedMultiplier, lightShineTransform.DOLocalMoveZ(transform.position.z + lineLength / 2f, 1f / movementSpeedMultiplier)
+            .SetEase(Ease.InOutSine));
+        sequence.SetLoops(-1, LoopType.Restart);
+
+        return sequence;
+    }
+    
+    public Sequence GetPatrolPatternMotionLineHorizontal(Transform lightShineTransform)
+    {
+        Sequence sequence = DOTween.Sequence();
+        
+        sequence.Insert(0f, lightShineTransform.DOLocalMoveX(transform.position.x + lineWidth / 2f, 1f / movementSpeedMultiplier)
+            .SetEase(Ease.InOutSine));
+        sequence.Insert(1f / movementSpeedMultiplier, lightShineTransform.DOLocalMoveX(transform.position.x - lineWidth / 2f, 1f / movementSpeedMultiplier)
+            .SetEase(Ease.InOutSine));
+        sequence.SetLoops(-1, LoopType.Restart);
+
+        return sequence;
+    }
 
     void OnDrawGizmos()
     {
@@ -90,14 +160,23 @@ public class PatrolPoint : MonoBehaviour
 
         // Draw paths
         UnityEditor.Handles.color = Color.cyan;
+        Gizmos.color = Color.cyan;
         switch (patrolShape)
         {
             case PatrolShapes.Circle:
                 UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, circleRadius);
                 break;
-            case PatrolShapes.Line:
-                break;
             case PatrolShapes.FigureEight:
+                Vector3 topCircleCenter = new Vector3(transform.position.x, transform.position.y, transform.position.z + figureEightRadius / 2f);
+                Vector3 bottomCircleCenter = new Vector3(transform.position.x, transform.position.y, transform.position.z - figureEightRadius / 2f);
+                UnityEditor.Handles.DrawWireDisc(topCircleCenter, Vector3.up, figureEightRadius / 2f);
+                UnityEditor.Handles.DrawWireDisc(bottomCircleCenter, Vector3.up, figureEightRadius / 2f);
+                break;
+            case PatrolShapes.LineHorizontal:
+                Gizmos.DrawLine(transform.position - new Vector3(lineWidth / 2f, 0f, 0f), transform.position + new Vector3(lineWidth / 2f, 0f, 0f));
+                break;
+            case PatrolShapes.LineVertical:
+                Gizmos.DrawLine(transform.position - new Vector3(0f, 0f, lineLength / 2f), transform.position + new Vector3(0f, 0f, lineLength / 2f));
                 break;
         }
     }

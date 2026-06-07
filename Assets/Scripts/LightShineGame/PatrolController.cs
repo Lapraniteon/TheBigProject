@@ -50,7 +50,6 @@ public class PatrolController : MonoBehaviour
     [NaughtyAttributes.Button]
     public void MoveToNextPatrolPoint()
     {
-        //_currentPatrolPoint = _currentPatrolPoint is null ? _patrolPointsStack.Peek() : _patrolPointsStack.Dequeue();
         _currentPatrolPoint = _patrolPointsStack.Dequeue();
         StartCoroutine(StartPatrolSequenceCoroutine(_currentPatrolPoint));
     }
