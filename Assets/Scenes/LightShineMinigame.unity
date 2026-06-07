@@ -3475,6 +3475,9 @@ MonoBehaviour:
   cone: {fileID: 2026654587}
   coneCollider: {fileID: 768565743}
   colliderRange: 15
+  onDetectPlayer:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &382848947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3491,6 +3494,12 @@ MonoBehaviour:
   - {fileID: 262114302}
   - {fileID: 1241714903}
   - {fileID: 1675300953}
+  onEndCurrentPatrolPoint:
+    m_PersistentCalls:
+      m_Calls: []
+  onStartNewPatrolPoint:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!43 &390009900
 Mesh:
   m_ObjectHideFlags: 0

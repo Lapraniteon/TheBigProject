@@ -1,19 +1,18 @@
+using System;
 using UnityEngine;
 
 public class LightShineGameManager : MonoBehaviour
 {
 
     public PlayerController[] players;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void Start()
     {
-        
+        throw new NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EndLevel()
     {
-        
+        throw new NotImplementedException();
     }
 }

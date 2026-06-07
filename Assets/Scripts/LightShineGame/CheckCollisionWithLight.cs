@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Light))]
 public class CheckCollisionWithLight : MonoBehaviour
@@ -15,6 +16,9 @@ public class CheckCollisionWithLight : MonoBehaviour
     [SerializeField] private Transform cone;
     [SerializeField] private Collider coneCollider;
     [SerializeField] private float colliderRange;
+
+    [Header("Events")] 
+    [SerializeField] private UnityEvent<PlayerController> onDetectPlayer; 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,6 +44,7 @@ public class CheckCollisionWithLight : MonoBehaviour
             return;
         
         Debug.Log("Player Enter Light");
+        onDetectPlayer?.Invoke(other.GetComponent<PlayerController>());
     }
 
     private void UpdateCollider()

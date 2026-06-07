@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using Sequence = DG.Tweening.Sequence;
 
 [RequireComponent(typeof(CheckCollisionWithLight))]
@@ -18,6 +18,10 @@ public class PatrolController : MonoBehaviour
     private PatrolPoint _currentPatrolPoint;
 
     private Sequence _currentPatrolSequence;
+    
+    [Header("Events")]
+    [SerializeField] private UnityEvent<PatrolPoint> onEndCurrentPatrolPoint;
+    [SerializeField] private UnityEvent<PatrolPoint> onStartNewPatrolPoint;
 
     private void Start()
     {
@@ -50,8 +54,12 @@ public class PatrolController : MonoBehaviour
     [NaughtyAttributes.Button]
     public void MoveToNextPatrolPoint()
     {
+        onEndCurrentPatrolPoint?.Invoke(_currentPatrolPoint);
+        
         _currentPatrolPoint = _patrolPointsStack.Dequeue();
         StartCoroutine(StartPatrolSequenceCoroutine(_currentPatrolPoint));
+        
+        onStartNewPatrolPoint?.Invoke(_currentPatrolPoint);
     }
 
     private IEnumerator StartPatrolSequenceCoroutine(PatrolPoint patrolPoint)
