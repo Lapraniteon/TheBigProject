@@ -43,44 +43,62 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         
         Sequence move = DOTween.Sequence();
 
-        void MoveStepForward() => move.Append(transform
-            .DOLocalMove(transform.position + transform.forward, 1f / movementSpeedMultiplier).SetEase(Ease.Linear));
+        void MoveStepForward() => move.AppendCallback(() => transform.DOLocalMove(transform.position + transform.forward, 1f / movementSpeedMultiplier).SetEase(Ease.Linear));
         
         void Rotate(float degrees) => move.Append(transform
             .DOLocalRotate(transform.localRotation.eulerAngles + new Vector3(0f, degrees, 0f), 1f / rotateSpeedMultiplier));
 
-        if (CheckWall(transform.forward))
+        void NormalPathfind()
         {
-            if (CheckWall(-transform.right))
+            if (CheckWall(transform.forward))
             {
-                if (CheckWall(transform.right))
+                if (CheckWall(-transform.right))
                 {
-                    Debug.Log("turning around and moving back");
-                    // Rotate 180, move step
-                    Rotate(180f);
-                    MoveStepForward();
+                    if (CheckWall(transform.right))
+                    {
+                        Debug.Log("turning around and moving back");
+                        // Rotate 180, move step
+                        Rotate(180f);
+                        MoveStepForward();
+                    }
+                    else
+                    {
+                        Debug.Log("rotating and moving right");
+                        // Rotate to right, move step
+                        Rotate(90f);
+                        MoveStepForward();
+                    }
                 }
                 else
                 {
-                    Debug.Log("rotating and moving right");
-                    // Rotate to right, move step
-                    Rotate(90f);
+                    Debug.Log("rotating and moving left");
+                    // Rotate to left, move step
+                    Rotate(-90f);
                     MoveStepForward();
                 }
             }
             else
             {
-                Debug.Log("rotating and moving left");
-                // Rotate to left, move step
-                Rotate(-90f);
+                // Move step
+                Debug.Log("moving forward");
                 MoveStepForward();
             }
         }
+
+        int wallCount = 0;
+
+        if (CheckWall(transform.forward)) wallCount++;
+        if (CheckWall(transform.right)) wallCount++;
+        if (CheckWall(-transform.right)) wallCount++;
+
+        if (wallCount <= 1) // If it is at least a 3-way or 4-way intersection
+        {
+            // Wait until player input
+            Debug.Log("3-way or 4-way");
+        }
         else
         {
-            // Move step
-            Debug.Log("moving forward");
-            MoveStepForward();
+            NormalPathfind();
         }
 
         IsMoving = true;
@@ -89,6 +107,11 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         IsMoving = false;
     }
 
+    /// <summary>
+    /// Returns true if there is a wall in the passed in direction.
+    /// </summary>
+    /// <param name="direction"></param>
+    /// <returns></returns>
     bool CheckWall(Vector3 direction)
     {
         return Physics.Raycast(raycastOrigin.position, direction, /*out RaycastHit hit,*/ 1f, _wallLayerMask);

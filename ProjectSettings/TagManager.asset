@@ -8,6 +8,7 @@ TagManager:
   - Book
   - CS_MazeIntersection
   - CS_MazeExit
+  - DirectionalPadDirection
   layers:
   - Default
   - TransparentFX
