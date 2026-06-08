@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PatrolAnchor
   - Book
+  - CS_MazeIntersection
+  - CS_MazeExit
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - UI
   - Player
   - LightCone
-  - 
+  - CrystalSugarMazeWall
   - 
   - 
   - 
