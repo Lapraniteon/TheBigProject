@@ -14,6 +14,10 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
 
     [Header("Movement")] 
     public bool IsMoving { get; private set; }
+    [SerializeField] private DirectionalPad directionalPad;
+    [SerializeField] private float directionPickWaitTime = 4f;
+    [SerializeField] [ReadOnly] private float directionPickWaitTimer;
+    [Space]
     [SerializeField] private float movementSpeedMultiplier = 1f;
     [SerializeField] private float rotateSpeedMultiplier = 1f;
     
@@ -85,6 +89,57 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
             }
         }
 
+        IEnumerator WaitForPlayersToDecideDirection()
+        {
+
+            Vector2 direction = directionalPad.ChosenDirection();
+
+            for (directionPickWaitTimer = 0f; directionPickWaitTimer < directionPickWaitTime; directionPickWaitTimer += Time.deltaTime) // Check if the chosen direction changes in the meantime.
+            {
+                yield return null; // Wait 1 frame
+
+                Vector2 newDirection = directionalPad.ChosenDirection();
+                
+                if (direction != newDirection)
+                {
+                    // Interrupt and restart timer
+                    directionPickWaitTimer = 0f;
+                    direction = newDirection;
+                    Debug.Log("Decision timer interrupted");
+                }
+            }
+            
+            // Convert direction Vector2 to CS' local Vector3 direction.
+            /// THIS ISNT WORKING RIGHT!! The picked Vector2 is correct, but it doesnt get converted correctly to the instruction for the player.
+            Debug.Log($"Picked direction: {direction}");
+            Vector3 directionVector = ConvertChosenDirectionToVector3(direction);
+            Vector3 directionVectorLocal = Vector3Int.RoundToInt(transform.InverseTransformDirection(directionVector));
+            
+            // Check wall in that direction, if there is one, rotate 180 and go back.
+            if (CheckWall(directionVectorLocal))
+            {
+                Rotate(180f);
+                MoveStepForward();
+                yield break;
+            }
+
+            if (directionVectorLocal == transform.forward)
+                MoveStepForward();
+            else if (directionVectorLocal == transform.right)
+            {
+                Rotate(90f);
+                MoveStepForward();
+            }
+            else if (directionVectorLocal == -transform.right)
+            {
+                Rotate(-90f);
+                MoveStepForward();
+            }
+            
+            Debug.Log("End");
+                
+        }
+
         int wallCount = 0;
 
         if (CheckWall(transform.forward)) wallCount++;
@@ -95,6 +150,10 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         {
             // Wait until player input
             Debug.Log("3-way or 4-way");
+            
+            // Read current player input & store
+            Debug.Log("Waiting for player direction decision...");
+            yield return StartCoroutine(WaitForPlayersToDecideDirection());
         }
         else
         {
@@ -105,6 +164,11 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         move.Play();
         yield return move.WaitForCompletion();
         IsMoving = false;
+    }
+
+    private Vector3 ConvertChosenDirectionToVector3(Vector2 direction)
+    {
+        return new Vector3(-direction.x, 0f, direction.y);
     }
 
     /// <summary>
