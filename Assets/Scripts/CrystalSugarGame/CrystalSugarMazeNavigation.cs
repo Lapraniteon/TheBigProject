@@ -14,36 +14,56 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
 
     [Header("Movement")] 
     public bool IsMoving { get; private set; }
+    public bool MazeEndReached { get; private set; }
+    private bool _stepRunning;
+    private bool _doSteps;
+    
     [SerializeField] private DirectionalPad directionalPad;
     [SerializeField] private float directionPickWaitTime = 4f;
     [SerializeField] [ReadOnly] private float directionPickWaitTimer;
     [Space]
     [SerializeField] private float movementSpeedMultiplier = 1f;
     [SerializeField] private float rotateSpeedMultiplier = 1f;
+    [SerializeField] private float stepDelay = 1f;
+
+    private Coroutine _currentStep;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _wallLayerMask = LayerMask.GetMask(wallLayer);
-    }
 
-    // Update is called once per frame
-    void Update()
+        StartMovement(); // Replace with an event that starts the movement at some point
+    }
+    
+    public void StartMovement() => _doSteps = true;
+
+    private void Update()
     {
+        if (IsMoving || MazeEndReached || !_doSteps || _stepRunning)
+            return;
         
+        Step();
     }
 
     [Button]
     private void Step()
     {
-        if (IsMoving)
+        _currentStep = StartCoroutine(StepCoroutine());
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("CS_MazeExit"))
             return;
         
-        StartCoroutine(StepCoroutine());
+        MazeEndReached = true;
+        Debug.Log("Maze end reached!");
     }
 
     private IEnumerator StepCoroutine()
     {
+        _stepRunning = true;
         
         Sequence move = DOTween.Sequence();
 
@@ -109,34 +129,36 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
                 }
             }
             
-            // Convert direction Vector2 to CS' local Vector3 direction.
-            /// THIS ISNT WORKING RIGHT!! The picked Vector2 is correct, but it doesnt get converted correctly to the instruction for the player.
             Debug.Log($"Picked direction: {direction}");
+            // Convert the chosen direction to an angle based on CS' current orientation
             Vector3 directionVector = ConvertChosenDirectionToVector3(direction);
-            Vector3 directionVectorLocal = Vector3Int.RoundToInt(transform.InverseTransformDirection(directionVector));
-            
-            // Check wall in that direction, if there is one, rotate 180 and go back.
-            if (CheckWall(directionVectorLocal))
-            {
-                Rotate(180f);
-                MoveStepForward();
-                yield break;
-            }
+            float angle = Vector3.SignedAngle(Vector3Int.RoundToInt(transform.forward), directionVector, Vector3.up);
 
-            if (directionVectorLocal == transform.forward)
-                MoveStepForward();
-            else if (directionVectorLocal == transform.right)
+            if (CheckWall(directionVector)) // If there is a wall in the chosen direction...
+                angle = 180f; // ...turn back.
+
+            // Queue the move
+            switch (Mathf.RoundToInt(angle))
             {
-                Rotate(90f);
-                MoveStepForward();
-            }
-            else if (directionVectorLocal == -transform.right)
-            {
-                Rotate(-90f);
-                MoveStepForward();
+                case 0:
+                    MoveStepForward();
+                    break;
+                case 90:
+                    Rotate(90f);
+                    MoveStepForward();
+                    break;
+                case -90:
+                    Rotate(-90f);
+                    MoveStepForward();
+                    break;
+                case 180:
+                case -180:
+                    Rotate(180f);
+                    MoveStepForward();
+                    break;
             }
             
-            Debug.Log("End");
+            //Debug.Log("End");
                 
         }
 
@@ -164,11 +186,15 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         move.Play();
         yield return move.WaitForCompletion();
         IsMoving = false;
+        
+        if (stepDelay != 0f) yield return new WaitForSeconds(stepDelay);
+        
+        _stepRunning = false;
     }
 
     private Vector3 ConvertChosenDirectionToVector3(Vector2 direction)
     {
-        return new Vector3(-direction.x, 0f, direction.y);
+        return new Vector3(direction.x, 0f, direction.y);
     }
 
     /// <summary>
