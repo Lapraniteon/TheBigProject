@@ -45,11 +45,13 @@ public class KingSeaScript : MonoBehaviour
 
     private void SwitchSides()
     {
+        Debug.Log("King Sea is the switching the shield");
         //TODO The boss will change the position of sword and shield
     }
     
     private void Win()
     {
+        Debug.Log("You win!");
         //TODO what happens when the anger meter goes down
     }
 
