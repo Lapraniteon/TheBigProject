@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class Snowball : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Rigidbody _rb;
     void Start()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime);
+        _rb = GetComponent<Rigidbody>();
+        thrown();
+        Invoke("DestorySnowball", 2);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void thrown()
     {
-        
+        _rb.AddForce(transform.right * 500f);
+    }
+
+    private void DestorySnowball()
+    {
+        Destroy(this.gameObject);
     }
 }
