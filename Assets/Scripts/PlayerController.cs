@@ -1,79 +1,146 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float playerSpeed = 5.0f;
-    [SerializeField]
-    private float jumpHeight = 1.5f;
-    private float gravityValue = -9.81f;
+    public float playerSpeed = 5.0f;
+    
+    public float jumpHeight = 1.5f;
+    private float _gravityValue = -9.81f;
+    private bool _jumped = false;
 
-    private CharacterController controller;
-    private Vector3 playerVelocity;
-    private bool groundedPlayer;
+    public float interactRadius = 5;
+    private bool _interactionAttempted = false;
+    public Action<GameObject> Interaction;
+    
+    private bool _shootAttempted = false;
 
-    // [Header("Input Actions")]
-    // public InputActionReference moveAction;
-    // public InputActionReference jumpAction;
+    private CharacterController _controller;
+    private Vector3 _playerVelocity;
+    private bool _groundedPlayer;
 
-    private Vector2 movementInput = Vector2.zero;
-    private bool jumped = false;
+    private Vector2 _movementInput = Vector2.zero;
+    
     
     private void Start()
     {
-        controller = gameObject.GetComponent<CharacterController>();
+        _controller = gameObject.GetComponent<CharacterController>();
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        movementInput = context.ReadValue<Vector2>();
+        _movementInput = context.ReadValue<Vector2>();
     }
 
-    public void OnJump(InputAction.CallbackContext context)
+    public void OnInteract(InputAction.CallbackContext context)
     {
-        //jumped = context.ReadValue<bool>();
-        jumped = context.action.triggered;
+        _interactionAttempted = context.action.triggered;
+    }
+
+    public void OnShoot(InputAction.CallbackContext context)
+    {
+        _shootAttempted = context.action.triggered;
     }
     
-    // private void OnEnable()
-    // {
-    //     moveAction.action.Enable();
-    //     jumpAction.action.Enable();
-    // }
-    //
-    // private void OnDisable()
-    // {
-    //     moveAction.action.Disable();
-    //     jumpAction.action.Disable();
-    // }
-
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        _jumped = context.action.triggered;
+    }
+    
     void Update()
     {
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer)
+        _groundedPlayer = _controller.isGrounded;
+        if (_groundedPlayer)
         {
             // Slight downward velocity to keep grounded stable
-            if (playerVelocity.y < -2f)
-                playerVelocity.y = -2f;
+            if (_playerVelocity.y < -2f)
+                _playerVelocity.y = -2f;
         }
         
-        //Move the player
-        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
-        controller.Move(move * Time.deltaTime * playerSpeed);
-
-        // Player jumps
-        if (groundedPlayer && jumped)
-        {
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
-        }
-
-        // Apply gravity
-        playerVelocity.y += gravityValue * Time.deltaTime;
+        Move();
+        
+        if (_groundedPlayer && _jumped) { Jump(); }
+        
+        if (_interactionAttempted) { Interact(); }
+        
+        if (_shootAttempted){Shoot();}
 
         // Move
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        _playerVelocity.y += _gravityValue * Time.deltaTime;
+        _controller.Move(_playerVelocity * Time.deltaTime);
     }
+
+    public virtual void Move()
+    {
+        //Move the player
+
+        float horizontal = _movementInput.x;
+        float vertical = _movementInput.y;
+        
+        Vector3 direction = new Vector3(-vertical, 0, horizontal);
+        if (direction.sqrMagnitude > 0.1f)
+        {
+            transform.localRotation = Quaternion.LookRotation(direction);
+            _controller.Move(transform.right * playerSpeed * Time.deltaTime);
+        }
+        
+        
+        
+        
+        // float angleradians = Mathf.Atan2(_movementInput.y, _movementInput.x);
+        // float angleDegrees = -angleradians * Mathf.Rad2Deg;
+        // Debug.Log(angleradians);
+        // if (angleradians != 0)
+        // {
+        //     //gameObject.transform.localRotation = Quaternion.Euler(0, angleradians, 0);
+        //     gameObject.transform.rotation = Quaternion.AngleAxis(angleDegrees + 90, Vector3.up);
+        //     _controller.Move(transform.forward * Time.deltaTime * playerSpeed);
+        // }
+        
+        // Vector3 move = new Vector3(_movementInput.x, 0, _movementInput.y);
+        // _controller.Move(move * Time.deltaTime * playerSpeed);
+    }
+
+    public virtual void Jump()
+    {
+        _playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityValue);
+    }
+
+    public virtual void Interact()
+    {
+        Collider[] hitInteractables = Physics.OverlapSphere(transform.position, interactRadius, LayerMask.GetMask("Interactable"));
+        List<Collider> seenInteractables = new List<Collider>();
+        
+        
+        foreach(Collider collider in hitInteractables)
+        {
+            Debug.DrawRay(transform.position, collider.transform.position - transform.position, Color.red);
+            if (Physics.Raycast(transform.position, collider.transform.position - transform.position, interactRadius))
+            {
+                seenInteractables.Add(collider);
+            }
+            
+            if (seenInteractables.Count != 0)
+            {
+                Interaction?.Invoke(collider.gameObject);
+            }
+        }
+    }
+
+    public virtual void Shoot()
+    {
+        
+    }
+
+    #if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, interactRadius);
+    }
+    #endif
 }
+
+
