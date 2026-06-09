@@ -8,6 +8,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 82545099752518350, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 152313223275616098, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 496656457931627977, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818365754658035143, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770641313611734000, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002128220320774694, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2147283782125979954, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9
@@ -48,9 +72,77 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2152987500679616102, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478275041825572659, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096443109382893607, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486324968836498901, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3595276269397591047, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620033016603566820, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168868290714425842, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546501855379297565, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868669882485181351, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5134231454518764147, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
       propertyPath: m_Name
-      value: door frame (1) Variant
+      value: door frame with door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302483656987920196, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500889736710427957, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7739289598460805819, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7762881507085831877, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760006006853782451, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781048341730713344, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822070181437900971, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920981069490760154, guid: fa503b996bdf8284ebebe1a3966c536b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
