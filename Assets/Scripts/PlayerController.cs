@@ -76,8 +76,32 @@ public class PlayerController : MonoBehaviour
     public virtual void Move()
     {
         //Move the player
-        Vector3 move = new Vector3(_movementInput.x, 0, _movementInput.y);
-        _controller.Move(move * Time.deltaTime * playerSpeed);
+
+        float horizontal = _movementInput.x;
+        float vertical = _movementInput.y;
+        
+        Vector3 direction = new Vector3(-vertical, 0, horizontal);
+        if (direction.sqrMagnitude > 0.1f)
+        {
+            transform.localRotation = Quaternion.LookRotation(direction);
+            _controller.Move(transform.right * playerSpeed * Time.deltaTime);
+        }
+        
+        
+        
+        
+        // float angleradians = Mathf.Atan2(_movementInput.y, _movementInput.x);
+        // float angleDegrees = -angleradians * Mathf.Rad2Deg;
+        // Debug.Log(angleradians);
+        // if (angleradians != 0)
+        // {
+        //     //gameObject.transform.localRotation = Quaternion.Euler(0, angleradians, 0);
+        //     gameObject.transform.rotation = Quaternion.AngleAxis(angleDegrees + 90, Vector3.up);
+        //     _controller.Move(transform.forward * Time.deltaTime * playerSpeed);
+        // }
+        
+        // Vector3 move = new Vector3(_movementInput.x, 0, _movementInput.y);
+        // _controller.Move(move * Time.deltaTime * playerSpeed);
     }
 
     public virtual void Jump()
