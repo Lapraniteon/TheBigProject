@@ -57,6 +57,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 127130323219295070}
     m_Modifications:
+    - target: {fileID: 1645536404946168405, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_TagString
+      value: DariusDoor
+      objectReference: {fileID: 0}
     - target: {fileID: 1653315388623273311, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
       propertyPath: m_Name
       value: 3 door
@@ -100,6 +104,14 @@ PrefabInstance:
     - target: {fileID: 2746629256774410372, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5454893759135196119, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_TagString
+      value: DariusDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735862729883277741, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_TagString
+      value: DariusDoor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

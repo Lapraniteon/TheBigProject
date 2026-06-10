@@ -61,7 +61,8 @@ public class PlayerController : MonoBehaviour
         
         //Move the player
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        if (controller.enabled)
+            controller.Move(move * Time.deltaTime * playerSpeed);
 
         // Player jumps
         if (groundedPlayer && jumped)
@@ -74,6 +75,8 @@ public class PlayerController : MonoBehaviour
 
         // Move
         playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        
+        if (controller.enabled)
+            controller.Move(playerVelocity * Time.deltaTime);
     }
 }
