@@ -16,7 +16,7 @@ public class WorldMovement : MonoBehaviour
     [SerializeField] private GateSet gatePrefab;
     [SerializeField] [Tooltip("Spawn interval in units.")] private float gateSpawnInterval;
     private float _despawnDistance = 20f;
-    [SerializeField] [Tooltip("Distance to the player at which the doors close.")] private float doorClosingDistance;
+    [SerializeField] [Tooltip("Distance behind Darius at which the doors close.")] private float doorClosingDistance;
     private Sequence _gateSpawningLoop;
     
     [Header("Darius")]
@@ -44,6 +44,14 @@ public class WorldMovement : MonoBehaviour
         _floorMovementTween = floorTransform.DOLocalMoveZ(-100f, 100f / globalMovementSpeed).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
     }
 
+    public void SetGateSpawnPaused(bool setPaused)
+    {
+        if (setPaused)
+            _gateSpawningLoop?.Pause();
+        else
+            _gateSpawningLoop?.Play();
+    }
+
     private void StartGateSpawning()
     {
         _gateSpawningLoop = DOTween.Sequence();
@@ -58,6 +66,12 @@ public class WorldMovement : MonoBehaviour
     private void SpawnGate()
     {
         GateSet gate = Instantiate(gatePrefab, gateSpawnPoint.position, Quaternion.identity);
-        gate.StartMovement(_despawnDistance, globalMovementSpeed, doorClosingDistance);
+        gate.StartMovement(_despawnDistance, globalMovementSpeed, darius.transform.position.z - doorClosingDistance);
+    }
+
+    public void StopAllMovement()
+    {
+        _floorMovementTween?.Kill();
+        _gateSpawningLoop?.Kill();
     }
 }
