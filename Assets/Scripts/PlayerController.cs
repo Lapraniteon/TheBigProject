@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,10 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool _jumped = false;
 
     public float interactRadius = 5;
-    private bool _interactionAttempted = false;
-    public Action<GameObject> Interaction;
-    
-    private bool _shootAttempted = false;
+    public static event Action<GameObject> Interaction;
 
     private CharacterController _controller;
     private Vector3 _playerVelocity;
@@ -31,27 +29,7 @@ public class PlayerController : MonoBehaviour
         _controller = gameObject.GetComponent<CharacterController>();
     }
 
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        _movementInput = context.ReadValue<Vector2>();
-    }
-
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        _interactionAttempted = context.action.triggered;
-    }
-
-    public void OnShoot(InputAction.CallbackContext context)
-    {
-        _shootAttempted = context.action.triggered;
-    }
-    
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        _jumped = context.action.triggered;
-    }
-    
-    void Update()
+    private void FixedUpdate()
     {
         // Slight downward velocity to keep grounded stable unless a jump is in progress.
         _groundedPlayer = _controller.isGrounded;
@@ -65,19 +43,7 @@ public class PlayerController : MonoBehaviour
         _playerVelocity.y += _gravityValue * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
         
-        //methods that are called based on the input system.
-        Move();
-        
-        if (_groundedPlayer && _jumped) { Jump(); }
-        
-        if (_interactionAttempted) { Interact(); }
-        
-        if (_shootAttempted){Shoot();}
-    }
-    
-    public virtual void Move()
-    {
-        //assign joystick input.
+        //assign joystick input from _movementInput assigned in OnMovement.
         float horizontal = _movementInput.x;
         float vertical = _movementInput.y;
         
@@ -91,14 +57,26 @@ public class PlayerController : MonoBehaviour
             //move forward (joystick input is weird seemingly) using the playerspeed.
             _controller.Move(transform.right * playerSpeed * Time.deltaTime);
         }
-    }
 
-    public virtual void Jump()
+        //jump if player is jumping according to the OnJump method and is grounded.
+        if (_jumped && _groundedPlayer)
+        {
+            Debug.Log("Jumping");
+            _playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityValue);
+        }
+    }
+    
+    public void OnMovement(InputValue value)
     {
-        _playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityValue);
+        _movementInput = value.Get<Vector2>();
     }
 
-    public virtual void Interact()
+    public void OnJump(InputValue value)
+    {
+        _jumped = value.isPressed;
+    }
+
+    public virtual void OnInteraction(InputValue value)
     {
         //find the interactables in range
         Collider[] hitInteractables = Physics.OverlapSphere(transform.position, interactRadius, LayerMask.GetMask("Interactable"));
@@ -115,7 +93,6 @@ public class PlayerController : MonoBehaviour
             {
                 seenInteractables.Add(collider);
             }
-            
         }
         
         //Call the interact Action on the first interactable in the list (which should be the closest).
@@ -126,7 +103,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    public virtual void Shoot()
+    public virtual void OnShoot(InputValue value)
     {
         
     }

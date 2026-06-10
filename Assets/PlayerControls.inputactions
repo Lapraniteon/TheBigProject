@@ -16,13 +16,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Book Interaction",
+                    "name": "Interaction",
                     "type": "Button",
                     "id": "5c08d1fd-6f3f-4cfe-a831-06ce3da3c1b0",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -96,10 +96,10 @@
                     "name": "",
                     "id": "e099cef5-8561-44b8-944d-4b5980701f55",
                     "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
+                    "interactions": "Press(pressPoint=1)",
                     "processors": "",
                     "groups": ";Controller",
-                    "action": "Book Interaction",
+                    "action": "Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -110,7 +110,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
-                    "action": "Book Interaction",
+                    "action": "Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -297,12 +297,12 @@
                 },
                 {
                     "name": "Jump",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "8aaa5e22-0251-4f7a-b86a-111a23565c20",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "interactions": "Press(pressPoint=1)",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Shoot",
