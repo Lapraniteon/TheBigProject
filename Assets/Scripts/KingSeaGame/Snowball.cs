@@ -6,16 +6,16 @@ public class Snowball : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        thrown();
-        Invoke("DestorySnowball", 2);
+        Thrown();
+        Invoke("DestroySnowball", 2);
     }
 
-    private void thrown()
+    private void Thrown()
     {
         _rb.AddForce(transform.forward * -500f);
     }
 
-    private void DestorySnowball()
+    private void DestroySnowball()
     {
         Destroy(this.gameObject);
     }

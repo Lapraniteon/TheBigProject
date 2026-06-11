@@ -18,7 +18,6 @@ public class SpawningSnowballs : PlayerController
 
     private void ThrowSnowball(GameObject snowBall)
     {
-        
         Instantiate(snowBall, transform.position + offset, Quaternion.identity);
     }
 }

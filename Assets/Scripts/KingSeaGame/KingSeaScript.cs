@@ -5,10 +5,14 @@ using DG.Tweening;
 public class KingSeaScript : MonoBehaviour
 {
     public int kingSeaHealth;
-    [SerializeField] private int kingSeaMaxHealth;
-    [SerializeField] private int snowballDamage;
-    [SerializeField] private int healthPortionsForSwitchingWeaponSide;
-    
+    [SerializeField]private int kingSeaMaxHealth;
+    [SerializeField]private int snowballDamage;
+    [SerializeField]private int healthPortionsForSwitchingWeaponSide;
+    [SerializeField]private int leftArmHealthTrigger;
+    [SerializeField]private int rightArmHealthTrigger;
+    [SerializeField]private GameObject leftArm;
+    [SerializeField]private GameObject rightArm;
+
     public static event Action <float> KingSeaTakesDamage;
     public static event Action SwitchingShieldPosition;
     
@@ -45,6 +49,16 @@ public class KingSeaScript : MonoBehaviour
         {
             threshold -= healthPortionsForSwitchingWeaponSide;
             SwitchSides();
+        }
+
+        if (kingSeaHealth == leftArmHealthTrigger)
+        {
+            leftArm.SetActive(true);
+        }
+
+        if (kingSeaHealth == rightArmHealthTrigger)
+        {
+            rightArm.SetActive(true);
         }
     }
 
