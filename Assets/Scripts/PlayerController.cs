@@ -102,6 +102,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Interacted with " + seenInteractables[0].gameObject.name);
         }
     }
+
+    public void StopMovement()
+    {
+        _movementInput = Vector2.zero;
+        _playerVelocity = Vector2.zero;
+    }
     
     public virtual void OnShoot(InputValue value)
     {

@@ -65,12 +65,21 @@ public class PatrolController : MonoBehaviour
         onEndCurrentPatrolPoint?.Invoke(_currentPatrolPoint);
 
         if (_patrolPointsQueue.Count <= 0)
+        {
+            Debug.Log("Game end.");
+            _checkCollisionWithLight.enabled = false;
             return;
+        }
         
         _currentPatrolPoint = _patrolPointsQueue.Dequeue();
         StartCoroutine(StartPatrolSequenceCoroutine(_currentPatrolPoint));
         
         onStartNewPatrolPoint?.Invoke(_currentPatrolPoint);
+    }
+
+    public Vector3 GetRespawnPoint()
+    {
+        return _currentPatrolPoint.GetRespawnPoint();
     }
 
     private IEnumerator StartPatrolSequenceCoroutine(PatrolPoint patrolPoint)
