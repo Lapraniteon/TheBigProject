@@ -1,7 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Transform[] playerSpawnPoints;
     public List<GameObject> players;
+    
+    public String[] scenes;
 
 
     public void OnPlayerJoined(PlayerInput playerInput)
@@ -28,5 +30,23 @@ public class GameManager : MonoBehaviour
        Physics.SyncTransforms(); //Makes sure the player teleports because the CharacterController often stops this.
        Debug.Log("Spawned Player " + playerNumber + " at " + playerSpawnPoints[playerNumber].transform.position);
     }
-   
+
+    private void InteractionDetected(GameObject interactableObject)
+    {
+        if (interactableObject.CompareTag("Book"))
+        {
+            SceneController.Instance.LoadScene(scenes[0]);
+            Debug.Log(scenes[0] + " loading");
+        }
+    }
+
+    private void OnEnable()
+    {
+        PlayerController.Interaction += InteractionDetected;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.Interaction -= InteractionDetected;
+    }
 }
