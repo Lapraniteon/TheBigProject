@@ -1,24 +1,24 @@
 using UnityEngine;
 using System;
+using DG.Tweening;
 
 public class KingSeaScript : MonoBehaviour
 {
     public int kingSeaHealth;
     [SerializeField] private int kingSeaMaxHealth;
     [SerializeField] private int snowballDamage;
-    [SerializeField] private int healthPortions;
+    [SerializeField] private int healthPortionsForSwitchingWeaponSide;
+    
     public static event Action <float> KingSeaTakesDamage;
+    public static event Action SwitchingShieldPosition;
+    
+    private int threshold;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         kingSeaHealth = kingSeaMaxHealth;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        threshold = kingSeaHealth - healthPortionsForSwitchingWeaponSide;
     }
 
     private void TakingDamage()
@@ -28,6 +28,11 @@ public class KingSeaScript : MonoBehaviour
         KingSeaTakesDamage?.Invoke(amount);
         CheckHealth();
     }
+
+    private void Attacking()
+    {
+        //TODO The platforms split when King Sea attacks
+    }
     
     private void CheckHealth()
     {
@@ -35,18 +40,18 @@ public class KingSeaScript : MonoBehaviour
         {
             Win();
         }
-        int threshold = kingSeaHealth - healthPortions;
+        
         if (kingSeaHealth <= threshold)
         {
-            threshold -= healthPortions;
+            threshold -= healthPortionsForSwitchingWeaponSide;
             SwitchSides();
         }
     }
 
     private void SwitchSides()
     {
-        Debug.Log("King Sea is the switching the shield");
-        //TODO The boss will change the position of sword and shield
+        Debug.Log("Shield is moving");
+        SwitchingShieldPosition?.Invoke();
     }
     
     private void Win()
@@ -64,7 +69,10 @@ public class KingSeaScript : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        TakingDamage();
-        Destroy(collision.gameObject);
+        if (collision.gameObject.CompareTag("Snowball"))
+        {
+            TakingDamage();
+            // Destroy(collision.gameObject);
+        }
     }
 }

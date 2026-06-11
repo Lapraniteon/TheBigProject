@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PatrolAnchor
   - DariusDoor
+  - Snowball
   - Book
   - CS_MazeIntersection
   - CS_MazeExit

@@ -12,7 +12,7 @@ public class Snowball : MonoBehaviour
 
     private void thrown()
     {
-        _rb.AddForce(transform.right * 500f);
+        _rb.AddForce(transform.forward * -500f);
     }
 
     private void DestorySnowball()
