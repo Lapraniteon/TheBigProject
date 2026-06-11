@@ -6132,6 +6132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ead9d1a502bde34d80a6cb6821f23ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  lightIntensityWhileMoving: 5
   patrolPoints:
   - {fileID: 262114302}
   - {fileID: 1241714903}
@@ -21545,7 +21546,7 @@ Transform:
   m_GameObject: {fileID: 1213159838}
   serializedVersion: 2
   m_LocalRotation: {x: 0.46300277, y: -4.991338e-16, z: 2.6073058e-16, w: 0.88635683}
-  m_LocalPosition: {x: 9.239206, y: 15.999999, z: -15.7}
+  m_LocalPosition: {x: 10.62154, y: 15.999999, z: -15.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22015,6 +22016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   players:
   - {fileID: 1178439237}
+  patrolController: {fileID: 382848947}
 --- !u!4 &1304327835
 Transform:
   m_ObjectHideFlags: 0

@@ -7,11 +7,16 @@ using UnityEngine.Events;
 using Sequence = DG.Tweening.Sequence;
 
 [RequireComponent(typeof(CheckCollisionWithLight))]
+[RequireComponent(typeof(Light))]
 public class PatrolController : MonoBehaviour
 {
     
     private LightShineGameManager _lightShineGameManager;
     private CheckCollisionWithLight _checkCollisionWithLight;
+
+    private Light _light;
+    private float _lightIntensity;
+    [SerializeField] private float lightIntensityWhileMoving;
     
     [SerializeField] private PatrolPoint[] patrolPoints;
     private Queue<PatrolPoint> _patrolPointsQueue;
@@ -27,6 +32,9 @@ public class PatrolController : MonoBehaviour
     {
         _lightShineGameManager = FindFirstObjectByType<LightShineGameManager>();
         _checkCollisionWithLight = GetComponent<CheckCollisionWithLight>();
+        
+        _light = GetComponent<Light>();
+        _lightIntensity = _light.intensity;
 
         _patrolPointsQueue = new Queue<PatrolPoint>(patrolPoints);
     }
@@ -70,9 +78,15 @@ public class PatrolController : MonoBehaviour
         _checkCollisionWithLight.detectionEnabled = false;
         _currentPatrolSequence?.Kill();
         
-        Tween tween = transform.DOMove(patrolPoint.GetPatrolStartPoint(), 2f).SetEase(Ease.InOutBack);
+        Sequence moveToNextPointSequence = DOTween.Sequence();
+        moveToNextPointSequence
+            .Append(transform.DOMove(patrolPoint.GetPatrolStartPoint(), 2f).SetEase(Ease.InOutBack))
+            .Join(_light.DOIntensity(lightIntensityWhileMoving, 0.25f))
+            .Insert(2f - 0.25f, _light.DOIntensity(_lightIntensity, 0.25f));
 
-        yield return tween.WaitForCompletion();
+        moveToNextPointSequence.Play();
+
+        yield return moveToNextPointSequence.WaitForCompletion();
         
         _checkCollisionWithLight.detectionEnabled = true;
         _currentPatrolSequence = patrolPoint.GetPatrolPatternMotion(transform).Play();
