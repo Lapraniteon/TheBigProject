@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7640168377930823915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 127130323219295070}
+  - component: {fileID: 7244807012833744492}
+  m_Layer: 0
+  m_Name: Gate Set To Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &127130323219295070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640168377930823915}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 4.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 7801369288664505302}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7244807012833744492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640168377930823915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d52c8c1534bf549ba40f17faa17a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  doors:
+  - {fileID: 3515195297085493458}
+  - {fileID: 8891498390006915882}
+  - {fileID: 7903194072319400272}
+--- !u!1001 &5357582377600596818
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 127130323219295070}
+    m_Modifications:
+    - target: {fileID: 1645536404946168405, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_TagString
+      value: DariusDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653315388623273311, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_Name
+      value: 3 door
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746629256774410372, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746629256774410372, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746629256774410372, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746629256774410372, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746629256774410372, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746629256774410372, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746629256774410372, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746629256774410372, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746629256774410372, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746629256774410372, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5454893759135196119, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_TagString
+      value: DariusDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735862729883277741, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_TagString
+      value: DariusDoor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+--- !u!4 &3515195297085493458 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8831998360142556032, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+  m_PrefabInstance: {fileID: 5357582377600596818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7801369288664505302 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2746629256774410372, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+  m_PrefabInstance: {fileID: 5357582377600596818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7903194072319400272 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2878994144013099522, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+  m_PrefabInstance: {fileID: 5357582377600596818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8891498390006915882 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3547999109457074296, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+  m_PrefabInstance: {fileID: 5357582377600596818}
+  m_PrefabAsset: {fileID: 0}

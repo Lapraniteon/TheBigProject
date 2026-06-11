@@ -9,6 +9,7 @@ TagManager:
   - CS_MazeIntersection
   - CS_MazeExit
   - DirectionalPadDirection
+  - DariusDoor
   layers:
   - Default
   - TransparentFX
