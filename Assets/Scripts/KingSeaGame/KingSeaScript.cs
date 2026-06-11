@@ -16,26 +16,23 @@ public class KingSeaScript : MonoBehaviour
     public static event Action <float> KingSeaTakesDamage;
     public static event Action SwitchingShieldPosition;
     
-    private int threshold;
+    private int _threshold;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         kingSeaHealth = kingSeaMaxHealth;
-        threshold = kingSeaHealth - healthPortionsForSwitchingWeaponSide;
+        _threshold = kingSeaHealth - healthPortionsForSwitchingWeaponSide;
     }
 
-    private void TakingDamage()
+    public void TakingDamage()
     {
+        // Take damage only if its calculated that the shield would be in front of the current firing trajectory, otherwise dont
+        
         kingSeaHealth -= snowballDamage;
         float amount = (float) kingSeaHealth / (float) kingSeaMaxHealth;
         KingSeaTakesDamage?.Invoke(amount);
         CheckHealth();
-    }
-
-    private void Attacking()
-    {
-        //TODO The platforms split when King Sea attacks
     }
     
     private void CheckHealth()
@@ -45,9 +42,9 @@ public class KingSeaScript : MonoBehaviour
             Win();
         }
         
-        if (kingSeaHealth <= threshold)
+        if (kingSeaHealth <= _threshold)
         {
-            threshold -= healthPortionsForSwitchingWeaponSide;
+            _threshold -= healthPortionsForSwitchingWeaponSide;
             SwitchSides();
         }
 
@@ -73,20 +70,13 @@ public class KingSeaScript : MonoBehaviour
         Debug.Log("You win!");
         //TODO what happens when the anger meter goes down
     }
-
-    // private void OnTriggerEnter(Collider collision)
-    // {
-    //     Debug.Log("trigger hit");
-    //     TakingDamage();
-    //     Destroy(collision.gameObject);
-    // }
     
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Snowball"))
-        {
-            TakingDamage();
-            // Destroy(collision.gameObject);
-        }
-    }
+    // private void OnCollisionEnter(Collision collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Snowball"))
+    //     {
+    //         TakingDamage();
+    //         // Destroy(collision.gameObject);
+    //     }
+    // }
 }
