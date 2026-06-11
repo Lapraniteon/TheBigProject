@@ -18,6 +18,8 @@ public class PatrolPoint : MonoBehaviour
     [SerializeField] private PatrolShapes patrolShape;
     [SerializeField] private float movementSpeedMultiplier;
 
+    public Transform respawnPoint;
+
     [Space]
     
     [ShowIf("patrolShape", PatrolShapes.Circle)]
@@ -148,6 +150,16 @@ public class PatrolPoint : MonoBehaviour
         sequence.SetLoops(-1, LoopType.Restart);
 
         return sequence;
+    }
+
+    public Vector3 GetRespawnPoint()
+    {
+        Vector3 respawnPointReturn = respawnPoint.position;
+
+        if (Physics.Raycast(respawnPoint.position, Vector3.down, out RaycastHit hit, 30f))
+            respawnPointReturn = hit.point + Vector3.up;
+        
+        return respawnPointReturn;
     }
 
     void OnDrawGizmos()
