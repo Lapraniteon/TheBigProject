@@ -19,6 +19,7 @@ public class CheckCollisionWithLight : MonoBehaviour
 
     [Header("Events")] 
     [SerializeField] private UnityEvent<PlayerController> onDetectPlayer; 
+    public static event Action<PlayerController> OnDetectPlayer;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,8 +44,9 @@ public class CheckCollisionWithLight : MonoBehaviour
         if (!detectionEnabled)
             return;
         
-        Debug.Log("Player Enter Light");
-        onDetectPlayer?.Invoke(other.GetComponent<PlayerController>());
+        PlayerController player = other.GetComponent<PlayerController>();
+        //onDetectPlayer?.Invoke(player);
+        OnDetectPlayer?.Invoke(player);
     }
 
     private void UpdateCollider()
