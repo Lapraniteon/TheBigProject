@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - PatrolAnchor
+  - DariusDoor
   - Book
   - CS_MazeIntersection
   - CS_MazeExit

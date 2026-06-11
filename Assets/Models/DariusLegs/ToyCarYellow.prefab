@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 49b09be567ef873418e867aeeaae05ac, type: 2}
     - target: {fileID: 691717578073424706, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 691717578073424706, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 49b09be567ef873418e867aeeaae05ac, type: 2}
     - target: {fileID: 6784978547375891139, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: m_Name
-      value: ToyCarYellow Variant
+      value: ToyCarYellow
       objectReference: {fileID: 0}
     - target: {fileID: 7231155718016102058, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
