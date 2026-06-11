@@ -6,9 +6,16 @@ public class LightShineGameManager : MonoBehaviour
 
     public PlayerController[] players;
 
+    public PatrolController patrolController;
+
     private void Start()
     {
-        throw new NotImplementedException();
+        StartPatrol();
+    }
+
+    public void StartPatrol()
+    {
+        patrolController.MoveToNextPatrolPoint();
     }
 
     public void EndLevel()
