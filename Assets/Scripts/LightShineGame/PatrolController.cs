@@ -14,7 +14,7 @@ public class PatrolController : MonoBehaviour
     private CheckCollisionWithLight _checkCollisionWithLight;
     
     [SerializeField] private PatrolPoint[] patrolPoints;
-    private Queue<PatrolPoint> _patrolPointsStack;
+    private Queue<PatrolPoint> _patrolPointsQueue;
     private PatrolPoint _currentPatrolPoint;
 
     private Sequence _currentPatrolSequence;
@@ -28,7 +28,7 @@ public class PatrolController : MonoBehaviour
         _lightShineGameManager = FindFirstObjectByType<LightShineGameManager>();
         _checkCollisionWithLight = GetComponent<CheckCollisionWithLight>();
 
-        _patrolPointsStack = new Queue<PatrolPoint>(patrolPoints);
+        _patrolPointsQueue = new Queue<PatrolPoint>(patrolPoints);
     }
 
     private void Update()
@@ -55,8 +55,11 @@ public class PatrolController : MonoBehaviour
     public void MoveToNextPatrolPoint()
     {
         onEndCurrentPatrolPoint?.Invoke(_currentPatrolPoint);
+
+        if (_patrolPointsQueue.Count <= 0)
+            return;
         
-        _currentPatrolPoint = _patrolPointsStack.Dequeue();
+        _currentPatrolPoint = _patrolPointsQueue.Dequeue();
         StartCoroutine(StartPatrolSequenceCoroutine(_currentPatrolPoint));
         
         onStartNewPatrolPoint?.Invoke(_currentPatrolPoint);
