@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +10,9 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject _loaderCanvas;
     [SerializeField] private Slider _progressBar;
     [SerializeField] private float _progressBarTarget;
+    
+    [SerializeField] private bool _sceneIsLoading;
+    [SerializeField] private bool _continuePressed;
 
     void Awake()
     {
@@ -24,10 +27,13 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    public async void LoadScene(string sceneName)
+    public IEnumerator LoadScene(string sceneName)
     {
         Debug.Log("Loading Scene: " + sceneName + " via SceneController");
-
+        
+        //boolean to check if the coroutine is running for the continue button
+        _sceneIsLoading = true;
+        
         _progressBarTarget = 0;
         _progressBar.value = 0;
         var scene = SceneManager.LoadSceneAsync(sceneName);
@@ -38,14 +44,38 @@ public class SceneController : MonoBehaviour
         do {
             _progressBarTarget = scene.progress;
         } while (scene.progress < 0.9f);
-
-        await Task.Delay(10000); //remove this
-        scene.allowSceneActivation = true;
+        
+        yield return new WaitUntil(() => _continuePressed);
+        Debug.Log("Continuing to scene");
+        GameManager.Instance.PlayerInputsActive(false);
         _loaderCanvas.SetActive(false);
+        _sceneIsLoading = false;
+        _continuePressed = false;
+        scene.allowSceneActivation = true;
+        GameManager.Instance.PlayerInputsActive(true);
     }
     
     private void Update()
     {
         _progressBar.value = Mathf.MoveTowards(_progressBar.value, _progressBarTarget, Time.deltaTime * 10f);
+    }
+
+    private void ContinuePressed()
+    {
+        if (_sceneIsLoading)
+        {
+            _continuePressed = true;
+            Debug.Log("Continue pressed");
+        }
+    }
+
+    private void OnEnable()
+    {
+        PlayerController.Continue += ContinuePressed;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.Continue -= ContinuePressed;
     }
 }

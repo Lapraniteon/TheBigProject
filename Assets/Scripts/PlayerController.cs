@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public float interactRadius = 5;
     public static event Action<GameObject> Interaction;
 
+    public static event Action Continue;
+
     private CharacterController _controller;
     private Vector3 _playerVelocity;
     private bool _groundedPlayer;
@@ -114,6 +116,12 @@ public class PlayerController : MonoBehaviour
     public virtual void OnShoot(InputValue value)
     {
         
+    }
+
+    public void OnContinue(InputValue value)
+    {
+        Continue?.Invoke();
+        Debug.Log("Continue Inputted");
     }
 
     #if UNITY_EDITOR
