@@ -12,6 +12,10 @@ public class KingSeaScript : MonoBehaviour
     [SerializeField]private int rightArmHealthTrigger;
     [SerializeField]private GameObject leftArm;
     [SerializeField]private GameObject rightArm;
+    
+    [SerializeField]private int kingSeaMaxHealthIncrease;
+    private int _numberOfPlayers;
+    [SerializeField]private GameManager gameManager;
 
     public static event Action <float> KingSeaTakesDamage;
     public static event Action SwitchingShieldPosition;
@@ -21,6 +25,15 @@ public class KingSeaScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _numberOfPlayers = gameManager.players.Count;
+        if (_numberOfPlayers < 1)
+        {
+            for (int i = 1; i < _numberOfPlayers; i++)
+            {
+                kingSeaMaxHealth += kingSeaMaxHealthIncrease;
+            }
+        }
+        
         kingSeaHealth = kingSeaMaxHealth;
         _threshold = kingSeaHealth - healthPortionsForSwitchingWeaponSide;
     }
@@ -70,13 +83,4 @@ public class KingSeaScript : MonoBehaviour
         Debug.Log("You win!");
         //TODO what happens when the anger meter goes down
     }
-    
-    // private void OnCollisionEnter(Collision collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Snowball"))
-    //     {
-    //         TakingDamage();
-    //         // Destroy(collision.gameObject);
-    //     }
-    // }
 }
