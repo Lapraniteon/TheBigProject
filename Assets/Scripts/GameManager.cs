@@ -18,24 +18,41 @@ public class GameManager : MonoBehaviour
     public String[] scenes;
 
     public static GameManager Instance;
+
+    [SerializeField]
+    private PlayerInputManager playerInputManager;
     
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {
             Destroy(gameObject);
         }
     }
+
+    public void FlipPlayerJoining(string sceneName)
+    {
+        if (SceneManager.GetActiveScene().name == sceneName)
+        {
+            playerInputManager.EnableJoining();
+        }
+        else
+        {
+            playerInputManager.DisableJoining();
+        }
+    }
     
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        if (SceneManager.GetActiveScene().name == "Library Hub")
+        Debug.Log("OnPlayerJoined");
+        if (SceneManager.GetActiveScene().name == "LibraryHub")
         {
+            Debug.Log("Library loaded");
             //Assign playerInput to the player array, name it and prepare it's number in collections.
             players.Add(playerInput.gameObject);
             playerInput.gameObject.name = "Player " + players.Count; //Rename to the player number
@@ -63,7 +80,7 @@ public class GameManager : MonoBehaviour
     {
         if (interactableObject.CompareTag("Book"))
         {
-            StartCoroutine(SceneController.Instance.LoadScene(scenes[0]));
+            StartCoroutine(SceneController.Instance.LoadScene(scenes[1]));
             //SceneController.Instance.LoadScene(scenes[0]);
             Debug.Log(scenes[0] + " loading");
         }
