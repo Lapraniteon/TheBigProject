@@ -5,21 +5,24 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/ManagerScene.unity
+    guid: e5763883cb338b146b4338ad96d90b86
   - enabled: 1
     path: Assets/Scenes/LibraryHub.unity
     guid: f1d64cdb676524f40ba730b4ccb94f21
+  - enabled: 1
+    path: Assets/Scenes/CrystalSugarMinigame.unity
+    guid: 3a4486a3459f2bf4d874ac07993fe459
+  - enabled: 1
+    path: Assets/Scenes/DariusLegsMinigame.unity
+    guid: 43e9c6640db75604991e2799539c87c1
   - enabled: 1
     path: Assets/Scenes/LightShineMinigame.unity
     guid: 97f358d0ab184034fbf2e5a6c9ca4e3a
   - enabled: 1
     path: Assets/Scenes/Test Scenes/ControllerInputTests.unity
     guid: ebb156c2b320c84418b71f7a55eaec30
-  - enabled: 1
-    path: Assets/Scenes/ManagerScene.unity
-    guid: e5763883cb338b146b4338ad96d90b86
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

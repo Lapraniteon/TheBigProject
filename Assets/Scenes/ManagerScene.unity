@@ -211,13 +211,14 @@ MonoBehaviour:
   - {fileID: 1957234652}
   players: []
   scenes:
-  - ManagerScene
-  - LibraryHub
-  - LightShineMinigame
+  - ControllerInputTests
   - CrystalSugarMinigame
   - DariusLegsMinigame
   - KingSeaMinigame
-  - ControllerInputTests
+  - LightShineMinigame
+  - ManagerScene
+  - LibraryHub
+  minigamesWon: 00000000
   playerInputManager: {fileID: 193998425}
 --- !u!114 &193998425
 MonoBehaviour:

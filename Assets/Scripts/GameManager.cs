@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> players;
     
     public String[] scenes;
+    public Boolean[] minigamesWon;
 
     public static GameManager Instance;
 
@@ -62,8 +63,8 @@ public class GameManager : MonoBehaviour
             playerInput.gameObject.GetComponent<Renderer>().material.color = playerColors[playerNumber];
        
             //Set the position of the joined player to the corresponding spawnpoint.
-            playerInput.transform.position = playerSpawnPoints[playerNumber].transform.position; 
-            SceneManager.MoveGameObjectToScene(playerInput.gameObject, SceneManager.GetSceneByName(scenes[0]));
+            playerInput.transform.position = playerSpawnPoints[playerNumber].transform.position;
+            SceneManager.MoveGameObjectToScene(playerInput.gameObject, SceneManager.GetSceneByName("ManagerScene"));
             Physics.SyncTransforms(); //Makes sure the player teleports because the CharacterController often stops this.
             Debug.Log("Spawned Player " + playerNumber + " at " + playerSpawnPoints[playerNumber].transform.position);
         }
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
     {
         if (interactableObject.CompareTag("Book"))
         {
-            StartCoroutine(SceneController.Instance.LoadScene(scenes[6]));
+            StartCoroutine(SceneController.Instance.LoadScene(scenes[0]));
             //SceneController.Instance.LoadScene(scenes[0]);
             Debug.Log(scenes[0] + " loading");
         }
@@ -95,6 +96,25 @@ public class GameManager : MonoBehaviour
             Physics.SyncTransforms(); //Makes sure the player teleports because the CharacterController often stops this.
             Debug.Log(players[i].transform.position + spawnPoints[i].transform.position);
         }
+    }
+
+    public void FinishedMinigame(string mingameScene)
+    {
+        int sceneIndex = Array.IndexOf(scenes, mingameScene);
+        minigamesWon[sceneIndex] = true;
+        Debug.Log("Selected this scenenumber: " + sceneIndex);
+        
+        // foreach (String scene in scenes)
+        // {
+        //     if (scene == mingameScene)
+        //     {
+        //         scenes[
+        //         minigamesWon.GetValue(scenes[scene])
+        //         int sceneNumber = scene.Length;
+        //     }
+        // }
+        //int sceneNumber = scenes[minigameScene.name];
+        //minigamesWon[scenes[scene.name]] = true;
     }
 
     private void OnEnable()

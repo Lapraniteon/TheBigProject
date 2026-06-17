@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 875007875690599177}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
     m_ActionName: 'Darius Legs/Movement[/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/Keyboard/a,/Keyboard/d]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Controller
-  m_DefaultActionMap: 26d705de-0e0b-4057-9a77-ec30d39d40fa
+  m_DefaultActionMap: General Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!136 &1728326019255723717
