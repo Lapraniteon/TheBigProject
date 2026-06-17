@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     
     public String[] scenes;
     public Boolean[] minigamesWon;
+    public String[] actionMaps;
 
     public static GameManager Instance;
 
@@ -45,6 +46,20 @@ public class GameManager : MonoBehaviour
         else
         {
             playerInputManager.DisableJoining();
+        }
+    }
+
+    public void SwitchActionMaps(string sceneName)
+    {
+        foreach (GameObject player in players)
+        {
+            int sceneIndex = Array.IndexOf(scenes, sceneName);
+            if (sceneIndex > 4)
+            {
+                sceneIndex = 4;
+            }
+            string actionMapName = actionMaps[sceneIndex];
+            player.gameObject.GetComponent<PlayerController>().SwitchCurrentActionMap(actionMapName);
         }
     }
     

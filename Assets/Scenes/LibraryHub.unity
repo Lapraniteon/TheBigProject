@@ -984,7 +984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0792a4349af884f9a3727d37c45866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BookScript
-  sceneToLoad: ControllerInputTests
+  sceneToLoad: LightShineMinigame
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

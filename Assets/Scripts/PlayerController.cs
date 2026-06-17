@@ -69,6 +69,12 @@ public class PlayerController : MonoBehaviour
             _playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityValue);
         }
     }
+
+    public void SwitchCurrentActionMap(string actionMapName)
+    {
+        gameObject.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapName);
+        Debug.Log("Switched actionMap to " + actionMapName);
+    }
     
     public void OnMovement(InputValue value)
     {

@@ -43,6 +43,7 @@ public class SceneController : MonoBehaviour
         yield return new WaitUntil(() => scene.progress == 1f);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("LibraryHub")); 
         GameManager.Instance.FlipPlayerJoining(SceneManager.GetActiveScene().name);
+        GameManager.Instance.SwitchActionMaps("LibraryHub");
         //Debug.Log("Loaded Library Hub, current active scene is: " + SceneManager.GetActiveScene().name);
     }
 
@@ -80,6 +81,7 @@ public class SceneController : MonoBehaviour
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
             GameManager.Instance.PlayerInputsActive(true);
             GameManager.Instance.FlipPlayerJoining(sceneName);
+            GameManager.Instance.SwitchActionMaps(sceneName);
             _sceneIsLoading = false;
         }
         
