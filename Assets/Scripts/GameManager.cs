@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
         if (interactableObject.CompareTag("Book"))
         {
             StartCoroutine(SceneController.Instance.LoadScene(scenes[0]));
-            //SceneController.Instance.LoadScene(scenes[0]);
             Debug.Log(scenes[0] + " loading");
         }
     }
@@ -103,18 +102,7 @@ public class GameManager : MonoBehaviour
         int sceneIndex = Array.IndexOf(scenes, mingameScene);
         minigamesWon[sceneIndex] = true;
         Debug.Log("Selected this scenenumber: " + sceneIndex);
-        
-        // foreach (String scene in scenes)
-        // {
-        //     if (scene == mingameScene)
-        //     {
-        //         scenes[
-        //         minigamesWon.GetValue(scenes[scene])
-        //         int sceneNumber = scene.Length;
-        //     }
-        // }
-        //int sceneNumber = scenes[minigameScene.name];
-        //minigamesWon[scenes[scene.name]] = true;
+        StartCoroutine(SceneController.Instance.LoadLibraryHub());
     }
 
     private void OnEnable()
