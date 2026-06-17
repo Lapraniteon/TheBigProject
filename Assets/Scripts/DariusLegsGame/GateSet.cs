@@ -17,13 +17,15 @@ public class GateSet : MonoBehaviour
         }
     }
 
-    public void StartMovement(float despawnDistance, float globalMovementSpeed, float doorClosingDistance)
+    public void StartMovement(float despawnDistance, float spawnHeightOffset, float globalMovementSpeed, float doorClosingDistance)
     {
         movementSequence = DOTween.Sequence();
         float totalDistance = transform.position.z + despawnDistance;
         movementSequence
             .Append(transform.DOLocalMoveZ(-despawnDistance, totalDistance / globalMovementSpeed)
                 .SetEase(Ease.Linear))
+            .Join(transform.DOLocalMoveY(transform.position.y - spawnHeightOffset, totalDistance / globalMovementSpeed / 3f)
+                .SetEase(Ease.OutSine))
             .InsertCallback((totalDistance - despawnDistance - doorClosingDistance) / globalMovementSpeed, CloseDoors)
             .AppendCallback(DestroySelf);
 
