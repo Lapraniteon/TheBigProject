@@ -41,7 +41,7 @@ public class WorldMovement : MonoBehaviour
 
     private void StartMovement()
     {
-        _floorMovementTween = floorTransform.DOLocalMoveZ(-100f, 100f / globalMovementSpeed).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
+        _floorMovementTween = floorTransform.DOLocalMoveZ(-5f, 5f / globalMovementSpeed).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
     }
 
     public void SetGateSpawnPaused(bool setPaused)
@@ -65,8 +65,9 @@ public class WorldMovement : MonoBehaviour
 
     private void SpawnGate()
     {
-        GateSet gate = Instantiate(gatePrefab, gateSpawnPoint.position, Quaternion.identity);
-        gate.StartMovement(_despawnDistance, globalMovementSpeed, darius.transform.position.z - doorClosingDistance);
+        Vector3 offset = new Vector3(0f, -8f, 0f);
+        GateSet gate = Instantiate(gatePrefab, gateSpawnPoint.position + offset, Quaternion.identity);
+        gate.StartMovement(_despawnDistance, offset.y, globalMovementSpeed, darius.transform.position.z - doorClosingDistance);
     }
 
     public void StopAllMovement()
