@@ -134,6 +134,12 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
             Vector3 directionVector = ConvertChosenDirectionToVector3(direction);
             float angle = Vector3.SignedAngle(Vector3Int.RoundToInt(transform.forward), directionVector, Vector3.up);
 
+            if (direction == Vector2.zero)
+            {
+                NormalPathfind();
+                yield break;
+            }
+            
             if (CheckWall(directionVector)) // If there is a wall in the chosen direction...
                 angle = 180f; // ...turn back.
 
