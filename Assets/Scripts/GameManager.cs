@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
        
             //Set the position of the joined player to the corresponding spawnpoint.
             playerInput.transform.position = playerSpawnPoints[playerNumber].transform.position; 
+            SceneManager.MoveGameObjectToScene(playerInput.gameObject, SceneManager.GetSceneByName(scenes[0]));
             Physics.SyncTransforms(); //Makes sure the player teleports because the CharacterController often stops this.
             Debug.Log("Spawned Player " + playerNumber + " at " + playerSpawnPoints[playerNumber].transform.position);
         }
@@ -80,9 +81,19 @@ public class GameManager : MonoBehaviour
     {
         if (interactableObject.CompareTag("Book"))
         {
-            StartCoroutine(SceneController.Instance.LoadScene(scenes[1]));
+            StartCoroutine(SceneController.Instance.LoadScene(scenes[6]));
             //SceneController.Instance.LoadScene(scenes[0]);
             Debug.Log(scenes[0] + " loading");
+        }
+    }
+
+    public void PlayersToSpawnPoints(Transform[] spawnPoints)
+    {
+        for (int i = 0; i < players.Count; i++)
+        {
+            players[i].transform.position = spawnPoints[i].transform.position;
+            Physics.SyncTransforms(); //Makes sure the player teleports because the CharacterController often stops this.
+            Debug.Log(players[i].transform.position + spawnPoints[i].transform.position);
         }
     }
 
