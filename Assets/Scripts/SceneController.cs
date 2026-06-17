@@ -48,37 +48,41 @@ public class SceneController : MonoBehaviour
 
     public IEnumerator LoadScene(string sceneName)
     {
-        Debug.Log("Loading Scene: " + sceneName + " via SceneController");
+        if (_sceneIsLoading == false)
+        {
+            Debug.Log("Loading Scene: " + sceneName + " via SceneController");
         
-        //boolean to check if the coroutine is running for the continue button
-        _sceneIsLoading = true;
+            //boolean to check if the coroutine is running for the continue button
+            _sceneIsLoading = true;
         
-        _progressBarTarget = 0;
-        _progressBar.value = 0;
-        var scene = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        scene.allowSceneActivation = false;
+            _progressBarTarget = 0;
+            _progressBar.value = 0;
+            var scene = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+            scene.allowSceneActivation = false;
      
-        _loaderCanvas.SetActive(true);
+            _loaderCanvas.SetActive(true);
 
-        do {
-            _progressBarTarget = scene.progress;
-        } while (scene.progress < 0.9f);
+            do {
+                _progressBarTarget = scene.progress;
+            } while (scene.progress < 0.9f);
         
-        //wait for keypress to finish loading.
-        yield return new WaitUntil(() => _continuePressed);
-        Debug.Log("Continuing to scene");
-        GameManager.Instance.PlayerInputsActive(false);
-        _loaderCanvas.SetActive(false);
-        _sceneIsLoading = false;
-        _continuePressed = false;
+            //wait for keypress to finish loading.
+            yield return new WaitUntil(() => _continuePressed);
+            Debug.Log("Continuing to scene");
+            GameManager.Instance.PlayerInputsActive(false);
+            _loaderCanvas.SetActive(false);
+            _continuePressed = false;
         
-        //fully load the scene
-        scene.allowSceneActivation = true;
-        yield return new WaitUntil(() => scene.progress == 1f);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-        GameManager.Instance.PlayerInputsActive(true);
-        GameManager.Instance.FlipPlayerJoining(sceneName);
+            //fully load the scene
+            scene.allowSceneActivation = true;
+            yield return new WaitUntil(() => scene.progress == 1f);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            GameManager.Instance.PlayerInputsActive(true);
+            GameManager.Instance.FlipPlayerJoining(sceneName);
+            _sceneIsLoading = false;
+        }
+        
     }
     
     private void Update()
