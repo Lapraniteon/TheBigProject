@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movementInput = Vector2.zero;
     
     
-    private void Start()
+    public virtual void Start()
     {
         _controller = gameObject.GetComponent<CharacterController>();
     }
@@ -32,7 +32,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // Slight downward velocity to keep grounded stable unless a jump is in progress.
+
         _groundedPlayer = _controller.isGrounded;
+        
         if (_groundedPlayer)
         {
             if (_playerVelocity.y < -2f)

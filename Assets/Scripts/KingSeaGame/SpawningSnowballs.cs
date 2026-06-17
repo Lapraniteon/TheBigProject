@@ -15,8 +15,9 @@ public class SpawningSnowballs : PlayerController
     public int whichPlatform;
     public Vector3[] endPositions;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         _kingSea = FindFirstObjectByType<KingSeaScript>();
     }
     
