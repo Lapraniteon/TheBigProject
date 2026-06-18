@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public float interactRadius = 5;
     public static event Action<GameObject> Interaction;
 
+    public static event Action Continue;
+
     private CharacterController _controller;
     private Vector3 _playerVelocity;
     private bool _groundedPlayer;
@@ -67,6 +69,12 @@ public class PlayerController : MonoBehaviour
             _playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityValue);
         }
     }
+
+    public void SwitchCurrentActionMap(string actionMapName)
+    {
+        gameObject.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapName);
+        Debug.Log("Switched actionMap to " + actionMapName);
+    }
     
     public void OnMovement(InputValue value)
     {
@@ -114,6 +122,12 @@ public class PlayerController : MonoBehaviour
     public virtual void OnShoot(InputValue value)
     {
         
+    }
+
+    public void OnContinue(InputValue value)
+    {
+        Continue?.Invoke();
+        Debug.Log("Continue Inputted");
     }
 
     #if UNITY_EDITOR
