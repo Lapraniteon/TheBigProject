@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 691717578073424706, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.49193048
       objectReference: {fileID: 0}
     - target: {fileID: 691717578073424706, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,19 +18,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 691717578073424706, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0.0000038146973
       objectReference: {fileID: 0}
     - target: {fileID: 691717578073424706, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.70710784
       objectReference: {fileID: 0}
     - target: {fileID: 691717578073424706, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 691717578073424706, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.70710576
       objectReference: {fileID: 0}
     - target: {fileID: 691717578073424706, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: m_LocalRotation.z
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 691717578073424706, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 691717578073424706, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -77,6 +77,10 @@ PrefabInstance:
     - target: {fileID: 875007875690599177, guid: 58abd9e941cc0ab4992663222049809b, type: 3}
       propertyPath: playerSpeed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1297840495867698925, guid: 58abd9e941cc0ab4992663222049809b, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: General Gameplay
       objectReference: {fileID: 0}
     - target: {fileID: 6902843138130216849, guid: 58abd9e941cc0ab4992663222049809b, type: 3}
       propertyPath: m_LocalPosition.x
