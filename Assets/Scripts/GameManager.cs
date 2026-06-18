@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using NUnit.Framework.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using Random = Unity.Mathematics.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +19,7 @@ public class GameManager : MonoBehaviour
     
     
     public static GameManager Instance;
+    
 
     [SerializeField]
     private PlayerInputManager playerInputManager;
@@ -136,12 +135,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void FinishedMinigame(string mingameScene)
+    public void FinishedMinigame()
     {
-        int sceneIndex = Array.IndexOf(scenes, mingameScene);
+        string minigameScene = SceneManager.GetActiveScene().name;
+        int sceneIndex = Array.IndexOf(scenes, minigameScene);
         minigamesWon[sceneIndex] = true;
         Debug.Log("Selected this scenenumber: " + sceneIndex);
         StartCoroutine(SceneController.Instance.LoadLibraryHub());
+    }
+
+    public void AdjustPlayerSpeed(float speed)
+    {
+        foreach (GameObject player in players)
+        {
+            player.gameObject.GetComponent<PlayerController>().playerSpeed = speed;
+        }
     }
 
     private void OnEnable()

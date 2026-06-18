@@ -27,11 +27,14 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
     [SerializeField] private float stepDelay = 1f;
 
     private Coroutine _currentStep;
-    
+
+    [SerializeField]
+    private Transform[] spawnPoints;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _wallLayerMask = LayerMask.GetMask(wallLayer);
+        GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
 
         StartMovement(); // Replace with an event that starts the movement at some point
     }
@@ -57,7 +60,9 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         if (!other.CompareTag("CS_MazeExit"))
             return;
         
+        //Does it still need this boolean?
         MazeEndReached = true;
+        GameManager.Instance.FinishedMinigame();
         Debug.Log("Maze end reached!");
     }
 

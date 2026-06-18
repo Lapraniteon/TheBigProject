@@ -394,7 +394,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4777
+  m_VersionIndex: 4822
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -457,12 +457,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489645536087125783}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.50000036, y: -0.49999958, z: 0.5000002, w: 0.49999982}
-  m_LocalPosition: {x: 2.6289997, y: -2.0179946, z: -0.5030018}
+  m_LocalRotation: {x: -0.50000036, y: -0.49999955, z: 0.5000002, w: 0.49999988}
+  m_LocalPosition: {x: 2.6290007, y: -2.0179949, z: -0.5030019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1300658403081804783}
+  m_Father: {fileID: 1722738306903731840}
   m_LocalEulerAnglesHint: {x: 0, y: -155.047, z: 0}
 --- !u!114 &3292970271495636277
 MonoBehaviour:
@@ -3498,7 +3498,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6889
+  m_VersionIndex: 6934
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3604,9 +3604,10 @@ GameObject:
   - component: {fileID: 5458960744721956226}
   - component: {fileID: 8439710678206697812}
   - component: {fileID: 3347024303086707903}
-  m_Layer: 0
-  m_Name: Sphere
-  m_TagString: Untagged
+  - component: {fileID: 2370026607538115380}
+  m_Layer: 3
+  m_Name: Book Crystal Sugar
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3619,12 +3620,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513223167169535008}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5962116, y: 0.38017344, z: -0.38017336, w: 0.5962115}
-  m_LocalPosition: {x: 4.205295, y: 0.06883526, z: 1.5909681}
+  m_LocalRotation: {x: -0.5962116, y: 0.38017344, z: -0.38017327, w: 0.59621155}
+  m_LocalPosition: {x: 4.2052937, y: 0.06883609, z: 1.5909681}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1300658403081804783}
+  m_Father: {fileID: 4555334858300084519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3663579728640211260
 MonoBehaviour:
@@ -37578,7 +37579,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1001
+  m_VersionIndex: 1046
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -37688,6 +37689,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2370026607538115380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513223167169535008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0792a4349af884f9a3727d37c45866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BookScript
+  sceneToLoad: CrystalSugarMinigame
 --- !u!1 &671503713679187872
 GameObject:
   m_ObjectHideFlags: 0
@@ -37936,7 +37950,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1848
+  m_VersionIndex: 1893
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -38292,7 +38306,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2536
+  m_VersionIndex: 2581
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -38648,7 +38662,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3727
+  m_VersionIndex: 3772
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -39004,7 +39018,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7570
+  m_VersionIndex: 7615
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -39136,19 +39150,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109778822334702160}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5962116, y: -0.38017344, z: 0.38017336, w: 0.5962115}
+  m_LocalRotation: {x: 0.5962119, y: -0.3801728, z: 0.3801728, w: 0.5962119}
   m_LocalPosition: {x: -11.56169, y: 3.513028, z: -19.871792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4555334858300084519}
+  - {fileID: 1722738306903731840}
   - {fileID: 8419004769216717677}
   - {fileID: 7664890610518178149}
-  - {fileID: 2957022550158629224}
-  - {fileID: 2310956400530340843}
-  - {fileID: 7983455093346468954}
-  - {fileID: 8094013299320964677}
-  - {fileID: 3126841437655103206}
-  - {fileID: 8298956449424694902}
   - {fileID: 1402177667729570908}
   - {fileID: 7999846271785507925}
   - {fileID: 2640605329855535298}
@@ -39187,15 +39197,11 @@ Transform:
   - {fileID: 4424342462291395657}
   - {fileID: 8971489668638843045}
   - {fileID: 2997222590872348510}
-  - {fileID: 3154271359154740028}
-  - {fileID: 4552923885529909152}
-  - {fileID: 5084563785213629516}
-  - {fileID: 899097974110169294}
   - {fileID: 410882340443377564}
   - {fileID: 333309856208005722}
   - {fileID: 2627003966182893815}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 65.047}
 --- !u!1 &1168343942740499282
 GameObject:
   m_ObjectHideFlags: 0
@@ -39444,7 +39450,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2554
+  m_VersionIndex: 2599
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -39800,7 +39806,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2342
+  m_VersionIndex: 2387
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -40156,7 +40162,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2204
+  m_VersionIndex: 2249
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -40512,7 +40518,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7297
+  m_VersionIndex: 7342
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -40868,7 +40874,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7103
+  m_VersionIndex: 7148
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -41224,7 +41230,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2222
+  m_VersionIndex: 2267
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -41580,7 +41586,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2414
+  m_VersionIndex: 2459
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -41936,7 +41942,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3541
+  m_VersionIndex: 3586
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -42292,7 +42298,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2021
+  m_VersionIndex: 2066
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -42648,7 +42654,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1848
+  m_VersionIndex: 1893
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -42785,12 +42791,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2556877136301628122}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.50000036, y: -0.49999958, z: 0.5000002, w: 0.49999982}
-  m_LocalPosition: {x: 2.6290002, y: -2.0179985, z: 1.5530295}
+  m_LocalRotation: {x: -0.50000036, y: -0.49999955, z: 0.5000002, w: 0.49999988}
+  m_LocalPosition: {x: 2.6290004, y: -2.017999, z: 1.5530295}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1300658403081804783}
+  m_Father: {fileID: 1722738306903731840}
   m_LocalEulerAnglesHint: {x: 0, y: -155.047, z: 0}
 --- !u!114 &6508147655601525013
 MonoBehaviour:
@@ -46577,7 +46583,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6661
+  m_VersionIndex: 6706
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -46706,7 +46712,7 @@ GameObject:
   - component: {fileID: 1520831491746794604}
   - component: {fileID: 8648699974920180151}
   m_Layer: 0
-  m_Name: spawn
+  m_Name: Spawn Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46939,7 +46945,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2234
+  m_VersionIndex: 2279
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -47076,12 +47082,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3419974429321559983}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.50000036, y: -0.49999958, z: 0.5000002, w: 0.49999982}
-  m_LocalPosition: {x: 2.6289997, y: -2.0179944, z: 0.46500182}
+  m_LocalRotation: {x: -0.50000036, y: -0.49999955, z: 0.5000002, w: 0.49999988}
+  m_LocalPosition: {x: 2.6290007, y: -2.0179949, z: 0.46500182}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1300658403081804783}
+  m_Father: {fileID: 1722738306903731840}
   m_LocalEulerAnglesHint: {x: 0, y: -155.047, z: 0}
 --- !u!114 &2827270146610115703
 MonoBehaviour:
@@ -54623,7 +54629,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7333
+  m_VersionIndex: 7378
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -54985,7 +54991,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5298
+  m_VersionIndex: 5343
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -55341,7 +55347,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6464
+  m_VersionIndex: 6509
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -55697,7 +55703,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2633
+  m_VersionIndex: 2678
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -55839,7 +55845,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1300658403081804783}
+  m_Father: {fileID: 1722738306903731840}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 65.047}
 --- !u!114 &7970882501941370884
 MonoBehaviour:
@@ -55996,7 +56002,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 9234
+  m_VersionIndex: 9279
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -56354,7 +56360,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2502
+  m_VersionIndex: 2547
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -56710,7 +56716,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6717
+  m_VersionIndex: 6762
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -56832,9 +56838,10 @@ GameObject:
   - component: {fileID: 667490597629678241}
   - component: {fileID: 8113470138160798675}
   - component: {fileID: 1889295019387155059}
-  m_Layer: 0
-  m_Name: Sphere (2)
-  m_TagString: Untagged
+  - component: {fileID: 8012363758342318555}
+  m_Layer: 3
+  m_Name: Book Light Shine
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56847,12 +56854,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4367372172444701451}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5962116, y: 0.38017344, z: -0.38017336, w: 0.5962115}
-  m_LocalPosition: {x: 49.94358, y: -10.049965, z: 1.0130157}
+  m_LocalRotation: {x: -0.5962116, y: 0.38017344, z: -0.38017327, w: 0.59621155}
+  m_LocalPosition: {x: 49.94358, y: -10.049963, z: 1.0130157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1300658403081804783}
+  m_Father: {fileID: 4555334858300084519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1375623973282094485
 MonoBehaviour:
@@ -90806,7 +90813,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1001
+  m_VersionIndex: 1046
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -90916,6 +90923,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8012363758342318555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4367372172444701451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0792a4349af884f9a3727d37c45866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BookScript
+  sceneToLoad: LightShineMinigame
 --- !u!1 &4662762077908393308
 GameObject:
   m_ObjectHideFlags: 0
@@ -91164,7 +91184,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2138
+  m_VersionIndex: 2183
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -91520,7 +91540,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1423
+  m_VersionIndex: 1468
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -91876,7 +91896,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1845
+  m_VersionIndex: 1890
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -92232,7 +92252,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3016
+  m_VersionIndex: 3061
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -92588,7 +92608,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3324
+  m_VersionIndex: 3369
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -92944,7 +92964,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2342
+  m_VersionIndex: 2387
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -93300,7 +93320,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2744
+  m_VersionIndex: 2789
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -93656,7 +93676,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1689
+  m_VersionIndex: 1734
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -94012,7 +94032,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4713
+  m_VersionIndex: 4758
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -94368,7 +94388,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3324
+  m_VersionIndex: 3369
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -94724,7 +94744,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2342
+  m_VersionIndex: 2387
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -95080,7 +95100,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5502
+  m_VersionIndex: 5547
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -95436,7 +95456,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2579
+  m_VersionIndex: 2624
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -95558,9 +95578,10 @@ GameObject:
   - component: {fileID: 6399939107008927667}
   - component: {fileID: 6356535938851119986}
   - component: {fileID: 6632897277136159891}
-  m_Layer: 0
-  m_Name: Sphere (1)
-  m_TagString: Untagged
+  - component: {fileID: 2110293947004708208}
+  m_Layer: 3
+  m_Name: Book King Sea
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95573,12 +95594,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6521749168007711781}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5962116, y: 0.38017344, z: -0.38017336, w: 0.5962115}
+  m_LocalRotation: {x: -0.5962116, y: 0.38017344, z: -0.38017327, w: 0.59621155}
   m_LocalPosition: {x: 30.41454, y: 23.315788, z: -0.20698166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1300658403081804783}
+  m_Father: {fileID: 4555334858300084519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1436776187374399403
 MonoBehaviour:
@@ -129532,7 +129553,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1001
+  m_VersionIndex: 1046
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -129642,6 +129663,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2110293947004708208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6521749168007711781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0792a4349af884f9a3727d37c45866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BookScript
+  sceneToLoad: KingSeaMinigame
 --- !u!1 &6577520776879258391
 GameObject:
   m_ObjectHideFlags: 0
@@ -129890,7 +129924,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2222
+  m_VersionIndex: 2267
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -129998,6 +130032,41 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &6629938126451597196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4555334858300084519}
+  m_Layer: 0
+  m_Name: Books
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4555334858300084519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6629938126451597196}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4552923885529909152}
+  - {fileID: 5084563785213629516}
+  - {fileID: 3154271359154740028}
+  - {fileID: 899097974110169294}
+  m_Father: {fileID: 1300658403081804783}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6656972398537381820
 GameObject:
   m_ObjectHideFlags: 0
@@ -130012,9 +130081,10 @@ GameObject:
   - component: {fileID: 1716179094712131494}
   - component: {fileID: 4714915420678533649}
   - component: {fileID: 3782487008008214370}
-  m_Layer: 0
-  m_Name: Sphere (3)
-  m_TagString: Untagged
+  - component: {fileID: 7091594273685375730}
+  m_Layer: 3
+  m_Name: Book Darius Legs
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130027,12 +130097,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6656972398537381820}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5962116, y: 0.38017344, z: -0.38017336, w: 0.5962115}
+  m_LocalRotation: {x: -0.5962116, y: 0.38017344, z: -0.38017327, w: 0.59621155}
   m_LocalPosition: {x: 15.29949, y: 17.992233, z: 1.703022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1300658403081804783}
+  m_Father: {fileID: 4555334858300084519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5456553073180686240
 MonoBehaviour:
@@ -163986,7 +164056,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1001
+  m_VersionIndex: 1046
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -164096,6 +164166,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &7091594273685375730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6656972398537381820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0792a4349af884f9a3727d37c45866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BookScript
+  sceneToLoad: DariusLegsMinigame
 --- !u!1 &7019472911808958085
 GameObject:
   m_ObjectHideFlags: 0
@@ -164344,7 +164427,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2342
+  m_VersionIndex: 2387
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -164700,7 +164783,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2342
+  m_VersionIndex: 2387
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -164808,6 +164891,43 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &7652995572895810346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1722738306903731840}
+  m_Layer: 0
+  m_Name: Couch Thingy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1722738306903731840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7652995572895810346}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.0000000037252903, z: -0.8660245, w: 0.50000155}
+  m_LocalPosition: {x: 6.3489065, y: 3.6540809, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2957022550158629224}
+  - {fileID: 2310956400530340843}
+  - {fileID: 7983455093346468954}
+  - {fileID: 8094013299320964677}
+  - {fileID: 3126841437655103206}
+  - {fileID: 8298956449424694902}
+  m_Father: {fileID: 1300658403081804783}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -120}
 --- !u!1 &7942271911778861150
 GameObject:
   m_ObjectHideFlags: 0
@@ -164837,12 +164957,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7942271911778861150}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0000009760261, y: -0.000000011175871, z: 0.7071069, w: 0.7071067}
-  m_LocalPosition: {x: 4.232709, y: 3.0297897, z: 0.004995346}
+  m_LocalRotation: {x: -0.000001013279, y: -0, z: 0.7071068, w: 0.7071067}
+  m_LocalPosition: {x: 4.232709, y: 3.029791, z: 0.004995346}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1300658403081804783}
+  m_Father: {fileID: 1722738306903731840}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 155.047}
 --- !u!114 &2451357348573964843
 MonoBehaviour:
@@ -164999,7 +165119,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 11764
+  m_VersionIndex: 11809
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -165357,7 +165477,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3266
+  m_VersionIndex: 3311
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -165713,7 +165833,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2722
+  m_VersionIndex: 2767
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -166069,7 +166189,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6768
+  m_VersionIndex: 6813
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -166425,7 +166545,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2138
+  m_VersionIndex: 2183
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -166561,12 +166681,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8737163618045253522}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.50000036, y: -0.49999958, z: 0.5000002, w: 0.49999982}
-  m_LocalPosition: {x: 2.6290007, y: -2.0179963, z: 0.4350021}
+  m_LocalRotation: {x: -0.50000036, y: -0.49999955, z: 0.5000002, w: 0.49999988}
+  m_LocalPosition: {x: 2.6290007, y: -2.0179949, z: 0.4350021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1300658403081804783}
+  m_Father: {fileID: 1722738306903731840}
   m_LocalEulerAnglesHint: {x: 0, y: -155.047, z: 0}
 --- !u!114 &5591880067159668269
 MonoBehaviour:
@@ -168851,7 +168971,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6769
+  m_VersionIndex: 6814
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -169191,7 +169311,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2342
+  m_VersionIndex: 2387
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -169547,7 +169667,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4294
+  m_VersionIndex: 4339
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

@@ -5,6 +5,9 @@ public class DariusLegsGameManager : MonoBehaviour
 {
     
     private static DariusLegsGameManager _instance; // Game Manager singleton pattern
+
+    private float dariusPlayerSpeed = 15f;
+    private float playerSpeed = 5f;
     public static DariusLegsGameManager Instance
     {
         get
@@ -17,6 +20,8 @@ public class DariusLegsGameManager : MonoBehaviour
     } // Game Manager instance property
     
     public PlayerController[] players;
+    [SerializeField]
+    private Transform[] spawnPoints;
     
     [HideInInspector] public WorldMovement worldMovement;
     
@@ -28,6 +33,9 @@ public class DariusLegsGameManager : MonoBehaviour
     void Start()
     {
         worldMovement = FindFirstObjectByType<WorldMovement>();
+        GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
+        
+        GameManager.Instance.AdjustPlayerSpeed(dariusPlayerSpeed);
     }
 
     public void EliminatePlayer(PlayerController player)
@@ -61,6 +69,8 @@ public class DariusLegsGameManager : MonoBehaviour
         
         Debug.Log("Players won! Darius reached");
         worldMovement.StopAllMovement();
+        GameManager.Instance.FinishedMinigame();
+        GameManager.Instance.AdjustPlayerSpeed(playerSpeed);
     }
     
 }
