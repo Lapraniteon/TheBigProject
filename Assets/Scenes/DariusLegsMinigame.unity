@@ -1375,6 +1375,10 @@ PrefabInstance:
       propertyPath: playerSpeed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8056601023580094139, guid: f14079c4aa802ee47a5077979a8c90fd, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 513
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4543,6 +4547,10 @@ PrefabInstance:
     - target: {fileID: 6428295072333869168, guid: f14079c4aa802ee47a5077979a8c90fd, type: 3}
       propertyPath: m_Name
       value: Player DariusLegsMinigame (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8056601023580094139, guid: f14079c4aa802ee47a5077979a8c90fd, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1025
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
