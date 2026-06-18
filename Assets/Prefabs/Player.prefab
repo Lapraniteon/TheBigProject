@@ -15,6 +15,10 @@ GameObject:
   - component: {fileID: 1728326019255723717}
   - component: {fileID: 401672872651934192}
   - component: {fileID: 875007875690599177}
+  - component: {fileID: 5661218150134818152}
+  - component: {fileID: 7244064519995519794}
+  - component: {fileID: 6522336586072954438}
+  - component: {fileID: 9026036942432258700}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -316,6 +320,73 @@ MonoBehaviour:
   playerSpeed: 5
   jumpHeight: 1
   interactRadius: 5
+  playerControllers:
+  - players:
+    - {fileID: 0}
+  - players:
+    - {fileID: 5661218150134818152}
+  - players:
+    - {fileID: 7244064519995519794}
+    - {fileID: 6522336586072954438}
+  - players:
+    - {fileID: 9026036942432258700}
+--- !u!114 &5661218150134818152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625545045639400134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57494ce980e34374f879207912094f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DirectionalPad
+--- !u!114 &7244064519995519794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625545045639400134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50c157752758414e81949163480821d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawningSnowballs
+  playerSpeed: 5
+  jumpHeight: 1.5
+  interactRadius: 5
+  playerControllers: []
+  snowball: {fileID: 0}
+  offset: {x: 2, y: 1, z: 0}
+  whichPlatform: 0
+  endPositions: []
+--- !u!114 &6522336586072954438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625545045639400134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cfbcf6171926467c896839e4cb10db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Respawning
+  respawnPoint: {fileID: 0}
+--- !u!114 &9026036942432258700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625545045639400134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f0515358db3414f89c8fc3da9569c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorCollision
 --- !u!1 &6947726756658359485
 GameObject:
   m_ObjectHideFlags: 0

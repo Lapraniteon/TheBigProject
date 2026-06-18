@@ -82,6 +82,7 @@ public class SceneController : MonoBehaviour
             GameManager.Instance.PlayerInputsActive(true);
             GameManager.Instance.FlipPlayerJoining(sceneName);
             GameManager.Instance.SwitchActionMaps(sceneName);
+            GameManager.Instance.SwitchPlayerControllers(sceneName);
             _sceneIsLoading = false;
         }
         

@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 _movementInput = Vector2.zero;
     
+    public List<PlayerControllerCollection> playerControllers = new ();
+    
     
     public virtual void Start()
     {
@@ -137,6 +139,26 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, interactRadius);
     }
     #endif
+    
+    [System.Serializable]
+    public class PlayerControllerCollection
+    {
+        public List<MonoBehaviour> players;
+    }
+    
+    public void SetControllersActive(int index, bool active)
+    {
+        if (index >= playerControllers.Count)
+            return;
+        
+        foreach (var script in playerControllers[index].players)
+        {
+            if (script != null)
+            {
+                script.enabled = active;
+            }
+        }
+    }
 }
 
 

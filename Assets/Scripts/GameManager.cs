@@ -13,16 +13,19 @@ public class GameManager : MonoBehaviour
     private Color32[] playerColors;
     [SerializeField]
     private Transform[] playerSpawnPoints;
-    public List<GameObject> players;
+    public List<GameObject> players = new ();
     
     public String[] scenes;
     public Boolean[] minigamesWon;
     public String[] actionMaps;
-
+    
+    
     public static GameManager Instance;
 
     [SerializeField]
     private PlayerInputManager playerInputManager;
+    
+    
     
     void Awake()
     {
@@ -51,16 +54,37 @@ public class GameManager : MonoBehaviour
 
     public void SwitchActionMaps(string sceneName)
     {
+        int sceneIndex = Array.IndexOf(scenes, sceneName);
+        if (sceneIndex > 4)
+        {
+            sceneIndex = 4;
+        }
         foreach (GameObject player in players)
         {
-            int sceneIndex = Array.IndexOf(scenes, sceneName);
-            if (sceneIndex > 4)
-            {
-                sceneIndex = 4;
-            }
             string actionMapName = actionMaps[sceneIndex];
             player.gameObject.GetComponent<PlayerController>().SwitchCurrentActionMap(actionMapName);
         }
+    }
+
+    public void SwitchPlayerControllers(string sceneName)
+    {
+        int sceneIndex = Array.IndexOf(scenes, sceneName);
+        int sceneAmount = scenes.Length;
+        foreach (GameObject player in players)
+        {
+            for (int i = 0; i < sceneAmount; i++)
+            {
+                if (sceneIndex == i)
+                {
+                    player.gameObject.GetComponent<PlayerController>().SetControllersActive(i, true);
+                }
+                else
+                {
+                    player.gameObject.GetComponent<PlayerController>().SetControllersActive(i, false);
+                }
+            }
+        }
+        
     }
     
     public void OnPlayerJoined(PlayerInput playerInput)
@@ -130,3 +154,5 @@ public class GameManager : MonoBehaviour
         PlayerController.Interaction -= InteractionDetected;
     }
 }
+
+
