@@ -240,7 +240,7 @@ MonoBehaviour:
   m_NotificationBehavior: 0
   m_MaxPlayerCount: 4
   m_AllowJoining: 0
-  m_JoinBehavior: 0
+  m_JoinBehavior: 1
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -251,12 +251,20 @@ MonoBehaviour:
     m_UseReference: 0
     m_Action:
       m_Name: Join
-      m_Type: 0
-      m_ExpectedControlType: 
+      m_Type: 1
+      m_ExpectedControlType: Button
       m_Id: 2f55cee8-9fa1-4084-939f-f4922bab3510
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 617bd4d4-c945-43da-81bd-c81c85897c65
+        m_Path: <Gamepad>/buttonSouth
+        m_Interactions: Press(pressPoint=1)
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
   m_PlayerPrefab: {fileID: 625545045639400134, guid: 58abd9e941cc0ab4992663222049809b, type: 3}
