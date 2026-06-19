@@ -19,10 +19,7 @@ public class LightShineGameManager : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            foreach (var player in GameManager.Instance.players)
-            {
-                players.Add(player.GetComponent<PlayerController>());
-            }
+            players = GameManager.Instance.players;
         }
 
         foreach (PlayerController player in players)
