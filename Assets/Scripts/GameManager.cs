@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private Color32[] playerColors;
     [SerializeField]
     private Transform[] playerSpawnPoints;
-    public List<GameObject> players = new ();
+    public List<PlayerController> players = new ();
     
     public String[] scenes;
     public Boolean[] minigamesWon;
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         {
             sceneIndex = 4;
         }
-        foreach (GameObject player in players)
+        foreach (var player in players)
         {
             string actionMapName = actionMaps[sceneIndex];
             player.gameObject.GetComponent<PlayerController>().SwitchCurrentActionMap(actionMapName);
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     {
         int sceneIndex = Array.IndexOf(scenes, sceneName);
         int sceneAmount = scenes.Length;
-        foreach (GameObject player in players)
+        foreach (var player in players)
         {
             for (int i = 0; i < sceneAmount; i++)
             {
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Library loaded");
             //Assign playerInput to the player array, name it and prepare it's number in collections.
-            players.Add(playerInput.gameObject);
+            players.Add(playerInput.gameObject.GetComponent<PlayerController>());
             playerInput.gameObject.name = "Player " + players.Count; //Rename to the player number
             int playerNumber = players.Count - 1; //number to get the right variable from the arrays.
        
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerInputsActive(bool playerInputsActive)
     {
-        foreach (GameObject player in players)
+        foreach (var player in players)
         {
             PlayerInput playerInput = player.gameObject.GetComponent<PlayerInput>();
             playerInput.enabled = playerInputsActive;
@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
 
     public void AdjustPlayerSpeed(float speed)
     {
-        foreach (GameObject player in players)
+        foreach (var player in players)
         {
             player.gameObject.GetComponent<PlayerController>().playerSpeed = speed;
         }

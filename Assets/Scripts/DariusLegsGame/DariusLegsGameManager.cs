@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DariusLegsGameManager : MonoBehaviour
@@ -19,7 +20,7 @@ public class DariusLegsGameManager : MonoBehaviour
         }
     } // Game Manager instance property
     
-    public PlayerController[] players;
+    public List<PlayerController> players = new ();
     [SerializeField]
     private Transform[] spawnPoints;
     
@@ -32,6 +33,9 @@ public class DariusLegsGameManager : MonoBehaviour
     
     void Start()
     {
+        
+        players = GameManager.Instance.players;
+        
         worldMovement = FindFirstObjectByType<WorldMovement>();
         GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
         
