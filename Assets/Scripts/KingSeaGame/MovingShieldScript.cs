@@ -16,18 +16,18 @@ public class MovingShieldScript : MonoBehaviour
 
     private void ShieldMoving()
     {
-        transform.DOMove(shieldPos[_shieldIndex],transitionDuration);
+        transform.DOMove(shieldPos[_shieldIndex], transitionDuration);
         shieldPosition = WhichPlatform();
         _shieldIndex++;
     }
 
     private int WhichPlatform()
     {
-        if (shieldPos[_shieldIndex].x > 1)
+        if (shieldPos[_shieldIndex].x < -1)
         {
             return 0;
         }
-        if (shieldPos[_shieldIndex].x < -1)
+        if (shieldPos[_shieldIndex].x > 1)
         {
             return 2;
         }

@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Example
   playerSpeed: 5
-  jumpHeight: 1
+  jumpHeight: 1.5
   interactRadius: 5
   playerControllers:
   - players:
@@ -349,23 +349,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625545045639400134}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f50c157752758414e81949163480821d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawningSnowballs
-  playerSpeed: 5
-  jumpHeight: 1.5
-  interactRadius: 5
-  playerControllers: []
   snowball: {fileID: 4528484691860962690, guid: 54553d78f272a485f85e6919bb97f859, type: 3}
   offset: {x: 2, y: 1, z: 0}
   whichPlatform: 0
   endPositions:
-  - {x: 6, y: 0.5, z: -25}
-  - {x: 3, y: 0.5, z: -25}
-  - {x: -3, y: 0.5, z: -25}
-  - {x: -6, y: 0.5, z: -25}
+  - {x: -6, y: 0.5, z: 25}
+  - {x: -3, y: 0.5, z: 25}
+  - {x: 3, y: 0.5, z: 25}
+  - {x: 6, y: 0.5, z: 25}
 --- !u!114 &6522336586072954438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +369,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625545045639400134}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cfbcf6171926467c896839e4cb10db4, type: 3}
   m_Name: 

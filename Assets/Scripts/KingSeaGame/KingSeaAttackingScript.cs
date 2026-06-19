@@ -16,13 +16,13 @@ public class KingSeaAttackingScript : MonoBehaviour
     
     private void Attacking()
     {
-        transform.DORotate(new Vector3(90, 0, 0),kingSeaAttackDuration);
+        transform.DOLocalRotate(new Vector3(90, 0, 0),kingSeaAttackDuration);
         Invoke("PlatformsSplitting", 0.2f);
     }
 
     private void PlatformsSplitting()
     {
-        platform1.transform.DOMoveX(platform1.transform.position.x + splitDistance / 2, platformSplittingDuration).SetEase(Ease.OutFlash);
-        platform2.transform.DOMoveX(platform2.transform.position.x - splitDistance / 2, platformSplittingDuration).SetEase(Ease.OutFlash);
+        platform1.transform.DOMoveX(platform1.transform.position.x - splitDistance / 2, platformSplittingDuration).SetEase(Ease.OutFlash);
+        platform2.transform.DOMoveX(platform2.transform.position.x + splitDistance / 2, platformSplittingDuration).SetEase(Ease.OutFlash);
     }
 }

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     public float interactRadius = 5;
     public static event Action<GameObject> Interaction;
+    public event Action ShootSnowball;
 
     public static event Action Continue;
 
@@ -123,7 +124,7 @@ public class PlayerController : MonoBehaviour
     
     public virtual void OnShoot(InputValue value)
     {
-        
+        ShootSnowball?.Invoke();
     }
 
     public void OnContinue(InputValue value)

@@ -5,7 +5,7 @@ using DG.Tweening;
 using Unity.VisualScripting;
 using Sequence = DG.Tweening.Sequence;
 
-public class SpawningSnowballs : PlayerController
+public class SpawningSnowballs : MonoBehaviour
 {
     private KingSeaScript _kingSea;
     public GameObject snowball;
@@ -15,13 +15,23 @@ public class SpawningSnowballs : PlayerController
     public int whichPlatform;
     public Vector3[] endPositions;
 
-    public override void Start()
+    private void OnEnable()
     {
-        base.Start();
+        PlayerController playerController = GetComponent<PlayerController>();
+        playerController.ShootSnowball += OnShoot;
+        
         _kingSea = FindFirstObjectByType<KingSeaScript>();
+        if (_kingSea == null)
+            Debug.LogWarning("No KingSeaScript found");
     }
-    
-    public override void OnShoot(InputValue value)
+
+    private void OnDisable()
+    {
+        PlayerController playerController = GetComponent<PlayerController>();
+        playerController.ShootSnowball -= OnShoot;
+    }
+
+    public void OnShoot()
     {
         ThrowSnowball(snowball);
     }
@@ -36,6 +46,7 @@ public class SpawningSnowballs : PlayerController
         s.Append(_snowballInstance.transform.DOMove(endPositions[whichPlatform], 0.2f));
         if (DoesItLand())
         {
+            Debug.Log("Snowball lands");
             s.AppendCallback(() => _kingSea?.TakingDamage());
         }
         s.Play();
@@ -43,9 +54,9 @@ public class SpawningSnowballs : PlayerController
 
     private void WhichPlatform()
     {
-        if (transform.position.x > 0)
+        if (transform.position.x <= 0)
         {
-            if (transform.position.x > 5)
+            if (transform.position.x <= -5)
             {
                 whichPlatform = 0;
             }
@@ -53,9 +64,9 @@ public class SpawningSnowballs : PlayerController
             {
                 whichPlatform = 1;
             }
-        } else if (transform.position.x < 0)
+        } else if (transform.position.x > 0)
         {
-            if (transform.position.x < -5)
+            if (transform.position.x > 5)
             {
                 whichPlatform = 3;
             }
@@ -70,39 +81,15 @@ public class SpawningSnowballs : PlayerController
     {
         if (MovingShieldScript.shieldPosition == 0)
         {
-            if (whichPlatform == 0)
-            {
-                return false;
-            } 
-            if (whichPlatform == 1)
-            {
-                return false;
-            } 
-            return true;
+            return whichPlatform == 2 || whichPlatform == 3;
         }
         if (MovingShieldScript.shieldPosition == 1)
         {
-            if (whichPlatform == 1)
-            {
-                return false;
-            } 
-            if (whichPlatform == 2)
-            {
-                return false;
-            } 
-            return true;
+            return whichPlatform == 0 || whichPlatform == 3;
         }
         if (MovingShieldScript.shieldPosition == 2)
         {
-            if (whichPlatform == 2)
-            {
-                return false;
-            } 
-            if (whichPlatform == 3)
-            {
-                return false;
-            } 
-            return true;
+            return whichPlatform == 0 || whichPlatform == 1;
         }
         return true;
     }

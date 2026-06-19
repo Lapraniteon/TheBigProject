@@ -8,9 +8,10 @@ public class Respawning : MonoBehaviour
     [SerializeField]private Transform respawnPoint;
     private PlayerInput _playerInput;
     private CharacterController _controller;
-    private PlayerController _playerController;
     private SpawningSnowballs _spawningSnowballs;
     private bool _respawned;
+    
+    private KingSeaScript _kingSeaScript;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,15 +20,12 @@ public class Respawning : MonoBehaviour
         _controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
-    /*void Update()
+    private void OnEnable()
     {
-        
-        if (transform.position.y < -10)
-        {
-            Respawn();
-        }
-    }*/
+        _kingSeaScript = FindFirstObjectByType<KingSeaScript>();
+        if (_kingSeaScript == null)
+            Debug.LogWarning("No KingSeaScript found");
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -39,10 +37,26 @@ public class Respawning : MonoBehaviour
 
     private void Respawn()
     {
-        DisableControls();
-        transform.position = respawnPoint.position;
-        transform.rotation = respawnPoint.rotation;
-        EnableControls();
+        if (_kingSeaScript != null)
+        {
+            DisableControls();
+        
+            // Check which player I am
+            PlayerController controller = GetComponent<PlayerController>();
+            if (controller == null)
+                return;
+            
+            int index = GameManager.Instance.players.IndexOf(controller);
+            
+            Debug.Log(index);
+        
+            transform.position = _kingSeaScript.spawnPoints[index].position;
+            transform.rotation = _kingSeaScript.spawnPoints[index].rotation;
+        
+            EnableControls();
+        }
+        else
+            Debug.LogError("KingSeaScript not found. Respawn failed.");
     }
 
     private void DisableControls()
