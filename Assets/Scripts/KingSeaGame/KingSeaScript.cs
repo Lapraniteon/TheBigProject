@@ -85,6 +85,7 @@ public class KingSeaScript : MonoBehaviour
     private void Win()
     {
         Debug.Log("You win!");
-        //TODO what happens when the anger meter goes down
+        
+        GameManager.Instance.FinishedMinigame();
     }
 }
