@@ -39,7 +39,7 @@ public class Respawning : MonoBehaviour
     {
         if (_kingSeaScript != null)
         {
-            DisableControls();
+            //DisableControls();
         
             // Check which player I am
             PlayerController controller = GetComponent<PlayerController>();
@@ -47,13 +47,12 @@ public class Respawning : MonoBehaviour
                 return;
             
             int index = GameManager.Instance.players.IndexOf(controller);
-            
-            Debug.Log(index);
         
             transform.position = _kingSeaScript.spawnPoints[index].position;
             transform.rotation = _kingSeaScript.spawnPoints[index].rotation;
         
-            EnableControls();
+            Physics.SyncTransforms();
+            //EnableControls();
         }
         else
             Debug.LogError("KingSeaScript not found. Respawn failed.");
