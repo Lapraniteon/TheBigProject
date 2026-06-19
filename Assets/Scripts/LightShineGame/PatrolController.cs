@@ -68,6 +68,7 @@ public class PatrolController : MonoBehaviour
         {
             Debug.Log("Game end.");
             _checkCollisionWithLight.enabled = false;
+            _lightShineGameManager.EndLevel();
             return;
         }
         

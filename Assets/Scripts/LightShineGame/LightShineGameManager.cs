@@ -38,6 +38,6 @@ public class LightShineGameManager : MonoBehaviour
 
     public void EndLevel()
     {
-        throw new NotImplementedException();
+        GameManager.Instance.FinishedMinigame();
     }
 }
