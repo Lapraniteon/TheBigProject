@@ -24,7 +24,13 @@ public class DirectionalPad : MonoBehaviour
         if (maxDirections.Count > 1) // A tie.
             return Vector2.zero;
 
+        if (maxValue < GameManager.Instance.players.Count)
+            return Vector2.zero;
+        
+        //string direction = directions.FirstOrDefault(x => x.Value == GameManager.Instance.players.Count).Key;
+
         switch (maxDirections.First().Key)
+        //switch (direction)
         {
             case "North":
                 return Vector2.up;
