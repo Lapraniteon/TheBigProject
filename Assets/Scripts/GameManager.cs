@@ -139,6 +139,10 @@ public class GameManager : MonoBehaviour
     {
         string minigameScene = SceneManager.GetActiveScene().name;
         int sceneIndex = Array.IndexOf(scenes, minigameScene);
+
+        if (sceneIndex >= minigamesWon.Length)
+            return;
+        
         minigamesWon[sceneIndex] = true;
         Debug.Log("Selected this scenenumber: " + sceneIndex);
         StartCoroutine(SceneController.Instance.LoadLibraryHub());
