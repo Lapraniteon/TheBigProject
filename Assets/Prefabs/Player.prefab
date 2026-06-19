@@ -358,10 +358,14 @@ MonoBehaviour:
   jumpHeight: 1.5
   interactRadius: 5
   playerControllers: []
-  snowball: {fileID: 0}
+  snowball: {fileID: 4528484691860962690, guid: 54553d78f272a485f85e6919bb97f859, type: 3}
   offset: {x: 2, y: 1, z: 0}
   whichPlatform: 0
-  endPositions: []
+  endPositions:
+  - {x: 6, y: 0.5, z: -25}
+  - {x: 3, y: 0.5, z: -25}
+  - {x: -3, y: 0.5, z: -25}
+  - {x: -6, y: 0.5, z: -25}
 --- !u!114 &6522336586072954438
 MonoBehaviour:
   m_ObjectHideFlags: 0

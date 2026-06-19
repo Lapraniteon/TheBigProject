@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector3 = System.Numerics.Vector3;
@@ -19,10 +20,18 @@ public class Respawning : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         
         if (transform.position.y < -10)
+        {
+            Respawn();
+        }
+    }*/
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("KingSeaDeath"))
         {
             Respawn();
         }

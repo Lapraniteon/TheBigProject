@@ -16,6 +16,9 @@ public class KingSeaScript : MonoBehaviour
     [SerializeField]private int kingSeaMaxHealthIncrease;
     private int _numberOfPlayers;
     [SerializeField]private GameManager gameManager;
+    
+    [SerializeField]
+    private Transform[] spawnPoints;
 
     public static event Action <float> KingSeaTakesDamage;
     public static event Action SwitchingShieldPosition;
@@ -36,6 +39,8 @@ public class KingSeaScript : MonoBehaviour
         
         kingSeaHealth = kingSeaMaxHealth;
         _threshold = kingSeaHealth - healthPortionsForSwitchingWeaponSide;
+        
+        GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
     }
 
     public void TakingDamage()
