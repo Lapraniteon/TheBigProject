@@ -11,6 +11,9 @@ public class LightShineGameManager : MonoBehaviour
     public PatrolController patrolController;
 
     [SerializeField] private CinemachineTargetGroup cameraTargetGroup;
+    
+    [SerializeField]
+    private Transform[] spawnPoints;
 
     private void Start()
     {
@@ -28,6 +31,7 @@ public class LightShineGameManager : MonoBehaviour
         }
         
         StartPatrol();
+        GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
     }
 
     public void StartPatrol()
