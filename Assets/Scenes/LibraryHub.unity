@@ -8823,7 +8823,7 @@ PrefabInstance:
       objectReference: {fileID: 1879107725}
     - target: {fileID: 2370026607538115380, guid: 6ebb0fd8d6d843146aa5138c330f87fe, type: 3}
       propertyPath: sceneToLoad
-      value: ControllerInputTests
+      value: CrystalSugarMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 2451357348573964843, guid: 6ebb0fd8d6d843146aa5138c330f87fe, type: 3}
       propertyPath: m_Mesh

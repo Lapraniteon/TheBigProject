@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1728326019255723717}
   - component: {fileID: 401672872651934192}
   - component: {fileID: 875007875690599177}
-  - component: {fileID: 5661218150134818152}
+  - component: {fileID: 7892251033818282175}
   - component: {fileID: 7244064519995519794}
   - component: {fileID: 6522336586072954438}
   - component: {fileID: 9026036942432258700}
@@ -324,13 +324,13 @@ MonoBehaviour:
   - players:
     - {fileID: 0}
   - players:
-    - {fileID: 5661218150134818152}
+    - {fileID: 7892251033818282175}
   - players:
     - {fileID: 7244064519995519794}
     - {fileID: 6522336586072954438}
   - players:
     - {fileID: 9026036942432258700}
---- !u!114 &5661218150134818152
+--- !u!114 &7892251033818282175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -339,9 +339,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 625545045639400134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57494ce980e34374f879207912094f2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 591e3bb687a218141a479e20840716c2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DirectionalPad
+  m_EditorClassIdentifier: Assembly-CSharp::DirectionalPadBroadcaster
 --- !u!114 &7244064519995519794
 MonoBehaviour:
   m_ObjectHideFlags: 0
