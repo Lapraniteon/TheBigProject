@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
     [Header("Player Information")] 
     [SerializeField] 
     private Color32[] playerColors;
-    [SerializeField]
-    private Transform[] playerSpawnPoints;
     public List<PlayerController> players = new ();
     
     public String[] scenes;
@@ -101,10 +99,11 @@ public class GameManager : MonoBehaviour
             playerInput.gameObject.GetComponent<Renderer>().material.color = playerColors[playerNumber];
        
             //Set the position of the joined player to the corresponding spawnpoint.
-            playerInput.transform.position = playerSpawnPoints[playerNumber].transform.position;
+            GameObject libraryManager = GameObject.Find("LibraryManager");
+            playerInput.transform.position = libraryManager.GetComponent<LibraryManager>().spawnPoints[playerNumber].transform.position; 
             SceneManager.MoveGameObjectToScene(playerInput.gameObject, SceneManager.GetSceneByName("ManagerScene"));
             Physics.SyncTransforms(); //Makes sure the player teleports because the CharacterController often stops this.
-            Debug.Log("Spawned Player " + playerNumber + " at " + playerSpawnPoints[playerNumber].transform.position);
+            //Debug.Log("Spawned Player " + playerNumber + " at " + playerSpawnPoints[playerNumber].transform.position);
         }
     }
 
