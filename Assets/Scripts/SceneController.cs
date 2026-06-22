@@ -29,25 +29,10 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(LoadLibraryHub());
+        StartCoroutine(LoadScene("LibraryHub"));
     }
 
-    public IEnumerator LoadLibraryHub()
-    {
-        //Debug.Log("Loading Library, current active scene is: " + SceneManager.GetActiveScene().name);
-        var scene = SceneManager.LoadSceneAsync("LibraryHub", LoadSceneMode.Additive);
-        if (SceneManager.GetActiveScene().name != "ManagerScene")
-        {
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        }
-        yield return new WaitUntil(() => scene.progress == 1f);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("LibraryHub")); 
-        GameManager.Instance.FlipPlayerJoining(SceneManager.GetActiveScene().name);
-        GameManager.Instance.SwitchActionMaps("LibraryHub");
-        //Debug.Log("Loaded Library Hub, current active scene is: " + SceneManager.GetActiveScene().name);
-    }
-
-    public IEnumerator LoadScene(string sceneName)
+    public IEnumerator LoadScene(string sceneName) 
     {
         if (_sceneIsLoading == false)
         {
@@ -59,33 +44,50 @@ public class SceneController : MonoBehaviour
             _progressBarTarget = 0;
             _progressBar.value = 0;
             var scene = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-            scene.allowSceneActivation = false;
-     
-            _loaderCanvas.SetActive(true);
+            
+            if (SceneManager.GetActiveScene().name != "ManagerScene")
+            {
+                SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+            }
+            
+            if (sceneName == "LibraryHub")
+            {
+                yield return new WaitUntil(() => scene.progress == 1f);
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName("LibraryHub")); 
+                
+                GameManager.Instance.FlipPlayerJoining(SceneManager.GetActiveScene().name);
+                GameManager.Instance.SwitchActionMaps("LibraryHub");
+            }
+            else
+            {
+                Debug.Log("Loading non-Library Scene");
+                scene.allowSceneActivation = false;
+                _loaderCanvas.SetActive(true);
 
-            do {
-                _progressBarTarget = scene.progress;
-            } while (scene.progress < 0.9f);
+                do {
+                    _progressBarTarget = scene.progress;
+                } while (scene.progress < 0.9f);
         
-            //wait for keypress to finish loading.
-            yield return new WaitUntil(() => _continuePressed);
-            Debug.Log("Continuing to scene");
-            GameManager.Instance.PlayerInputsActive(false);
-            _loaderCanvas.SetActive(false);
-            _continuePressed = false;
+                //wait for keypress to finish loading.
+                yield return new WaitUntil(() => _continuePressed);
+                Debug.Log("Continuing to scene");
+                GameManager.Instance.PlayerInputsActive(false);
+                _loaderCanvas.SetActive(false);
+                _continuePressed = false;
         
-            //fully load the scene
-            scene.allowSceneActivation = true;
-            yield return new WaitUntil(() => scene.progress == 1f);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-            GameManager.Instance.PlayerInputsActive(true);
-            GameManager.Instance.FlipPlayerJoining(sceneName);
-            GameManager.Instance.SwitchActionMaps(sceneName);
-            GameManager.Instance.SwitchPlayerControllers(sceneName);
+                //fully load the scene
+                scene.allowSceneActivation = true;
+                yield return new WaitUntil(() => scene.progress == 1f);
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+                
+                GameManager.Instance.PlayerInputsActive(true);
+                GameManager.Instance.FlipPlayerJoining(sceneName);
+                GameManager.Instance.SwitchActionMaps(sceneName);
+                GameManager.Instance.SwitchPlayerControllers(sceneName);
+                
+            }
             _sceneIsLoading = false;
         }
-        
     }
     
     private void Update()

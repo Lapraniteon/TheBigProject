@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("OnPlayerJoined");
         if (SceneManager.GetActiveScene().name == "LibraryHub")
         {
-            Debug.Log("Library loaded");
             //Assign playerInput to the player array, name it and prepare it's number in collections.
             players.Add(playerInput.gameObject.GetComponent<PlayerController>());
             playerInput.gameObject.name = "Player " + players.Count; //Rename to the player number
@@ -120,7 +119,7 @@ public class GameManager : MonoBehaviour
         if (interactableObject.CompareTag("Book"))
         {
             StartCoroutine(SceneController.Instance.LoadScene(interactableObject.GetComponent<BookScript>().sceneToLoad));
-            Debug.Log(SceneController.Instance.LoadScene(interactableObject.GetComponent<BookScript>().sceneToLoad) + " loading");
+            Debug.Log(interactableObject.GetComponent<BookScript>().sceneToLoad + " loading");
         }
     }
 
@@ -136,6 +135,7 @@ public class GameManager : MonoBehaviour
 
     public void FinishedMinigame()
     {
+        //wait a little or implement a victorious animation?
         string minigameScene = SceneManager.GetActiveScene().name;
         int sceneIndex = Array.IndexOf(scenes, minigameScene);
 
@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
         
         minigamesWon[sceneIndex] = true;
         Debug.Log("Selected this scenenumber: " + sceneIndex);
-        StartCoroutine(SceneController.Instance.LoadLibraryHub());
+        StartCoroutine(SceneController.Instance.LoadScene("LibraryHub"));
     }
 
     public void AdjustPlayerSpeed(float speed)
