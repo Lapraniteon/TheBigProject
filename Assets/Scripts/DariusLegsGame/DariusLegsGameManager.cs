@@ -73,7 +73,10 @@ public class DariusLegsGameManager : MonoBehaviour
     {
         bool allEliminated = true;
         foreach (PlayerController player in players) // Check if there is at least one active player left.
+        {
             allEliminated = player.gameObject.activeSelf ? false : allEliminated;
+            player.gameObject.SetActive(true);
+        }
         
         Debug.Log("Players won! Darius reached");
         worldMovement.StopAllMovement();
