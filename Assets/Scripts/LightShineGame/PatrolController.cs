@@ -55,7 +55,7 @@ public class PatrolController : MonoBehaviour
             }
         }
         
-        if (passedThreshold >= _lightShineGameManager.players.Count)
+        if (passedThreshold >= _lightShineGameManager.players.Count / 2f)
             MoveToNextPatrolPoint();
     }
 
