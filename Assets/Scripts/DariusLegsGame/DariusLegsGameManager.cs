@@ -7,6 +7,10 @@ public class DariusLegsGameManager : MonoBehaviour
     
     private static DariusLegsGameManager _instance; // Game Manager singleton pattern
 
+    [Space] 
+    [SerializeField] private float respawnDelay;
+    [Space]
+
     private float dariusPlayerSpeed = 15f;
     private float playerSpeed = 5f;
     public static DariusLegsGameManager Instance
@@ -56,7 +60,7 @@ public class DariusLegsGameManager : MonoBehaviour
         // Pause gate spawning, to make sure the player doesnt need to immediately dodge a new gate after respawning
         worldMovement.SetGateSpawnPaused(true);
         
-        yield return new WaitForSeconds(3f); // Replace with animation at some point
+        yield return new WaitForSeconds(respawnDelay); // Replace with animation at some point
         
         player.transform.rotation = Quaternion.identity;
         player.transform.position = Vector3.zero;
@@ -69,7 +73,10 @@ public class DariusLegsGameManager : MonoBehaviour
     {
         bool allEliminated = true;
         foreach (PlayerController player in players) // Check if there is at least one active player left.
+        {
             allEliminated = player.gameObject.activeSelf ? false : allEliminated;
+            player.gameObject.SetActive(true);
+        }
         
         Debug.Log("Players won! Darius reached");
         worldMovement.StopAllMovement();
