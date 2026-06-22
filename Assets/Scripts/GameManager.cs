@@ -41,13 +41,13 @@ public class GameManager : MonoBehaviour
 
     public void FlipPlayerJoining(string sceneName)
     {
-        if (SceneManager.GetActiveScene().name == sceneName)
+        if (sceneName == "LibraryHub")
         {
-            playerInputManager.EnableJoining();
+            PlayerInputManager.instance.EnableJoining();
         }
         else
         {
-            playerInputManager.DisableJoining();
+            PlayerInputManager.instance.DisableJoining();
         }
     }
 
