@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
         if (seenInteractables.Count != 0)
         {
             Interaction?.Invoke(seenInteractables[0].gameObject);
-            Debug.Log("Interacted with " + seenInteractables[0].gameObject.name);
+            //Debug.Log("Interacted with " + seenInteractables[0].gameObject.name);
         }
     }
     
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
         //jump if player is jumping according to the OnJump method and is grounded.
         if (_jumped && _groundedPlayer)
         {
-            Debug.Log("Jumping");
+            //Debug.Log("Jumping");
             _playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityValue);
         }
     }

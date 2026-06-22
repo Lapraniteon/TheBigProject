@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
         if (interactableObject.CompareTag("Book"))
         {
             StartCoroutine(SceneController.Instance.LoadScene(interactableObject.GetComponent<BookScript>().sceneToLoad));
-            Debug.Log(interactableObject.GetComponent<BookScript>().sceneToLoad + " loading");
+            //Debug.Log(interactableObject.GetComponent<BookScript>().sceneToLoad + " loading");
         }
     }
 
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         {
             players[i].transform.position = spawnPoints[i].transform.position;
             Physics.SyncTransforms(); //Makes sure the player teleports because the CharacterController often stops this.
-            Debug.Log(players[i].transform.position + spawnPoints[i].transform.position);
+            //Debug.Log(players[i].transform.position + spawnPoints[i].transform.position);
         }
     }
 
@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
             return;
         
         minigamesWon[sceneIndex] = true;
-        Debug.Log("Selected this scenenumber: " + sceneIndex);
+        //Debug.Log("Selected this scenenumber: " + sceneIndex);
         StartCoroutine(SceneController.Instance.LoadScene("LibraryHub"));
     }
 
