@@ -4547,6 +4547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689a8a83c24c8c447a3a29746064fb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  respawnDelay: 1
   players:
   - {fileID: 0}
   spawnPoints:
