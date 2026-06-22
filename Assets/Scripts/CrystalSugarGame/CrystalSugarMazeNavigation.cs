@@ -3,6 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CrystalSugarMazeNavigation : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
     [SerializeField] private float movementSpeedMultiplier = 1f;
     [SerializeField] private float rotateSpeedMultiplier = 1f;
     [SerializeField] private float stepDelay = 1f;
+    [SerializeField] private Animator animator;
 
     private Coroutine _currentStep;
 
@@ -62,6 +64,7 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         
         //Does it still need this boolean?
         MazeEndReached = true;
+        animator.SetInteger("CrystalSugar", 2);
         GameManager.Instance.FinishedMinigame();
         Debug.Log("Maze end reached!");
     }
@@ -116,7 +119,7 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
 
         IEnumerator WaitForPlayersToDecideDirection()
         {
-
+            animator.SetInteger("CrystalSugar", 0);
             Vector2 direction = directionalPad.ChosenDirection();
 
             for (directionPickWaitTimer = 0f; directionPickWaitTimer < directionPickWaitTime; directionPickWaitTimer += Time.deltaTime) // Check if the chosen direction changes in the meantime.
@@ -194,6 +197,7 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         }
 
         IsMoving = true;
+        animator.SetInteger("CrystalSugar", 1);
         move.Play();
         yield return move.WaitForCompletion();
         IsMoving = false;
