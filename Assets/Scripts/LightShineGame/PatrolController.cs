@@ -45,17 +45,17 @@ public class PatrolController : MonoBehaviour
             return;
         
         // Check if all players are past the threshold of the current patrol area
-        bool passedThreshold = true;
+        int passedThreshold = 0;
         foreach (PlayerController player in _lightShineGameManager.players)
         {
-            if (player.transform.position.x <= _currentPatrolPoint.completionThresholdX)
+            if (player.transform.position.x > _currentPatrolPoint.completionThresholdX)
             {
-                passedThreshold = false;
+                passedThreshold++;
                 break;
             }
         }
         
-        if (passedThreshold)
+        if (passedThreshold >= _lightShineGameManager.players.Count / 2f)
             MoveToNextPatrolPoint();
     }
 

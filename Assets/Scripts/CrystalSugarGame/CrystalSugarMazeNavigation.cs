@@ -125,13 +125,25 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
 
                 Vector2 newDirection = directionalPad.ChosenDirection();
                 
-                if (direction != newDirection)
+                if (direction != newDirection || newDirection == Vector2.zero)
                 {
                     // Interrupt and restart timer
                     directionPickWaitTimer = 0f;
                     direction = newDirection;
-                    Debug.Log("Decision timer interrupted");
+                    //Debug.Log("Decision timer interrupted");
                 }
+
+                if (directionPickWaitTimer >= 0.1f)
+                {
+                    // If the players have decided on something the 3 seconds are now running.
+                    // "!" bubble
+                }
+                else
+                {
+                    // While the players have not decided yet.
+                    // "?" bubble
+                }
+                
             }
             
             Debug.Log($"Picked direction: {direction}");

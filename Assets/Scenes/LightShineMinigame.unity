@@ -25390,7 +25390,7 @@ MonoBehaviour:
   FramingMode: 0
   FramingSize: 0.56
   CenterOffset: {x: 0, y: 0}
-  Damping: 2
+  Damping: 4
   SizeAdjustment: 1
   LateralAdjustment: 0
   FovRange: {x: 60, y: 100}
@@ -26720,7 +26720,7 @@ MonoBehaviour:
   UpdateMethod: 2
   Targets:
   - Object: {fileID: 382848943}
-    Weight: 0.5
+    Weight: 2
     Radius: 1
   m_LegacyTargets: []
 --- !u!4 &1222377633
@@ -28339,6 +28339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182a34a684e47974d95b2c66fbe0c5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  mainCamera: {fileID: 1213159842}
+  eliminationDelay: 1
 --- !u!4 &1305208862 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5998094447449130226, guid: 1629cd84cdab0ed4587d138dabb61e29, type: 3}
