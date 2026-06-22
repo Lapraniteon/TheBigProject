@@ -33,7 +33,64 @@ public class PlayerController : MonoBehaviour
     {
         _controller = gameObject.GetComponent<CharacterController>();
     }
+    
+    /// <summary>
+    /// Input handling
+    /// </summary>
+    /// <param name="value"></param>
 
+    public void OnMovement(InputValue value)
+    {
+        _movementInput = value.Get<Vector2>();
+    }
+
+    public void OnJump(InputValue value)
+    {
+        _jumped = value.isPressed;
+    }
+    
+    public virtual void OnShoot(InputValue value)
+    {
+        ShootSnowball?.Invoke();
+    }
+
+    public void OnContinue(InputValue value)
+    {
+        Continue?.Invoke();
+        Debug.Log("Continue Inputted");
+    }
+
+    public virtual void OnInteraction(InputValue value)
+    {
+        //find the interactables in range
+        Collider[] hitInteractables = Physics.OverlapSphere(transform.position, interactRadius, LayerMask.GetMask("Interactable"));
+        //sorts the array to the distance from the player to the center of the interactable.
+        hitInteractables = hitInteractables.OrderBy(c => (c.transform.position - transform.position).sqrMagnitude).ToArray();
+        //declare list to be used for arrays in view.
+        List<Collider> seenInteractables = new List<Collider>();
+        
+        //check which interacatbales are in view using raycast.
+        foreach(Collider collider in hitInteractables)
+        {
+            Debug.DrawRay(transform.position, collider.transform.position - transform.position, Color.red);
+            if (Physics.Raycast(transform.position, collider.transform.position - transform.position, interactRadius))
+            {
+                seenInteractables.Add(collider);
+            }
+        }
+        
+        //Call the interact Action on the first interactable in the list (which should be the closest).
+        if (seenInteractables.Count != 0)
+        {
+            Interaction?.Invoke(seenInteractables[0].gameObject);
+            Debug.Log("Interacted with " + seenInteractables[0].gameObject.name);
+        }
+    }
+    
+    
+    /// <summary>
+    /// Movement
+    /// </summary>
     private void FixedUpdate()
     {
         // Slight downward velocity to keep grounded stable unless a jump is in progress.
@@ -72,79 +129,22 @@ public class PlayerController : MonoBehaviour
             _playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityValue);
         }
     }
-
-    public void SwitchCurrentActionMap(string actionMapName)
-    {
-        gameObject.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapName);
-        Debug.Log("Switched actionMap to " + actionMapName);
-    }
     
-    public void OnMovement(InputValue value)
-    {
-        _movementInput = value.Get<Vector2>();
-    }
-
-    public void OnJump(InputValue value)
-    {
-        _jumped = value.isPressed;
-    }
-
-    public virtual void OnInteraction(InputValue value)
-    {
-        //find the interactables in range
-        Collider[] hitInteractables = Physics.OverlapSphere(transform.position, interactRadius, LayerMask.GetMask("Interactable"));
-        //sorts the array to the distance from the player to the center of the interactable.
-        hitInteractables = hitInteractables.OrderBy(c => (c.transform.position - transform.position).sqrMagnitude).ToArray();
-        //declare list to be used for arrays in view.
-        List<Collider> seenInteractables = new List<Collider>();
-        
-        //check which interacatbales are in view using raycast.
-        foreach(Collider collider in hitInteractables)
-        {
-            Debug.DrawRay(transform.position, collider.transform.position - transform.position, Color.red);
-            if (Physics.Raycast(transform.position, collider.transform.position - transform.position, interactRadius))
-            {
-                seenInteractables.Add(collider);
-            }
-        }
-        
-        //Call the interact Action on the first interactable in the list (which should be the closest).
-        if (seenInteractables.Count != 0)
-        {
-            Interaction?.Invoke(seenInteractables[0].gameObject);
-            Debug.Log("Interacted with " + seenInteractables[0].gameObject.name);
-        }
-    }
-
     public void StopMovement()
     {
         _movementInput = Vector2.zero;
         _playerVelocity = Vector2.zero;
     }
     
-    public virtual void OnShoot(InputValue value)
-    {
-        ShootSnowball?.Invoke();
-    }
-
-    public void OnContinue(InputValue value)
-    {
-        Continue?.Invoke();
-        Debug.Log("Continue Inputted");
-    }
-
-    #if UNITY_EDITOR
-    //draws the sphere used to detect interactables.
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, interactRadius);
-    }
-    #endif
+    /// <summary>
+    /// Input Switching
+    /// </summary>
+    /// <param name="actionMapName"></param>
     
-    [System.Serializable]
-    public class PlayerControllerCollection
+    public void SwitchCurrentActionMap(string actionMapName)
     {
-        public List<MonoBehaviour> players;
+        gameObject.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapName);
+        Debug.Log("Switched actionMap to " + actionMapName);
     }
     
     public void SetControllersActive(int index, bool active)
@@ -160,6 +160,26 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
+    [System.Serializable]
+    public class PlayerControllerCollection
+    {
+        public List<MonoBehaviour> players;
+    }
+
+    
+    
+    #if UNITY_EDITOR
+    //draws the sphere used to detect interactables.
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, interactRadius);
+    }
+    #endif
+    
+    
+    
+    
 }
 
 
