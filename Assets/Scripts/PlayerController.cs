@@ -45,11 +45,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
+        Debug.Log("Jumping Inputted");
         _jumped = value.isPressed;
     }
     
     public virtual void OnShoot(InputValue value)
     {
+        Debug.Log("Shooting");
         ShootSnowball?.Invoke();
     }
 
@@ -86,7 +88,6 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    
     /// <summary>
     /// Movement
     /// </summary>
@@ -95,7 +96,6 @@ public class PlayerController : MonoBehaviour
         // Slight downward velocity to keep grounded stable unless a jump is in progress.
 
         _groundedPlayer = _controller.isGrounded;
-        
         if (_groundedPlayer)
         {
             if (_playerVelocity.y < -2f)
@@ -124,8 +124,9 @@ public class PlayerController : MonoBehaviour
         //jump if player is jumping according to the OnJump method and is grounded.
         if (_jumped && _groundedPlayer)
         {
-            //Debug.Log("Jumping");
+            Debug.Log("Jumping");
             _playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityValue);
+            _jumped = false;
         }
     }
     

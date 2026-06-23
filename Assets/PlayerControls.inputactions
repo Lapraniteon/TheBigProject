@@ -389,18 +389,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
-                    "type": "Value",
-                    "id": "8aaa5e22-0251-4f7a-b86a-111a23565c20",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Press(pressPoint=1)",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Shoot",
                     "type": "Button",
                     "id": "b336dff2-937c-4b3a-8d37-1a59389b413d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "8dbdc3a4-8c67-4ce5-b3c8-e8e9b72547e0",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -476,28 +476,6 @@
                 },
                 {
                     "name": "",
-                    "id": "6f64b726-6220-4cc3-ac09-abba410e52e3",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Controller",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "96e23000-9829-47e6-8217-29aed1c1a20b",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "5c310c6c-8dae-4526-ac24-c89d36ba3a40",
                     "path": "<Keyboard>/q",
                     "interactions": "",
@@ -537,6 +515,17 @@
                     "processors": "",
                     "groups": ";Controller",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6420244c-bcda-4a67-a11e-7bad35f5f66f",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "Press(pressPoint=1)",
+                    "processors": "",
+                    "groups": ";Controller",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
