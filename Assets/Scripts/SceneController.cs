@@ -19,7 +19,6 @@ public class SceneController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(this);
         }
         else
         {
@@ -29,70 +28,80 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(LoadLibraryHub());
+        StartCoroutine(LoadScene("LibraryHub"));
     }
 
-    public IEnumerator LoadLibraryHub()
-    {
-        //Debug.Log("Loading Library, current active scene is: " + SceneManager.GetActiveScene().name);
-        var scene = SceneManager.LoadSceneAsync("LibraryHub", LoadSceneMode.Additive);
-        if (SceneManager.GetActiveScene().name != "ManagerScene")
-        {
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        }
-        yield return new WaitUntil(() => scene.progress == 1f);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("LibraryHub")); 
-        GameManager.Instance.FlipPlayerJoining(SceneManager.GetActiveScene().name);
-        GameManager.Instance.SwitchActionMaps("LibraryHub");
-        //Debug.Log("Loaded Library Hub, current active scene is: " + SceneManager.GetActiveScene().name);
-    }
-
-    public IEnumerator LoadScene(string sceneName)
+    /// <summary>
+    /// Load a new scene using the string variable. Unloads the old one. Opens a load screen during the laod.
+    /// </summary>
+    /// <param name="sceneName"></param>
+    /// <returns></returns>
+    public IEnumerator LoadScene(string sceneName) 
     {
         if (_sceneIsLoading == false)
         {
             Debug.Log("Loading Scene: " + sceneName + " via SceneController");
         
-            //boolean to check if the coroutine is running for the continue button
-            _sceneIsLoading = true;
-        
+            //resets the progressBar to ensure it's correct.
             _progressBarTarget = 0;
             _progressBar.value = 0;
+            
+            _loaderCanvas.SetActive(true); //enables the load screen.
+            
+            //unload the current scene unless it's the ManagerScene
+            if (SceneManager.GetActiveScene().name != "ManagerScene")
+            {
+                var UnloadOperation = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+                yield return new WaitForEndOfFrame();
+                yield return new WaitUntil(() => UnloadOperation.isDone);
+            }
+            
+            //boolean to check if a scene is loading for the continue button.
+            _sceneIsLoading = true;
+            
+            //load the new scene
             var scene = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-            scene.allowSceneActivation = false;
-     
-            _loaderCanvas.SetActive(true);
-
             do {
                 _progressBarTarget = scene.progress;
             } while (scene.progress < 0.9f);
-        
-            //wait for keypress to finish loading.
-            yield return new WaitUntil(() => _continuePressed);
-            Debug.Log("Continuing to scene");
-            GameManager.Instance.PlayerInputsActive(false);
-            _loaderCanvas.SetActive(false);
-            _continuePressed = false;
-        
-            //fully load the scene
-            scene.allowSceneActivation = true;
-            yield return new WaitUntil(() => scene.progress == 1f);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-            GameManager.Instance.PlayerInputsActive(true);
-            GameManager.Instance.FlipPlayerJoining(sceneName);
-            GameManager.Instance.SwitchActionMaps(sceneName);
-            GameManager.Instance.SwitchPlayerControllers(sceneName);
-            _sceneIsLoading = false;
+            
+            //Continue on scene laod if it's loading the libraryhub
+            if (sceneName == "LibraryHub")
+            {
+                yield return new WaitUntil(() => scene.progress == 1f);
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName("LibraryHub")); 
+            }
+            //Otherwise wait for ContinuePress and sceneload
+            else
+            {
+                //stop the scene from fully laoding
+                scene.allowSceneActivation = false;
+                //wait for keypress to finish loading.
+                yield return new WaitUntil(() => _continuePressed);
+                //fully load the scene
+                scene.allowSceneActivation = true;
+                
+                //wait until scene is fully laoded
+                yield return new WaitUntil(() => scene.progress == 1f);
+                //set new scene as the active one
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            }
+            GameManager.Instance.FlipPlayerJoining(sceneName); //disable or enable player joining dependent on the scene.
+            GameManager.Instance.SwitchActionMaps(sceneName); //switch to the corresponding action map.
+            GameManager.Instance.SwitchPlayerControllers(sceneName); //Enable the correct additional player script and disable the rest.
+            _loaderCanvas.SetActive(false); //disable the load screen
+            _sceneIsLoading = false; //set sceneIsLoading to false to prevent _continuePressed from being changed.
+            _continuePressed = false; //set _continuePressed to false to make sure the next scene loads correctly
         }
-        
     }
     
+    //Update the progressbar on the sceneload screen to show how far it's loaded.
     private void Update()
     {
         _progressBar.value = Mathf.MoveTowards(_progressBar.value, _progressBarTarget, Time.deltaTime * 10f);
     }
 
+    //sets the _continuePressed boolean if continue is pressed and a scene is loaded to allow the LoadScene method to continue.
     private void ContinuePressed()
     {
         if (_sceneIsLoading)
@@ -102,6 +111,7 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    //Subscription to the PlayerController Continue event.
     private void OnEnable()
     {
         PlayerController.Continue += ContinuePressed;

@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class LibraryScript : MonoBehaviour
+public class LibraryManager : MonoBehaviour
 {
-    [SerializeField]
-    private Transform[] spawnPoints;
+    public Transform[] spawnPoints;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
     [Header("Player Information")] 
     [SerializeField] 
     private Color32[] playerColors;
-    [SerializeField]
-    private Transform[] playerSpawnPoints;
     public List<PlayerController> players = new ();
     
     public String[] scenes;
@@ -41,13 +39,13 @@ public class GameManager : MonoBehaviour
 
     public void FlipPlayerJoining(string sceneName)
     {
-        if (SceneManager.GetActiveScene().name == sceneName)
+        if (sceneName == "LibraryHub")
         {
-            playerInputManager.EnableJoining();
+            PlayerInputManager.instance.EnableJoining();
         }
         else
         {
-            playerInputManager.DisableJoining();
+            PlayerInputManager.instance.DisableJoining();
         }
     }
 
@@ -91,7 +89,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("OnPlayerJoined");
         if (SceneManager.GetActiveScene().name == "LibraryHub")
         {
-            Debug.Log("Library loaded");
             //Assign playerInput to the player array, name it and prepare it's number in collections.
             players.Add(playerInput.gameObject.GetComponent<PlayerController>());
             playerInput.gameObject.name = "Player " + players.Count; //Rename to the player number
@@ -101,10 +98,11 @@ public class GameManager : MonoBehaviour
             playerInput.gameObject.GetComponent<Renderer>().material.color = playerColors[playerNumber];
        
             //Set the position of the joined player to the corresponding spawnpoint.
-            playerInput.transform.position = playerSpawnPoints[playerNumber].transform.position;
+            GameObject libraryManager = GameObject.Find("LibraryManager");
+            playerInput.transform.position = libraryManager.GetComponent<LibraryManager>().spawnPoints[playerNumber].transform.position; 
             SceneManager.MoveGameObjectToScene(playerInput.gameObject, SceneManager.GetSceneByName("ManagerScene"));
             Physics.SyncTransforms(); //Makes sure the player teleports because the CharacterController often stops this.
-            Debug.Log("Spawned Player " + playerNumber + " at " + playerSpawnPoints[playerNumber].transform.position);
+            //Debug.Log("Spawned Player " + playerNumber + " at " + playerSpawnPoints[playerNumber].transform.position);
         }
     }
 
@@ -121,7 +119,7 @@ public class GameManager : MonoBehaviour
         if (interactableObject.CompareTag("Book"))
         {
             StartCoroutine(SceneController.Instance.LoadScene(interactableObject.GetComponent<BookScript>().sceneToLoad));
-            Debug.Log(SceneController.Instance.LoadScene(interactableObject.GetComponent<BookScript>().sceneToLoad) + " loading");
+            //Debug.Log(interactableObject.GetComponent<BookScript>().sceneToLoad + " loading");
         }
     }
 
@@ -131,12 +129,13 @@ public class GameManager : MonoBehaviour
         {
             players[i].transform.position = spawnPoints[i].transform.position;
             Physics.SyncTransforms(); //Makes sure the player teleports because the CharacterController often stops this.
-            Debug.Log(players[i].transform.position + spawnPoints[i].transform.position);
+            //Debug.Log(players[i].transform.position + spawnPoints[i].transform.position);
         }
     }
 
     public void FinishedMinigame()
     {
+        //wait a little or implement a victorious animation?
         string minigameScene = SceneManager.GetActiveScene().name;
         int sceneIndex = Array.IndexOf(scenes, minigameScene);
 
@@ -144,8 +143,8 @@ public class GameManager : MonoBehaviour
             return;
         
         minigamesWon[sceneIndex] = true;
-        Debug.Log("Selected this scenenumber: " + sceneIndex);
-        StartCoroutine(SceneController.Instance.LoadLibraryHub());
+        //Debug.Log("Selected this scenenumber: " + sceneIndex);
+        StartCoroutine(SceneController.Instance.LoadScene("LibraryHub"));
     }
 
     public void AdjustPlayerSpeed(float speed)
