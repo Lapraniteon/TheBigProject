@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -16,6 +17,14 @@ public class Snowball : MonoBehaviour
     {
         //transform.DOMove(_endposition, 0.2f);
         // _rb.AddForce(transform.forward * -500f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("KingSeaDeath"))
+            return;
+        
+        DestroySnowball();
     }
 
     private void DestroySnowball()
