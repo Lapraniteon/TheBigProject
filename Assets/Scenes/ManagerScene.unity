@@ -204,6 +204,13 @@ MonoBehaviour:
     rgba: 15819793
   - serializedVersion: 2
     rgba: 1044805
+  cars:
+  - {fileID: 6784978547375891139, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
+  - {fileID: 5031464750626649084, guid: 68ba84bf5ed04314da4877efd244da67, type: 3}
+  - {fileID: 6938230388985514380, guid: 93e7be2bfa87acb4c8ad1ec6c0260cf3, type: 3}
+  - {fileID: 2490360461841579387, guid: 9262c4dad4226fa4abbe03a448539828, type: 3}
+  carPosition: {x: 0.5, y: -1, z: 0}
+  carRotation: {x: 0, y: 90, z: 0}
   players: []
   scenes:
   - LightShineMinigame

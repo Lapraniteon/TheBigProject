@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed = 5.0f;
     
     public float jumpHeight = 1.5f;
-    private float _gravityValue = -9.81f;
+    [SerializeField] private float _gravityValue = -9.81f;
     private bool _jumped = false;
 
     public float interactRadius = 5;
@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController _controller;
     private Vector3 _playerVelocity;
-    private bool _groundedPlayer;
 
     private Vector2 _movementInput = Vector2.zero;
     
@@ -45,11 +44,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
+        Debug.Log("Jumping Inputted");
         _jumped = value.isPressed;
     }
     
     public virtual void OnShoot(InputValue value)
     {
+        Debug.Log("Shooting");
         ShootSnowball?.Invoke();
     }
 
@@ -86,24 +87,36 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    
     /// <summary>
     /// Movement
     /// </summary>
     private void FixedUpdate()
     {
-        // Slight downward velocity to keep grounded stable unless a jump is in progress.
-
-        _groundedPlayer = _controller.isGrounded;
-        
-        if (_groundedPlayer)
-        {
-            if (_playerVelocity.y < -2f)
-                _playerVelocity.y = -2f;
-        }
+        // // Slight downward velocity to keep grounded stable unless a jump is in progress.
+        // if (_playerVelocity.y < 0)
+        // {
+        //     _playerVelocity.y = -2f;
+        // }
         
         //Applies gravity to the player.
-        _playerVelocity.y += _gravityValue * Time.deltaTime;
+        
+        
+
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.5f, LayerMask.GetMask("Ground")))
+        {
+            if (_jumped)
+            {
+                _playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityValue);
+                _jumped = false;
+            }
+        }
+        else
+        {
+            _playerVelocity.y += _gravityValue * Time.deltaTime;
+            //Debug.Log(_playerVelocity.y);
+            //Mathf.Clamp(_playerVelocity.y, -25f, Mathf.Infinity);
+        }
+        
         _controller.Move(_playerVelocity * Time.deltaTime);
         
         //assign joystick input from _movementInput assigned in OnMovement.
@@ -120,14 +133,8 @@ public class PlayerController : MonoBehaviour
             //move forward (joystick input is weird seemingly) using the playerspeed.
             _controller.Move(transform.right * playerSpeed * Time.deltaTime);
         }
-
-        //jump if player is jumping according to the OnJump method and is grounded.
-        if (_jumped && _groundedPlayer)
-        {
-            //Debug.Log("Jumping");
-            _playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityValue);
-        }
     }
+    
     
     public void StopMovement()
     {

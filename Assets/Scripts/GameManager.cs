@@ -9,6 +9,13 @@ public class GameManager : MonoBehaviour
     [Header("Player Information")] 
     [SerializeField] 
     private Color32[] playerColors;
+    [SerializeField]
+    private GameObject[] cars;
+    [SerializeField]
+    private Vector3 carPosition;
+    [SerializeField]
+    private Vector3 carRotation;
+    
     public List<PlayerController> players = new ();
     
     public String[] scenes;
@@ -92,6 +99,9 @@ public class GameManager : MonoBehaviour
             //Assign playerInput to the player array, name it and prepare it's number in collections.
             players.Add(playerInput.gameObject.GetComponent<PlayerController>());
             playerInput.gameObject.name = "Player " + players.Count; //Rename to the player number
+            GameObject car = Instantiate(cars[players.IndexOf(playerInput.gameObject.GetComponent<PlayerController>())], playerInput.gameObject.transform.position + carPosition, playerInput.transform.rotation, playerInput.gameObject.transform);
+            car.transform.localRotation = Quaternion.Euler(carRotation);
+            car.SetActive(false);
             int playerNumber = players.Count - 1; //number to get the right variable from the arrays.
        
             //Set the colour of the player.
@@ -152,6 +162,16 @@ public class GameManager : MonoBehaviour
         foreach (var player in players)
         {
             player.gameObject.GetComponent<PlayerController>().playerSpeed = speed;
+        }
+    }
+
+    public void SetCarActive(bool active)
+    {
+        foreach (PlayerController player in players)
+        {
+            GameObject car = player.gameObject.transform.GetChild(1).gameObject;
+            Debug.Log(car.name);
+            car.SetActive(active);
         }
     }
 

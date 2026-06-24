@@ -2931,7 +2931,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 63.86, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1580915412
 Transform:
@@ -2942,7 +2942,7 @@ Transform:
   m_GameObject: {fileID: 1580915410}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000058114523}
-  m_LocalPosition: {x: 0.00000004056486, y: -10, z: -2.9439182}
+  m_LocalPosition: {x: 0.00000004056486, y: -41, z: -2.9439182}
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4389,7 +4389,7 @@ GameObject:
   - component: {fileID: 638999920197142630}
   - component: {fileID: 8757576945234212355}
   - component: {fileID: 8757576945234212356}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ice_Platform_MidL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4457,7 +4457,7 @@ GameObject:
   - component: {fileID: 2421548962293283714}
   - component: {fileID: 3682509095391146665}
   - component: {fileID: 7074177157846424637}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ice_Platform_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4483,7 +4483,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 272.4105, y: 100, z: 400.00006}
+  m_Size: {x: 315, y: 100, z: 400.00006}
   m_Center: {x: -126.294754, y: 50, z: 200.00002}
 --- !u!23 &7118471666864704197
 MeshRenderer:
@@ -4592,7 +4592,7 @@ GameObject:
   - component: {fileID: 7763346209506137334}
   - component: {fileID: 6249448889836743549}
   - component: {fileID: 8388278260017077938}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ice_Platform_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4618,7 +4618,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 270, y: 100.00001, z: 400.00006}
+  m_Size: {x: 315, y: 100.00001, z: 400.00006}
   m_Center: {x: 125, y: 50.000004, z: 200.00002}
 --- !u!23 &8757576945234212355
 MeshRenderer:
@@ -4688,7 +4688,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 300, y: 100.00001, z: 400.00006}
+  m_Size: {x: 315, y: 100.00001, z: 400.00006}
   m_Center: {x: 135, y: 50.000004, z: 200.00002}
 --- !u!1 &8990847563609060417
 GameObject:
@@ -4702,7 +4702,7 @@ GameObject:
   - component: {fileID: 8108163576306777273}
   - component: {fileID: 7118471666864704197}
   - component: {fileID: 8990847563609060418}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ice_Platform_MidR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4728,7 +4728,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 295.5276, y: 100, z: 400.00006}
+  m_Size: {x: 315, y: 100, z: 400.00006}
   m_Center: {x: -132.66501, y: 50, z: 200.00002}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
