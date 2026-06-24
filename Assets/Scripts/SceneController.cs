@@ -48,6 +48,12 @@ public class SceneController : MonoBehaviour
             
             _loaderCanvas.SetActive(true); //enables the load screen.
             
+            //Disable the cars if exiting the Darius Legs minigame.
+            if (SceneManager.GetActiveScene().name == "DariusLegsMinigame")
+            {
+                GameManager.Instance.SetCarActive(false);
+                Debug.Log("Disabled Cars");
+            }
             //unload the current scene unless it's the ManagerScene
             if (SceneManager.GetActiveScene().name != "ManagerScene")
             {
@@ -55,6 +61,8 @@ public class SceneController : MonoBehaviour
                 yield return new WaitForEndOfFrame();
                 yield return new WaitUntil(() => UnloadOperation.isDone);
             }
+
+            
             
             //boolean to check if a scene is loading for the continue button.
             _sceneIsLoading = true;
@@ -85,6 +93,12 @@ public class SceneController : MonoBehaviour
                 yield return new WaitUntil(() => scene.progress == 1f);
                 //set new scene as the active one
                 SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            }
+
+            if (sceneName == "DariusLegsMinigame")
+            {
+                GameManager.Instance.SetCarActive(true);
+                Debug.Log("Enabled Cars");
             }
             GameManager.Instance.FlipPlayerJoining(sceneName); //disable or enable player joining dependent on the scene.
             GameManager.Instance.SwitchActionMaps(sceneName); //switch to the corresponding action map.

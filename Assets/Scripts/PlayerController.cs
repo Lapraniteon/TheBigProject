@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             _playerVelocity.y += _gravityValue * Time.deltaTime;
-            Debug.Log(_playerVelocity.y);
+            //Debug.Log(_playerVelocity.y);
             //Mathf.Clamp(_playerVelocity.y, -25f, Mathf.Infinity);
         }
         
