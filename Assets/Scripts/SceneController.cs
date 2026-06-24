@@ -9,10 +9,10 @@ public class SceneController : MonoBehaviour
     public static SceneController Instance;
 
     [SerializeField] private GameObject _loaderCanvas;
+    [SerializeField] private Sprite[] loadingImages;
     [SerializeField] private Slider _progressBar;
     [SerializeField] private float _progressBarTarget;
-    
-    [SerializeField] private Sprite[] loadingImages;
+    [SerializeField] private GameObject _continueInstruction;
     
     [SerializeField] private bool _sceneIsLoading;
     [SerializeField] private bool _continuePressed;
@@ -81,6 +81,12 @@ public class SceneController : MonoBehaviour
             {
                 //stop the scene from fully laoding
                 scene.allowSceneActivation = false;
+                
+                //Wait for the scene to almost be done loading
+                yield return new WaitUntil(() => scene.progress >= 0.9f);
+                //Activate the continue Instruction
+                _continueInstruction.SetActive(true);
+                
                 //wait for keypress to finish loading.
                 yield return new WaitUntil(() => _continuePressed);
                 //fully load the scene
@@ -90,6 +96,7 @@ public class SceneController : MonoBehaviour
                 yield return new WaitUntil(() => scene.progress == 1f);
                 //set new scene as the active one
                 SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+                _continueInstruction.SetActive(false);
             }
 
             if (sceneName == "DariusLegsMinigame")
