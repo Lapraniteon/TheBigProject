@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: KingOfSea_Shield
-  m_Shader: {fileID: 4800000, guid: b0ece9218e7940648a7218679133f1b5, type: 3}
+  m_Shader: {fileID: 4800000, guid: c9e16a28a0d13144ba9c41b1431e1581, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -73,6 +73,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _OpacityTex:
+        m_Texture: {fileID: 2800000, guid: 0fadca894109ef645975bb4461a2ea90, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -117,6 +121,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _Opacity: 0.55
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
