@@ -33,7 +33,7 @@ public class SpawningSnowballs : MonoBehaviour
 
     public void OnShoot()
     {
-        ThrowSnowball(snowball);
+        //ThrowSnowball(snowball);
     }
 
     private void ThrowSnowball(GameObject snowBall)
