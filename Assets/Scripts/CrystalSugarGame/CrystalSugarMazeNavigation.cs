@@ -26,6 +26,8 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
     [SerializeField] private float movementSpeedMultiplier = 1f;
     [SerializeField] private float rotateSpeedMultiplier = 1f;
     [SerializeField] private float stepDelay = 1f;
+    
+    [Header("Animation")]
     [SerializeField] private Animator animator;
 
     private Coroutine _currentStep;
@@ -65,8 +67,8 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         //Does it still need this boolean?
         MazeEndReached = true;
         animator.SetInteger("CrystalSugar", 2);
-        GameManager.Instance.FinishedMinigame();
         Debug.Log("Maze end reached!");
+        GameManager.Instance.Invoke(nameof(GameManager.Instance.FinishedMinigame), 3f);
     }
 
     private IEnumerator StepCoroutine()
@@ -209,7 +211,7 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         }
 
         IsMoving = true;
-        animator.SetInteger("CrystalSugar", 1);
+        animator.SetInteger("CrystalSugar", 1); // Thinking
         move.Play();
         yield return move.WaitForCompletion();
         IsMoving = false;
