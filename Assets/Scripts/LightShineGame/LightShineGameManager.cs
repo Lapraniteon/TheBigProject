@@ -29,8 +29,13 @@ public class LightShineGameManager : MonoBehaviour
             cameraTargetGroup.AddMember(player.transform, 1f, 1f);
         }
         
-        StartPatrol();
         GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
+        
+        DOTween.Sequence()
+            .AppendInterval(2f)
+            .AppendCallback(StartPatrol)
+            .Play();
+        
     }
 
     public void StartPatrol()

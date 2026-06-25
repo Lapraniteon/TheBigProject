@@ -22,6 +22,7 @@ public class PatrolController : MonoBehaviour
     [SerializeField] private PatrolPoint[] patrolPoints;
     private Queue<PatrolPoint> _patrolPointsQueue;
     private PatrolPoint _currentPatrolPoint;
+    private bool _toFirstPoint = true;
 
     private Sequence _currentPatrolSequence;
     
@@ -74,6 +75,9 @@ public class PatrolController : MonoBehaviour
             return;
         }
         
+        if (!_toFirstPoint)
+            RuntimeManager.PlayOneShot("event:/SFX/LightShine/Cleared Checkpoint");
+
         _currentPatrolPoint = _patrolPointsQueue.Dequeue();
         StartCoroutine(StartPatrolSequenceCoroutine(_currentPatrolPoint));
         
@@ -93,10 +97,14 @@ public class PatrolController : MonoBehaviour
         Sequence moveToNextPointSequence = DOTween.Sequence();
         moveToNextPointSequence
             .Append(transform.DOMove(patrolPoint.GetPatrolStartPoint(), 2f).SetEase(Ease.InOutBack))
+            
+            .InsertCallback(0.5f, () => RuntimeManager.PlayOneShot("event:/SFX/LightShine/Move to Next Checkpoint"))
+            
             .Join(_light.DOIntensity(lightIntensityWhileMoving, 0.25f))
             .Insert(2f - 0.25f, _light.DOIntensity(_lightIntensity, 0.25f));
 
         moveToNextPointSequence.Play();
+        _toFirstPoint = false;
 
         yield return moveToNextPointSequence.WaitForCompletion();
         
