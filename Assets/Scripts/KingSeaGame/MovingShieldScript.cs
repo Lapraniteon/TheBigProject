@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using FMODUnity;
 
 public class MovingShieldScript : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class MovingShieldScript : MonoBehaviour
 
     private void ShieldMoving()
     {
+        RuntimeManager.PlayOneShot("event:/SFX/KingSea/Move Shield");
         transform.DOMove(shieldPos[_shieldIndex], transitionDuration);
         shieldPosition = WhichPlatform();
         _shieldIndex++;
@@ -41,6 +43,6 @@ public class MovingShieldScript : MonoBehaviour
 
     private void OnDisable()
     {
-        KingSeaScript.SwitchingShieldPosition += ShieldMoving;
+        KingSeaScript.SwitchingShieldPosition -= ShieldMoving;
     }
 }

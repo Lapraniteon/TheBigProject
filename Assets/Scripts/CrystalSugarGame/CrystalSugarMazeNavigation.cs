@@ -248,7 +248,7 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         animator.SetInteger("CrystalSugar", 1);
         move.Play();
 
-        if (!IsFmodEventPlaying(_miscNoiseInstance) && UnityEngine.Random.Range(0f, 1f) <= 0.1f)
+        if (!GameManager.IsFmodEventPlaying(_miscNoiseInstance) && UnityEngine.Random.Range(0f, 1f) <= 0.1f)
         {
             _miscNoiseInstance.start();
         }
@@ -274,13 +274,6 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
     bool CheckWall(Vector3 direction)
     {
         return Physics.Raycast(raycastOrigin.position, direction, /*out RaycastHit hit,*/ 1f, _wallLayerMask);
-    }
-    
-    bool IsFmodEventPlaying(EventInstance instance)
-    {
-        PLAYBACK_STATE state;
-        instance.getPlaybackState(out state);
-        return state == PLAYBACK_STATE.PLAYING;
     }
 
     private void OnDrawGizmos()

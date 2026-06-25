@@ -1,4 +1,5 @@
 using DG.Tweening;
+using FMODUnity;
 using UnityEngine;
 
 public class GateSet : MonoBehaviour
@@ -36,7 +37,12 @@ public class GateSet : MonoBehaviour
     {
         int openDoor = Random.Range(0, doors.Length);
         CloseDoorsExcept(openDoor);
+        
+        CloseDoorSFX();
+        Invoke(nameof(CloseDoorSFX), 0.03f);
     }
+    
+    private void CloseDoorSFX() => RuntimeManager.PlayOneShot("event:/SFX/DariusLegs/Door Close");
 
     private void CloseDoorsExcept(int doorIndex)
     {

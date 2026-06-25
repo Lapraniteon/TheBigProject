@@ -33,6 +33,7 @@ public class Respawning : MonoBehaviour
         if (other.CompareTag("WaterPlane"))
         {
             RuntimeManager.PlayOneShot("event:/SFX/KingSea/Fall in Water");
+            _kingSeaScript.Laugh();
         }
         
         if (other.CompareTag("KingSeaDeath"))

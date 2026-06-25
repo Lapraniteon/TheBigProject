@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -183,6 +184,13 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         PlayerController.Interaction -= InteractionDetected;
+    }
+    
+    public static bool IsFmodEventPlaying(EventInstance instance)
+    {
+        PLAYBACK_STATE state;
+        instance.getPlaybackState(out state);
+        return state == PLAYBACK_STATE.PLAYING;
     }
 }
 

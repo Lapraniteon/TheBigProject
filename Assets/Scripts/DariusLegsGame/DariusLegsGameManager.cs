@@ -45,6 +45,8 @@ public class DariusLegsGameManager : MonoBehaviour
         GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
         
         GameManager.Instance.AdjustPlayerSpeed(dariusPlayerSpeed);
+        
+        RuntimeManager.PlayOneShot("event:/SFX/DariusLegs/Grumble");
     }
 
     public void EliminatePlayer(PlayerController player)
@@ -55,6 +57,8 @@ public class DariusLegsGameManager : MonoBehaviour
     private IEnumerator EliminatePlayerCoroutine(PlayerController player)
     {
         Debug.Log("Player got hit!");
+        
+        RuntimeManager.PlayOneShot("event:/SFX/DariusLegs/Player Hit Door");
 
         player.gameObject.SetActive(false); // Replace with animation at some point
         
