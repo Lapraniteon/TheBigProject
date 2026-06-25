@@ -9831,9 +9831,9 @@ GameObject:
   m_Component:
   - component: {fileID: 616490423}
   - component: {fileID: 616490422}
-  - component: {fileID: 616490421}
   - component: {fileID: 616490420}
   - component: {fileID: 616490419}
+  - component: {fileID: 616490424}
   m_Layer: 0
   m_Name: Corner Camera
   m_TagString: Untagged
@@ -9917,14 +9917,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!81 &616490421
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616490418}
-  m_Enabled: 1
 --- !u!20 &616490422
 Camera:
   m_ObjectHideFlags: 0
@@ -9991,6 +9983,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &616490424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616490418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1001 &618440940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15927,6 +15933,101 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &1022220145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1022220148}
+  - component: {fileID: 1022220147}
+  - component: {fileID: 1022220146}
+  m_Layer: 0
+  m_Name: FMOD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1022220146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022220145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 659811019
+      Data2: 1226691392
+      Data3: -1082499419
+      Data4: -2075792876
+    Path: event:/AMB/AMB_CrystalSugar
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1022220147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022220145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -265372111
+      Data2: 1276763641
+      Data3: -1964105588
+      Data4: 613289961
+    Path: event:/BGM/MUS_CrystalSugar
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!4 &1022220148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022220145}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1027841199
 Mesh:
   m_ObjectHideFlags: 0
@@ -17487,7 +17588,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1053532005}
   - component: {fileID: 1053532004}
-  - component: {fileID: 1053532003}
   - component: {fileID: 1053532006}
   - component: {fileID: 1053532007}
   m_Layer: 0
@@ -17497,14 +17597,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1053532003
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053532002}
-  m_Enabled: 1
 --- !u!20 &1053532004
 Camera:
   m_ObjectHideFlags: 0
@@ -21762,7 +21854,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3779559921204961229, guid: c7064497e1230bb4d8e91e5f9530d7bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: 3779559921204961229, guid: c7064497e1230bb4d8e91e5f9530d7bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21770,7 +21862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3779559921204961229, guid: c7064497e1230bb4d8e91e5f9530d7bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.5
+      value: -8.5
       objectReference: {fileID: 0}
     - target: {fileID: 3779559921204961229, guid: c7064497e1230bb4d8e91e5f9530d7bc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -31419,7 +31511,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1903847063}
   - component: {fileID: 1903847060}
-  - component: {fileID: 1903847062}
   - component: {fileID: 1903847061}
   m_Layer: 0
   m_Name: UI Camera
@@ -31523,14 +31614,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!81 &1903847062
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1903847059}
-  m_Enabled: 1
 --- !u!4 &1903847063
 Transform:
   m_ObjectHideFlags: 0
@@ -36468,3 +36551,4 @@ SceneRoots:
   - {fileID: 1218248050}
   - {fileID: 357232025}
   - {fileID: 875033426}
+  - {fileID: 1022220148}
