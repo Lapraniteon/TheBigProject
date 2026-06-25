@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +17,9 @@ public class SceneController : MonoBehaviour
     
     [SerializeField] private bool _sceneIsLoading;
     [SerializeField] private bool _continuePressed;
+
+    [Header("FMOD Events")]
+    [SerializeField] private EventReference bookEnterSfx;
 
     void Awake()
     {
@@ -44,6 +48,9 @@ public class SceneController : MonoBehaviour
         if (_sceneIsLoading == false)
         {
             Debug.Log("Loading Scene: " + sceneName + " via SceneController");
+            
+            if (sceneName != "LibraryHub" && sceneName != "ManagerScene")
+                RuntimeManager.PlayOneShot(bookEnterSfx);
             
             //Disable the cars if exiting the Darius Legs minigame.
             if (SceneManager.GetActiveScene().name == "DariusLegsMinigame")
