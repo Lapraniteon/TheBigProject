@@ -906,9 +906,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneController
   _loaderCanvas: {fileID: 1102529615}
   loadingImages:
-  - {fileID: 21300000, guid: 1f6a53b3022ca724eb1de04e3c1163fe, type: 3}
-  - {fileID: 21300000, guid: 1f6a53b3022ca724eb1de04e3c1163fe, type: 3}
-  - {fileID: 21300000, guid: 1f6a53b3022ca724eb1de04e3c1163fe, type: 3}
+  - {fileID: 21300000, guid: 0c86a4b5197f6d34c8aa9541e2a23935, type: 3}
+  - {fileID: 21300000, guid: 3d068bb1b3629a44588d66dd9ba5119c, type: 3}
+  - {fileID: 21300000, guid: 6c3b4b4492e721544967d4c6dcde85d0, type: 3}
   - {fileID: 21300000, guid: 10c9ca6de56d9874fbff20b53d723708, type: 3}
   - {fileID: 21300000, guid: 1f6a53b3022ca724eb1de04e3c1163fe, type: 3}
   _progressBar: {fileID: 1128046807}
