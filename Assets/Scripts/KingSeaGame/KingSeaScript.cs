@@ -96,7 +96,11 @@ public class KingSeaScript : MonoBehaviour
         Debug.Log("You win!");
         
         RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
-        GameManager.Instance.FinishedMinigame();
+        
+        DOTween.Sequence()
+            .AppendInterval(3f)
+            .AppendCallback(() => GameManager.Instance.FinishedMinigame())
+            .Play();
     }
 
     public void Laugh()

@@ -51,12 +51,13 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         _waitNoiseInstance = RuntimeManager.CreateInstance("event:/SFX/Crystal Sugar/Waiting");
         _miscNoiseInstance = RuntimeManager.CreateInstance("event:/SFX/Crystal Sugar/Misc Vocalize");
 
-        StartMovement(); // Replace with an event that starts the movement at some point
+        RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Level Start");
+        
+        DOTween.Sequence().AppendInterval(3f).AppendCallback(StartMovement).Play();
     }
 
     public void StartMovement()
     {
-        RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Level Start");
         _doSteps = true;
     } 
 
@@ -95,7 +96,11 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Finish Combo Event");
         RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
         
-        GameManager.Instance.Invoke(nameof(GameManager.Instance.FinishedMinigame), 3f);
+        DOTween.Sequence()
+            .AppendInterval(5f)
+            .AppendCallback(() => GameManager.Instance.FinishedMinigame())
+            .Play();
+        
     }
 
     private IEnumerator StepCoroutine()
@@ -200,14 +205,17 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
             {
                 case 0:
                     MoveStepForward();
+                    RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Direction Chosen");
                     break;
                 case 90:
                     Rotate(90f);
                     MoveStepForward();
+                    RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Direction Chosen");
                     break;
                 case -90:
                     Rotate(-90f);
                     MoveStepForward();
+                    RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Direction Chosen");
                     break;
                 case 180:
                 case -180:
@@ -236,7 +244,6 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
             Debug.Log("Waiting for player direction decision...");
             RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Intersection Reached");
             yield return StartCoroutine(WaitForPlayersToDecideDirection());
-            RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Direction Chosen");
         }
         else
         {
