@@ -12,6 +12,7 @@ TagManager:
   - DirectionalPadDirection
   - DariusDoor
   - KingSeaDeath
+  - WaterPlane
   layers:
   - Default
   - TransparentFX
