@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using FMODUnity;
 
 public class KingSeaAttackingScript : MonoBehaviour
 {
@@ -17,15 +18,20 @@ public class KingSeaAttackingScript : MonoBehaviour
     //Move tentacle in position
     private void Attacking()
     {
-        transform.DOMoveY(transform.position.y + 8, kingSeaAttackDuration).SetEase(Ease.OutFlash);
-        Invoke("PlatformsSplitting", 4f);
+        Sequence attackSequence = DOTween.Sequence();
+        attackSequence.Append(transform.DOMoveY(transform.position.y + 8, kingSeaAttackDuration).SetEase(Ease.OutFlash))
+            .InsertCallback(0.5f, () => RuntimeManager.PlayOneShot("event:/SFX/KingSea/Charge"))
+            .InsertCallback(3.7f, PlatformsSplitting)
+            .InsertCallback(3.3f, () => RuntimeManager.PlayOneShot("event:/SFX/KingSea/Slash & Hit Platform"));
+
+        attackSequence.Play();
     }
 
     //Split the platform
     private void PlatformsSplitting()
     {
-        platform1.transform.DOMoveX(platform1.transform.position.x - splitDistance / 2, platformSplittingDuration).SetEase(Ease.OutFlash);
-        platform2.transform.DOMoveX(platform2.transform.position.x + splitDistance / 2, platformSplittingDuration).SetEase(Ease.OutFlash);
+        platform1.transform.DOMoveX(platform1.transform.position.x - splitDistance / 2, platformSplittingDuration).SetEase(Ease.OutSine);
+        platform2.transform.DOMoveX(platform2.transform.position.x + splitDistance / 2, platformSplittingDuration).SetEase(Ease.OutSine);
         Retreating();
     }
 

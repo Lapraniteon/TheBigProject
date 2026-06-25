@@ -45,6 +45,8 @@ public class KingSeaScript : MonoBehaviour
 
         kingSeaLaughingEvent = RuntimeManager.CreateInstance("event:/SFX/KingSea/Laughing");
         
+        RuntimeManager.PlayOneShot("event:/SFX/KingSea/Anger 2");
+        
         GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
     }
 

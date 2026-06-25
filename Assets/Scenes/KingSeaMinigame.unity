@@ -1405,6 +1405,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -750
       objectReference: {fileID: 0}
+    - target: {fileID: 2094573100499108289, guid: 90f073e066c8a438893835f5372a5884, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 750
+      objectReference: {fileID: 0}
     - target: {fileID: 3521970960011319512, guid: 90f073e066c8a438893835f5372a5884, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1484,6 +1488,10 @@ PrefabInstance:
     - target: {fileID: 3521970960011319512, guid: 90f073e066c8a438893835f5372a5884, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004534490660730563, guid: 90f073e066c8a438893835f5372a5884, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -750
       objectReference: {fileID: 0}
     - target: {fileID: 6294862795725579597, guid: 90f073e066c8a438893835f5372a5884, type: 3}
       propertyPath: m_Name
@@ -2217,6 +2225,7 @@ GameObject:
   - component: {fileID: 1089802384}
   - component: {fileID: 1089802386}
   - component: {fileID: 1089802385}
+  - component: {fileID: 1089802387}
   m_Layer: 5
   m_Name: Anger Meter Background
   m_TagString: Untagged
@@ -2281,6 +2290,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089802383}
   m_CullTransparentMesh: 1
+--- !u!114 &1089802387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089802383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1094955246
 GameObject:
   m_ObjectHideFlags: 0
@@ -3607,6 +3631,7 @@ GameObject:
   - component: {fileID: 1502049751}
   - component: {fileID: 1502049750}
   - component: {fileID: 1502049749}
+  - component: {fileID: 1502049752}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -3722,6 +3747,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502049747}
   m_CullTransparentMesh: 1
+--- !u!114 &1502049752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502049747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1519387420
 GameObject:
   m_ObjectHideFlags: 0
