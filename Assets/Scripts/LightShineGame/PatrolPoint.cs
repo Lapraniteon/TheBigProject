@@ -161,7 +161,8 @@ public class PatrolPoint : MonoBehaviour
         
         return respawnPointReturn;
     }
-
+    
+    #if UNITY_EDITOR
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -192,4 +193,5 @@ public class PatrolPoint : MonoBehaviour
                 break;
         }
     }
+    #endif
 }
