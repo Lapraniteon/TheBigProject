@@ -34,7 +34,7 @@ public class LibraryManager : MonoBehaviour
 
         if (gameCompleted)
         {
-            lights[5].gameObject.SetActive(true);
+            lights[4].gameObject.SetActive(true);
         }
     }
 }
