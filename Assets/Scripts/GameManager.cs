@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -153,6 +154,7 @@ public class GameManager : MonoBehaviour
         
         minigamesWon[sceneIndex] = true;
         //Debug.Log("Selected this scenenumber: " + sceneIndex);
+        RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
         StartCoroutine(SceneController.Instance.LoadScene("LibraryHub"));
     }
 

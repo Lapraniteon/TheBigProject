@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using FMODUnity;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -68,6 +69,7 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         MazeEndReached = true;
         animator.SetInteger("CrystalSugar", 2);
         Debug.Log("Maze end reached!");
+        RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
         GameManager.Instance.Invoke(nameof(GameManager.Instance.FinishedMinigame), 3f);
     }
 

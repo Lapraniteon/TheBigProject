@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -43,6 +44,8 @@ public class CheckCollisionWithLight : MonoBehaviour
 
         if (!detectionEnabled)
             return;
+        
+        RuntimeManager.PlayOneShot("event:/SFX/LightShine/Catch");
         
         PlayerController player = other.GetComponent<PlayerController>();
         //onDetectPlayer?.Invoke(player);

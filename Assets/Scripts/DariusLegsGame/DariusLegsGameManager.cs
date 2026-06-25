@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 public class DariusLegsGameManager : MonoBehaviour
@@ -80,6 +81,7 @@ public class DariusLegsGameManager : MonoBehaviour
         
         Debug.Log("Players won! Darius reached");
         worldMovement.StopAllMovement();
+        RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
         GameManager.Instance.FinishedMinigame();
         GameManager.Instance.AdjustPlayerSpeed(playerSpeed);
     }

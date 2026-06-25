@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FMODUnity;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -38,6 +39,7 @@ public class LightShineGameManager : MonoBehaviour
 
     public void EndLevel()
     {
+        RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
         GameManager.Instance.FinishedMinigame();
     }
 }

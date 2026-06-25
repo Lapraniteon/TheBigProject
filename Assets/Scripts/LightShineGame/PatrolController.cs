@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Events;
 using Sequence = DG.Tweening.Sequence;
@@ -68,6 +69,7 @@ public class PatrolController : MonoBehaviour
         {
             Debug.Log("Game end.");
             _checkCollisionWithLight.enabled = false;
+            RuntimeManager.PlayOneShot("event:/SFX/LightShine/Player Win", _checkCollisionWithLight.transform.position);
             _lightShineGameManager.EndLevel();
             return;
         }
