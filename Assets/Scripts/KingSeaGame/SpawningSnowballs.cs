@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using FMODUnity;
 using Unity.VisualScripting;
 using Sequence = DG.Tweening.Sequence;
 
@@ -38,6 +39,7 @@ public class SpawningSnowballs : MonoBehaviour
 
     private void ThrowSnowball(GameObject snowBall)
     {
+        RuntimeManager.PlayOneShot("event:/SFX/KingSea/Throw");
         _snowballInstance = Instantiate(snowBall, transform.position + offset, Quaternion.identity);
         WhichPlatform();
         Debug.Log(endPositions[whichPlatform]);
@@ -47,7 +49,12 @@ public class SpawningSnowballs : MonoBehaviour
         if (DoesItLand())
         {
             Debug.Log("Snowball lands");
-            s.AppendCallback(() => _kingSea?.TakingDamage());
+            s.InsertCallback(0.1f, () => RuntimeManager.PlayOneShot("event:/SFX/KingSea/Snowball Hit"));
+            s.InsertCallback(0.1f, () => _kingSea?.TakingDamage());
+        }
+        else
+        {
+            s.InsertCallback(0.1f, () => RuntimeManager.PlayOneShot("event:/SFX/KingSea/Snowball Shield Hit"));
         }
         s.Play();
     }

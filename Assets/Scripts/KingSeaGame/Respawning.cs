@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector3 = System.Numerics.Vector3;
@@ -29,6 +30,11 @@ public class Respawning : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("WaterPlane"))
+        {
+            RuntimeManager.PlayOneShot("event:/SFX/KingSea/Fall in Water");
+        }
+        
         if (other.CompareTag("KingSeaDeath"))
         {
             Respawn();

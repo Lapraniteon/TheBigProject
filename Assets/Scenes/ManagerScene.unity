@@ -916,6 +916,13 @@ MonoBehaviour:
   _continueInstruction: {fileID: 1337130842}
   _sceneIsLoading: 0
   _continuePressed: 0
+  bookEnterSfx:
+    Guid:
+      Data1: 2113294314
+      Data2: 1087323279
+      Data3: 838271414
+      Data4: 1005088332
+    Path: event:/SFX/Enter Book
 --- !u!4 &1924339806
 Transform:
   m_ObjectHideFlags: 0

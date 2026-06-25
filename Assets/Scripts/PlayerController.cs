@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -107,6 +108,7 @@ public class PlayerController : MonoBehaviour
             if (_jumped)
             {
                 _playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityValue);
+                RuntimeManager.PlayOneShot("event:/SFX/KingSea/Jump", transform.position);
                 _jumped = false;
             }
         }

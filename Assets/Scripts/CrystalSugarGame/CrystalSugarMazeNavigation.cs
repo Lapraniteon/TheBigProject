@@ -1,9 +1,13 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using FMOD.Studio;
+using FMODUnity;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = System.Random;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class CrystalSugarMazeNavigation : MonoBehaviour
 {
@@ -31,19 +35,30 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
     [SerializeField] private Animator animator;
 
     private Coroutine _currentStep;
+    
+    private EventInstance _waitNoiseInstance;
+    private EventInstance _miscNoiseInstance;
 
     [SerializeField]
     private Transform[] spawnPoints;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _wallLayerMask = LayerMask.GetMask(wallLayer);
         GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
+        
+        _waitNoiseInstance = RuntimeManager.CreateInstance("event:/SFX/Crystal Sugar/Waiting");
+        _miscNoiseInstance = RuntimeManager.CreateInstance("event:/SFX/Crystal Sugar/Misc Vocalize");
 
         StartMovement(); // Replace with an event that starts the movement at some point
     }
-    
-    public void StartMovement() => _doSteps = true;
+
+    public void StartMovement()
+    {
+        RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Level Start");
+        _doSteps = true;
+    } 
 
     private void Update()
     {
@@ -63,11 +78,23 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
     {
         if (!other.CompareTag("CS_MazeExit"))
             return;
-        
+
+        EndReached();
+    }
+
+    private void EndReached()
+    {
         //Does it still need this boolean?
         MazeEndReached = true;
         animator.SetInteger("CrystalSugar", 2);
         Debug.Log("Maze end reached!");
+
+        _miscNoiseInstance.release();
+        _waitNoiseInstance.release();
+        
+        RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Finish Combo Event");
+        RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
+        
         GameManager.Instance.Invoke(nameof(GameManager.Instance.FinishedMinigame), 3f);
     }
 
@@ -94,6 +121,7 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
                         // Rotate 180, move step
                         Rotate(180f);
                         MoveStepForward();
+                        RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Dead End");
                     }
                     else
                     {
@@ -123,6 +151,8 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         {
             animator.SetInteger("CrystalSugar", 0);
             Vector2 direction = directionalPad.ChosenDirection();
+            
+            RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Intersection Reached");
 
             for (directionPickWaitTimer = 0f; directionPickWaitTimer < directionPickWaitTime; directionPickWaitTimer += Time.deltaTime) // Check if the chosen direction changes in the meantime.
             {
@@ -183,6 +213,7 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
                 case -180:
                     Rotate(180f);
                     MoveStepForward();
+                    RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Dead End");
                     break;
             }
             
@@ -203,7 +234,9 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
             
             // Read current player input & store
             Debug.Log("Waiting for player direction decision...");
+            RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Intersection Reached");
             yield return StartCoroutine(WaitForPlayersToDecideDirection());
+            RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Direction Chosen");
         }
         else
         {
@@ -211,8 +244,15 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         }
 
         IsMoving = true;
-        animator.SetInteger("CrystalSugar", 1); // Thinking
+        RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Step");
+        animator.SetInteger("CrystalSugar", 1);
         move.Play();
+
+        if (!IsFmodEventPlaying(_miscNoiseInstance) && UnityEngine.Random.Range(0f, 1f) <= 0.1f)
+        {
+            _miscNoiseInstance.start();
+        }
+        
         yield return move.WaitForCompletion();
         IsMoving = false;
         
@@ -234,6 +274,13 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
     bool CheckWall(Vector3 direction)
     {
         return Physics.Raycast(raycastOrigin.position, direction, /*out RaycastHit hit,*/ 1f, _wallLayerMask);
+    }
+    
+    bool IsFmodEventPlaying(EventInstance instance)
+    {
+        PLAYBACK_STATE state;
+        instance.getPlaybackState(out state);
+        return state == PLAYBACK_STATE.PLAYING;
     }
 
     private void OnDrawGizmos()

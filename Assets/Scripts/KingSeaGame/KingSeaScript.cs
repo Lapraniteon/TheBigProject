@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using DG.Tweening;
+using FMODUnity;
 
 public class KingSeaScript : MonoBehaviour
 {
@@ -86,6 +87,7 @@ public class KingSeaScript : MonoBehaviour
     {
         Debug.Log("You win!");
         
+        RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
         GameManager.Instance.FinishedMinigame();
     }
 }
