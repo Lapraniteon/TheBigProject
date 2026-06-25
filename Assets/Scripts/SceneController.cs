@@ -84,6 +84,9 @@ public class SceneController : MonoBehaviour
                 
                 //Wait for the scene to almost be done loading
                 yield return new WaitUntil(() => scene.progress >= 0.9f);
+                
+                //Deactivate Progressbar.
+                _progressBar.gameObject.SetActive(false);
                 //Activate the continue Instruction
                 _continueInstruction.SetActive(true);
                 
@@ -122,6 +125,7 @@ public class SceneController : MonoBehaviour
     private void SetLoadingScreen(string sceneName)
     {
         //resets the progressBar to ensure it's correct.
+        _progressBar.gameObject.SetActive(true);
         _progressBarTarget = 0;
         _progressBar.value = 0;
         
