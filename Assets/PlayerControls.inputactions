@@ -521,7 +521,7 @@
                 {
                     "name": "",
                     "id": "6420244c-bcda-4a67-a11e-7bad35f5f66f",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "Press(pressPoint=1)",
                     "processors": "",
                     "groups": ";Controller",
