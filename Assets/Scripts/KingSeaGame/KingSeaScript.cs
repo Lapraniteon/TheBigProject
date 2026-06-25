@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using DG.Tweening;
+using FMOD.Studio;
 using FMODUnity;
 
 public class KingSeaScript : MonoBehaviour
@@ -25,6 +26,8 @@ public class KingSeaScript : MonoBehaviour
     
     private int _threshold;
     
+    private EventInstance kingSeaLaughingEvent;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,6 +42,8 @@ public class KingSeaScript : MonoBehaviour
         
         kingSeaHealth = kingSeaMaxHealth;
         _threshold = kingSeaHealth - healthPortionsForSwitchingWeaponSide;
+
+        kingSeaLaughingEvent = RuntimeManager.CreateInstance("event:/SFX/KingSea/Laughing");
         
         GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
     }
@@ -49,6 +54,7 @@ public class KingSeaScript : MonoBehaviour
         
         kingSeaHealth -= snowballDamage;
         float amount = (float) kingSeaHealth / (float) kingSeaMaxHealth;
+        RuntimeManager.PlayOneShot("event:/SFX/KingSea/Hurt", transform.position);
         KingSeaTakesDamage?.Invoke(amount);
         CheckHealth();
     }
@@ -89,5 +95,13 @@ public class KingSeaScript : MonoBehaviour
         
         RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
         GameManager.Instance.FinishedMinigame();
+    }
+
+    public void Laugh()
+    {
+        if (!GameManager.IsFmodEventPlaying(kingSeaLaughingEvent))
+        {
+            kingSeaLaughingEvent.start();
+        }
     }
 }
