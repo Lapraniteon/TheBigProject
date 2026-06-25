@@ -20917,7 +20917,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1222377633}
+    TrackingTarget: {fileID: 1484460261}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -20948,8 +20948,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166677471}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46300274, y: -6.1907595e-16, z: 4.903438e-16, w: 0.8863569}
-  m_LocalPosition: {x: 17.65, y: 23.560001, z: -14.7}
+  m_LocalRotation: {x: 0.49656266, y: 1.0152602e-10, z: 1.1389297e-10, w: 0.8680009}
+  m_LocalPosition: {x: 17.65, y: 19.7, z: -15.440001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20999,7 +20999,7 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 100, y: 100}
+  Damping: {x: 1e+32, y: 1e+32}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -21023,7 +21023,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 15, z: -10.44}
+  FollowOffset: {x: 0, y: 11.14, z: -6.55}
 --- !u!4 &1169493319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5276606665856406684, guid: 706567962417a1f4e95cfaabb57714eb, type: 3}
@@ -21770,8 +21770,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213159838}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46300277, y: -4.991338e-16, z: 2.6073058e-16, w: 0.88635683}
-  m_LocalPosition: {x: 17.65, y: 23.560001, z: -14.700002}
+  m_LocalRotation: {x: 0.4965627, y: 2.477692e-10, z: -1.4174287e-10, w: 0.86800086}
+  m_LocalPosition: {x: 17.65, y: 19.7, z: -15.440001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21877,6 +21877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1222377633}
   - component: {fileID: 1222377632}
+  - component: {fileID: 1222377634}
   m_Layer: 0
   m_Name: Target Group
   m_TagString: Untagged
@@ -21919,6 +21920,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1222377634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222377631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23909b47d7f2f4f46a48fe57099e1232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  targetGroup: {fileID: 1222377633}
+  axisLockedTarget: {fileID: 1484460261}
 --- !u!4 &1223056612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1313564228939265078, guid: afd5b9ba3b18d214abe1e408ef62698a, type: 3}
@@ -27070,6 +27085,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5276606665856406684, guid: 706567962417a1f4e95cfaabb57714eb, type: 3}
   m_PrefabInstance: {fileID: 243298823}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1484460260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1484460261}
+  m_Layer: 0
+  m_Name: Axis Locked Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1484460261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484460260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.65, y: 8.56, z: -8.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1487855411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40041,6 +40087,7 @@ SceneRoots:
   - {fileID: 382848943}
   - {fileID: 1166677474}
   - {fileID: 1222377633}
+  - {fileID: 1484460261}
   - {fileID: 3837738671675228953}
   - {fileID: 701627360}
   - {fileID: 2013667129}
