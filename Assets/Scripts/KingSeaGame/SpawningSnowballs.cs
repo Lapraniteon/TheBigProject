@@ -18,7 +18,7 @@ public class SpawningSnowballs : MonoBehaviour
     private void OnEnable()
     {
         PlayerController playerController = GetComponent<PlayerController>();
-        playerController.ShootSnowball += OnShoot;
+        //playerController.ShootSnowball += OnShoot;
         
         _kingSea = FindFirstObjectByType<KingSeaScript>();
         if (_kingSea == null)
@@ -28,12 +28,12 @@ public class SpawningSnowballs : MonoBehaviour
     private void OnDisable()
     {
         PlayerController playerController = GetComponent<PlayerController>();
-        playerController.ShootSnowball -= OnShoot;
+        //playerController.ShootSnowball -= OnShoot;
     }
 
     public void OnShoot()
     {
-        //ThrowSnowball(snowball);
+        ThrowSnowball(snowball);
     }
 
     private void ThrowSnowball(GameObject snowBall)
