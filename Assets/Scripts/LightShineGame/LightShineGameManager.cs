@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using FMODUnity;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -28,8 +29,13 @@ public class LightShineGameManager : MonoBehaviour
             cameraTargetGroup.AddMember(player.transform, 1f, 1f);
         }
         
-        StartPatrol();
         GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
+        
+        DOTween.Sequence()
+            .AppendInterval(2f)
+            .AppendCallback(StartPatrol)
+            .Play();
+        
     }
 
     public void StartPatrol()
@@ -40,6 +46,10 @@ public class LightShineGameManager : MonoBehaviour
     public void EndLevel()
     {
         RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
-        GameManager.Instance.FinishedMinigame();
+        
+        DOTween.Sequence()
+            .AppendInterval(3f)
+            .AppendCallback(() => GameManager.Instance.FinishedMinigame())
+            .Play();
     }
 }
