@@ -53,12 +53,14 @@ public class PatrolController : MonoBehaviour
             if (player.transform.position.x > _currentPatrolPoint.completionThresholdX)
             {
                 passedThreshold++;
-                break;
             }
         }
-        
+
         if (passedThreshold >= _lightShineGameManager.players.Count / 2f)
+        {
+            Debug.Log("Move to next patrol point");
             MoveToNextPatrolPoint();
+        }
     }
 
     [NaughtyAttributes.Button]
