@@ -3512,7 +3512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KingSeaScript
   kingSeaHealth: 0
   kingSeaMaxHealth: 100
-  snowballDamage: 5
+  snowballDamage: 1
   healthPortionsForSwitchingWeaponSide: 20
   leftArmHealthTrigger: 30
   rightArmHealthTrigger: 60
