@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
     public virtual void OnInteraction(InputValue value)
     {
+        Debug.Log("Interaction Inputted");
         //find the interactables in range
         Collider[] hitInteractables = Physics.OverlapSphere(transform.position, interactRadius, LayerMask.GetMask("Interactable"));
         //sorts the array to the distance from the player to the center of the interactable.
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour
         //Call the interact Action on the first interactable in the list (which should be the closest).
         if (seenInteractables.Count != 0)
         {
+            Debug.Log(seenInteractables.Count);
             Interaction?.Invoke(seenInteractables[0].gameObject);
             //Debug.Log("Interacted with " + seenInteractables[0].gameObject.name);
         }
