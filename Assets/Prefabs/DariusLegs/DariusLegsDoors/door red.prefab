@@ -65,9 +65,19 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2feeab12fdf7d7641bee73fb77c07b4b, type: 3}
+--- !u!4 &3599999807141932521 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3822551099406723957, guid: 2feeab12fdf7d7641bee73fb77c07b4b, type: 3}
+  m_PrefabInstance: {fileID: 358503706016204444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5605021657641381380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5273891878500313240, guid: 2feeab12fdf7d7641bee73fb77c07b4b, type: 3}
+  m_PrefabInstance: {fileID: 358503706016204444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7689710644748371364 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7948569867790418744, guid: 2feeab12fdf7d7641bee73fb77c07b4b, type: 3}
   m_PrefabInstance: {fileID: 358503706016204444}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8020224851972105827
@@ -78,6 +88,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 208563485623559803, guid: f0507b1256973e24aacf51b98363c4f1, type: 3}
+      propertyPath: doorLeft
+      value: 
+      objectReference: {fileID: 3599999807141932521}
+    - target: {fileID: 208563485623559803, guid: f0507b1256973e24aacf51b98363c4f1, type: 3}
+      propertyPath: doorRight
+      value: 
+      objectReference: {fileID: 7689710644748371364}
     - target: {fileID: 4309459355104722172, guid: f0507b1256973e24aacf51b98363c4f1, type: 3}
       propertyPath: m_Name
       value: door red

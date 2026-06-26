@@ -85,6 +85,7 @@ public class WorldMovement : MonoBehaviour
     public void StopAllMovement()
     {
         _floorMovementTween?.Kill();
+        _mountainMovementSequence?.Kill();
         _gateSpawningLoop?.Kill();
     }
 }
