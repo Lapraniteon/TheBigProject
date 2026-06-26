@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
     {
         if (interactableObject.CompareTag("Book"))
         {
-            StartCoroutine(SceneController.Instance.LoadScene(interactableObject.GetComponent<BookScript>().sceneToLoad));
+            StartCoroutine(SceneController.Instance.LoadScene(interactableObject.GetComponentInParent<BookScript>().sceneToLoad));
             //Debug.Log(interactableObject.GetComponent<BookScript>().sceneToLoad + " loading");
         }
     }
