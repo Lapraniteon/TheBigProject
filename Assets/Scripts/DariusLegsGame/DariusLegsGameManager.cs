@@ -61,7 +61,12 @@ public class DariusLegsGameManager : MonoBehaviour
         
         RuntimeManager.PlayOneShot("event:/SFX/DariusLegs/Player Hit Door");
 
-        player.gameObject.SetActive(false); // Replace with animation at some point
+        //player.gameObject.SetActive(false); // Replace with animation at some point
+        DOTween.Sequence()
+            .Append(player.transform.DOMove(player.transform.position + new Vector3(10f, 10f, -25f), .9f).SetEase(Ease.OutBack))
+            .Join(player.transform.DOLocalRotateQuaternion(player.transform.rotation * Quaternion.Euler(-90f, 0f, -165f), .9f).SetEase(Ease.OutBack))
+            .AppendCallback(() => player.gameObject.SetActive(false))
+            .Play();
         
         // Pause gate spawning, to make sure the player doesnt need to immediately dodge a new gate after respawning
         worldMovement.SetGateSpawnPaused(true);
