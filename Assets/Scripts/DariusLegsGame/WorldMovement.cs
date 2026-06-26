@@ -10,6 +10,10 @@ public class WorldMovement : MonoBehaviour
     [Header("Floor")]
     [SerializeField] private Transform floorTransform;
     private Tween _floorMovementTween;
+    
+    [Header("Mountains")]
+    [SerializeField] private Transform mountainTransform;
+    private Sequence _mountainMovementSequence;
 
     [Header("Gates")] 
     [SerializeField] private Transform gateSpawnPoint;
@@ -42,6 +46,14 @@ public class WorldMovement : MonoBehaviour
     private void StartMovement()
     {
         _floorMovementTween = floorTransform.DOLocalMoveZ(-5f, 5f / globalMovementSpeed).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
+
+        Transform risingTransform = GameObject.Find("MountainSet Rising").transform;
+        _mountainMovementSequence = DOTween.Sequence()
+            .Append(mountainTransform.DOLocalMoveZ(-176f, 176f / globalMovementSpeed).SetEase(Ease.Linear))
+            .Join(risingTransform.DOLocalMoveY(0f, 176f / globalMovementSpeed)
+                .SetEase(Ease.OutSine));
+        
+        _mountainMovementSequence.SetLoops(-1, LoopType.Restart).Play();
     }
 
     public void SetGateSpawnPaused(bool setPaused)
