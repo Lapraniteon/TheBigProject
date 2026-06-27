@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using FMOD.Studio;
-using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -10,13 +9,18 @@ public class GameManager : MonoBehaviour
 {
     [Header("Player Information")] 
     [SerializeField] 
-    private Color32[] playerColors;
+    private GameObject[] playerModels;
+    [SerializeField] 
+    private Vector3 playerModelPosition;
+    
     [SerializeField]
     private GameObject[] cars;
     [SerializeField]
     private Vector3 carPosition;
+    
     [SerializeField]
-    private Vector3 carRotation;
+    private Vector3 childModelRotation;
+    
     
     public List<PlayerController> players = new ();
     
@@ -100,13 +104,17 @@ public class GameManager : MonoBehaviour
             //Assign playerInput to the player array, name it and prepare it's number in collections.
             players.Add(playerInput.gameObject.GetComponent<PlayerController>());
             playerInput.gameObject.name = "Player " + players.Count; //Rename to the player number
-            GameObject car = Instantiate(cars[players.IndexOf(playerInput.gameObject.GetComponent<PlayerController>())], playerInput.gameObject.transform.position + carPosition, playerInput.transform.rotation, playerInput.gameObject.transform);
-            car.transform.localRotation = Quaternion.Euler(carRotation);
-            car.SetActive(false);
+            
             int playerNumber = players.Count - 1; //number to get the right variable from the arrays.
-       
-            //Set the colour of the player.
-            playerInput.gameObject.GetComponent<Renderer>().material.color = playerColors[playerNumber];
+            
+            //Add the playermodel with the right color as a child.
+            GameObject playerModel = Instantiate(playerModels[playerNumber], playerInput.gameObject.transform.position + playerModelPosition, playerInput.gameObject.transform.rotation, playerInput.gameObject.transform);
+            playerModel.transform.localRotation = Quaternion.Euler(childModelRotation);
+            
+            //Add the right colour car as a child and disable it.
+            GameObject car = Instantiate(cars[players.IndexOf(playerInput.gameObject.GetComponent<PlayerController>())], playerInput.gameObject.transform.position + carPosition, playerInput.transform.rotation, playerInput.gameObject.transform);
+            car.transform.localRotation = Quaternion.Euler(childModelRotation);
+            car.SetActive(false);
        
             //Set the position of the joined player to the corresponding spawnpoint.
             GameObject libraryManager = GameObject.Find("LibraryManager");
