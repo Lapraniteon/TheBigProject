@@ -69,7 +69,7 @@ public class DariusLegsGameManager : MonoBehaviour
             .Play();
         
         // Pause gate spawning, to make sure the player doesnt need to immediately dodge a new gate after respawning
-        worldMovement.SetGateSpawnPaused(true);
+        //worldMovement.SetGateSpawnPaused(true);
         
         yield return new WaitForSeconds(respawnDelay); // Replace with animation at some point
         
@@ -77,7 +77,7 @@ public class DariusLegsGameManager : MonoBehaviour
         player.transform.position = Vector3.zero;
         player.gameObject.SetActive(true);
         
-        worldMovement.SetGateSpawnPaused(false);
+        //worldMovement.SetGateSpawnPaused(false);
     }
 
     public void EndLevel()
