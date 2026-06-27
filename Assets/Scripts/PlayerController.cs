@@ -4,6 +4,7 @@ using System.Linq;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -26,11 +27,18 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movementInput = Vector2.zero;
     
     public List<PlayerControllerCollection> playerControllers = new ();
+
+    [SerializeField]
+    private GameObject playerModel;
+    [SerializeField]
+    private GameObject carModel;
     
     
     public virtual void Start()
     {
         _controller = gameObject.GetComponent<CharacterController>();
+        playerModel = gameObject.transform.Find("playerModel").gameObject;
+        carModel = gameObject.transform.Find("carModel").gameObject;
     }
     
     /// <summary>
@@ -170,14 +178,25 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public void RespawnActive(bool respawn)
+    {
+        playerModel.SetActive(!respawn);
+        if (SceneManager.GetActiveScene().name == "DariusLegsMinigame")
+        {
+            carModel.SetActive(!respawn);
+        }
+        if (respawn)
+        {
+            StopMovement();
+        }
+    }
     
     [System.Serializable]
     public class PlayerControllerCollection
     {
         public List<MonoBehaviour> players;
     }
-
-    
     
     #if UNITY_EDITOR
     //draws the sphere used to detect interactables.
@@ -186,10 +205,6 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, interactRadius);
     }
     #endif
-    
-    
-    
-    
 }
 
 

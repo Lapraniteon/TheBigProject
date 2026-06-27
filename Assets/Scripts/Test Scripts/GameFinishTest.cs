@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 public class GameFinishTest : MonoBehaviour
 {
@@ -17,8 +18,16 @@ public class GameFinishTest : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Minigame finish detected");
-            GameManager.Instance.FinishedMinigame();
+            StartCoroutine(Respawn(other.gameObject.GetComponent<PlayerController>()));
         }
+    }
+
+    private IEnumerator Respawn(PlayerController playerController)
+    {
+        Debug.Log("Respawn Detected");
+        playerController.RespawnActive(true);
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        yield return new WaitForSeconds(2f);
+        playerController.RespawnActive(false);
     }
 }
