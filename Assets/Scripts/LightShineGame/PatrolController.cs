@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,10 +26,14 @@ public class PatrolController : MonoBehaviour
     private bool _toFirstPoint = true;
 
     private Sequence _currentPatrolSequence;
+
+    private EventInstance _playerWinEvent;
     
     [Header("Events")]
     [SerializeField] private UnityEvent<PatrolPoint> onEndCurrentPatrolPoint;
     [SerializeField] private UnityEvent<PatrolPoint> onStartNewPatrolPoint;
+
+    private bool _gameEnded = false;
 
     private void Start()
     {
@@ -39,6 +44,8 @@ public class PatrolController : MonoBehaviour
         _lightIntensity = _light.intensity;
 
         _patrolPointsQueue = new Queue<PatrolPoint>(patrolPoints);
+
+        _playerWinEvent = RuntimeManager.CreateInstance("event:/SFX/LightShine/Player Win");
     }
 
     private void Update()
@@ -53,25 +60,37 @@ public class PatrolController : MonoBehaviour
             if (player.transform.position.x > _currentPatrolPoint.completionThresholdX)
             {
                 passedThreshold++;
-                break;
             }
         }
-        
+
         if (passedThreshold >= _lightShineGameManager.players.Count / 2f)
+        {
+            Debug.Log("Move to next patrol point");
             MoveToNextPatrolPoint();
+        }
     }
 
     [NaughtyAttributes.Button]
     public void MoveToNextPatrolPoint()
     {
+        if (_gameEnded)
+            return;
+        
         onEndCurrentPatrolPoint?.Invoke(_currentPatrolPoint);
 
         if (_patrolPointsQueue.Count <= 0)
         {
             Debug.Log("Game end.");
             _checkCollisionWithLight.enabled = false;
-            RuntimeManager.PlayOneShot("event:/SFX/LightShine/Player Win", _checkCollisionWithLight.transform.position);
+            
+            if (!GameManager.IsFmodEventPlaying(_playerWinEvent))
+            {
+                _playerWinEvent.start();
+            }
+            
+            //RuntimeManager.PlayOneShot("event:/SFX/LightShine/Player Win", _checkCollisionWithLight.transform.position);
             _lightShineGameManager.EndLevel();
+            _gameEnded = true;
             return;
         }
         

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using FMODUnity;
@@ -45,11 +46,18 @@ public class LightShineGameManager : MonoBehaviour
 
     public void EndLevel()
     {
+        StartCoroutine(EndLevelCoroutine());
+    }
+
+    private IEnumerator EndLevelCoroutine()
+    {
         RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
         
         DOTween.Sequence()
             .AppendInterval(3f)
             .AppendCallback(() => GameManager.Instance.FinishedMinigame())
             .Play();
+        
+        yield return null;
     }
 }
