@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 8484177590414172457}
   - component: {fileID: 6391342514896642190}
   m_Layer: 0
-  m_Name: Pinguin_Player_Animation_BackUp
+  m_Name: Pinguin_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
