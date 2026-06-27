@@ -110,10 +110,12 @@ public class GameManager : MonoBehaviour
             //Add the playermodel with the right color as a child.
             GameObject playerModel = Instantiate(playerModels[playerNumber], playerInput.gameObject.transform.position + playerModelPosition, playerInput.gameObject.transform.rotation, playerInput.gameObject.transform);
             playerModel.transform.localRotation = Quaternion.Euler(childModelRotation);
+            playerModel.gameObject.name = "playerModel";
             
             //Add the right colour car as a child and disable it.
             GameObject car = Instantiate(cars[players.IndexOf(playerInput.gameObject.GetComponent<PlayerController>())], playerInput.gameObject.transform.position + carPosition, playerInput.transform.rotation, playerInput.gameObject.transform);
             car.transform.localRotation = Quaternion.Euler(childModelRotation);
+            car.gameObject.name = "carModel";
             car.SetActive(false);
        
             //Set the position of the joined player to the corresponding spawnpoint.
