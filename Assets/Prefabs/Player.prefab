@@ -247,6 +247,9 @@ MonoBehaviour:
     - {fileID: 6522336586072954438}
   - players:
     - {fileID: 9026036942432258700}
+  playerModel: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  carModel: {fileID: 0}
 --- !u!114 &7892251033818282175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Respawning
   respawnPoint: {fileID: 0}
+  splashParticles: {fileID: 7280031022027317116, guid: 4aca7f776b06db441b26a0f237aed4c6, type: 3}
 --- !u!114 &9026036942432258700
 MonoBehaviour:
   m_ObjectHideFlags: 0
