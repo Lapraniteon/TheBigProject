@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 7640168377930823915}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.78}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 4.8639}
+  m_LocalScale: {x: 1.11, y: 1.11, z: 1.11}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7801369288664505302}
@@ -57,6 +57,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 127130323219295070}
     m_Modifications:
+    - target: {fileID: 168373153405595322, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.286
+      objectReference: {fileID: 0}
+    - target: {fileID: 168373153405595322, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_Size.y
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 168373153405595322, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_Center.y
+      value: 0.074
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485930532669756608, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.286
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485930532669756608, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_Size.y
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485930532669756608, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_Center.y
+      value: 0.074
+      objectReference: {fileID: 0}
     - target: {fileID: 1645536404946168405, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
       propertyPath: m_TagString
       value: DariusDoor
@@ -112,6 +136,18 @@ PrefabInstance:
     - target: {fileID: 6735862729883277741, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
       propertyPath: m_TagString
       value: DariusDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859998322946893624, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.286
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859998322946893624, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_Size.y
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859998322946893624, guid: 30a95b9c34d3c1d42bd8306588f163b3, type: 3}
+      propertyPath: m_Center.y
+      value: 0.074
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

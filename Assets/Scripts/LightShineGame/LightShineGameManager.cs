@@ -27,7 +27,7 @@ public class LightShineGameManager : MonoBehaviour
 
         foreach (PlayerController player in players)
         {
-            cameraTargetGroup.AddMember(player.transform, 1f, 1f);
+            cameraTargetGroup.AddMember(player.transform, 2f / players.Count, 1f);
         }
         
         GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
