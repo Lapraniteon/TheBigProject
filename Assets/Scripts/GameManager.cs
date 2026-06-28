@@ -102,7 +102,8 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "LibraryHub")
         {
             //Assign playerInput to the player array, name it and prepare it's number in collections.
-            players.Add(playerInput.gameObject.GetComponent<PlayerController>());
+            PlayerController controller = playerInput.gameObject.GetComponent<PlayerController>();
+            players.Add(controller);
             playerInput.gameObject.name = "Player " + players.Count; //Rename to the player number
             
             int playerNumber = players.Count - 1; //number to get the right variable from the arrays.
@@ -111,6 +112,7 @@ public class GameManager : MonoBehaviour
             GameObject playerModel = Instantiate(playerModels[playerNumber], playerInput.gameObject.transform.position + playerModelPosition, playerInput.gameObject.transform.rotation, playerInput.gameObject.transform);
             playerModel.transform.localRotation = Quaternion.Euler(childModelRotation);
             playerModel.gameObject.name = "playerModel";
+            controller.playerAnimator = playerModel.GetComponent<Animator>();
             
             //Add the right colour car as a child and disable it.
             GameObject car = Instantiate(cars[players.IndexOf(playerInput.gameObject.GetComponent<PlayerController>())], playerInput.gameObject.transform.position + carPosition, playerInput.transform.rotation, playerInput.gameObject.transform);

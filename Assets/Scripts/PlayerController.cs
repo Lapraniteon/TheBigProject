@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private GameObject playerModel;
+    [SerializeField] 
+    public Animator playerAnimator;
     [SerializeField]
     private GameObject carModel;
     
@@ -119,6 +121,7 @@ public class PlayerController : MonoBehaviour
             {
                 _playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * _gravityValue);
                 RuntimeManager.PlayOneShot("event:/SFX/KingSea/Jump", transform.position);
+                playerAnimator.SetTrigger("Jump");
                 _jumped = false;
             }
         }
@@ -144,7 +147,10 @@ public class PlayerController : MonoBehaviour
             transform.localRotation = Quaternion.LookRotation(direction);
             //move forward (joystick input is weird seemingly) using the playerspeed.
             _controller.Move(transform.right * playerSpeed * Time.deltaTime);
+            playerAnimator.SetTrigger("Walk");
         }
+        else
+            playerAnimator.SetTrigger("Idle");
     }
     
     
