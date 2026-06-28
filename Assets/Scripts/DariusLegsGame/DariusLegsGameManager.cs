@@ -14,7 +14,7 @@ public class DariusLegsGameManager : MonoBehaviour
     [Space]
 
     private float dariusPlayerSpeed = 15f;
-    private float playerSpeed = 5f;
+    private float playerSpeed = 6.5f;
     public static DariusLegsGameManager Instance
     {
         get
@@ -65,7 +65,7 @@ public class DariusLegsGameManager : MonoBehaviour
         DOTween.Sequence()
             .Append(player.transform.DOMove(player.transform.position + new Vector3(10f, 10f, -25f), .9f).SetEase(Ease.OutBack))
             .Join(player.transform.DOLocalRotateQuaternion(player.transform.rotation * Quaternion.Euler(-90f, 0f, -165f), .9f).SetEase(Ease.OutBack))
-            .AppendCallback(() => player.gameObject.SetActive(false))
+            .AppendCallback(() => player.RespawnActive(true))
             .Play();
         
         // Pause gate spawning, to make sure the player doesnt need to immediately dodge a new gate after respawning
@@ -75,7 +75,7 @@ public class DariusLegsGameManager : MonoBehaviour
         
         player.transform.rotation = Quaternion.identity;
         player.transform.position = Vector3.zero;
-        player.gameObject.SetActive(true);
+        player.RespawnActive(false);
         
         //worldMovement.SetGateSpawnPaused(false);
     }

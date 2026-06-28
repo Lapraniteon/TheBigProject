@@ -15,6 +15,8 @@ public class SpawningSnowballs : MonoBehaviour
     private GameObject _snowballInstance;
     public int whichPlatform;
     public Vector3[] endPositions;
+    
+    public static event Action HitShield;
 
     private void OnEnable()
     {
@@ -34,7 +36,8 @@ public class SpawningSnowballs : MonoBehaviour
 
     public void OnShoot()
     {
-        ThrowSnowball(snowball);
+        if (!_kingSea.HasWon)
+            ThrowSnowball(snowball);
     }
 
     private void ThrowSnowball(GameObject snowBall)
@@ -55,6 +58,7 @@ public class SpawningSnowballs : MonoBehaviour
         else
         {
             s.InsertCallback(0.1f, () => RuntimeManager.PlayOneShot("event:/SFX/KingSea/Snowball Shield Hit"));
+            s.InsertCallback(0.1f, () => HitShield?.Invoke());
         }
         s.Play();
     }
