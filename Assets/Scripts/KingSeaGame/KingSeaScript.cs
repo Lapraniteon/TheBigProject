@@ -25,7 +25,9 @@ public class KingSeaScript : MonoBehaviour
     public static event Action SwitchingShieldPosition;
     
     private int _threshold;
-    
+
+    public bool HasWon { get; private set; }
+
     private EventInstance kingSeaLaughingEvent;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -63,7 +65,7 @@ public class KingSeaScript : MonoBehaviour
     
     private void CheckHealth()
     {
-        if (kingSeaHealth <= 0)
+        if (kingSeaHealth <= 0 && !HasWon)
         {
             Win();
         }
@@ -93,6 +95,8 @@ public class KingSeaScript : MonoBehaviour
     
     private void Win()
     {
+        HasWon = true;
+        
         Debug.Log("You win!");
         
         RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");

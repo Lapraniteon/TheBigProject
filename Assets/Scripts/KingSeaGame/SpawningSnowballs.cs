@@ -34,7 +34,8 @@ public class SpawningSnowballs : MonoBehaviour
 
     public void OnShoot()
     {
-        ThrowSnowball(snowball);
+        if (!_kingSea.HasWon)
+            ThrowSnowball(snowball);
     }
 
     private void ThrowSnowball(GameObject snowBall)
