@@ -11,6 +11,8 @@ public class Respawning : MonoBehaviour
     private CharacterController _controller;
     private SpawningSnowballs _spawningSnowballs;
     private bool _respawned;
+
+    [SerializeField] private ParticleSystem splashParticles;
     
     private KingSeaScript _kingSeaScript;
     
@@ -33,6 +35,7 @@ public class Respawning : MonoBehaviour
         if (other.CompareTag("WaterPlane"))
         {
             RuntimeManager.PlayOneShot("event:/SFX/KingSea/Fall in Water");
+            Instantiate(splashParticles, transform.position, Quaternion.identity);
             _kingSeaScript.Laugh();
         }
         
