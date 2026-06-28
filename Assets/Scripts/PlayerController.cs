@@ -190,6 +190,8 @@ public class PlayerController : MonoBehaviour
         {
             StopMovement();
         }
+        
+        Physics.SyncTransforms();
     }
     
     [System.Serializable]

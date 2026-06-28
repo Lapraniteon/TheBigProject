@@ -70,12 +70,14 @@ public class PlayerRespawning : MonoBehaviour
         
         player.StopMovement();
         
-        player.gameObject.SetActive(false);
+        //player.gameObject.SetActive(false);
+        player.RespawnActive(true);
         
         yield return new WaitForSeconds(1f);
 
         player.transform.position = _gameManager.patrolController.GetRespawnPoint();
-        player.gameObject.SetActive(true);
+        //player.gameObject.SetActive(true);
+        player.RespawnActive(false);
         /*playerInput.enabled = true;*/
     }
 
