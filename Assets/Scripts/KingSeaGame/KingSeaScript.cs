@@ -17,7 +17,6 @@ public class KingSeaScript : MonoBehaviour
     
     [SerializeField]private int kingSeaMaxHealthIncrease;
     private int _numberOfPlayers;
-    [SerializeField]private GameManager gameManager;
 
     public Transform[] spawnPoints;
 
@@ -33,17 +32,14 @@ public class KingSeaScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _numberOfPlayers = gameManager.players.Count;
-        if (_numberOfPlayers < 1)
-        {
-            for (int i = 1; i < _numberOfPlayers; i++)
-            {
-                kingSeaMaxHealth += kingSeaMaxHealthIncrease;
-            }
-        }
+        // Scale HP
+        _numberOfPlayers = GameManager.Instance.players.Count;
+
+        float multiplier = 1f + (_numberOfPlayers - 1) * .75f;
+        kingSeaMaxHealth = (int)(kingSeaMaxHealth * multiplier);
         
         kingSeaHealth = kingSeaMaxHealth;
-        _threshold = kingSeaHealth - healthPortionsForSwitchingWeaponSide;
+        _threshold = kingSeaHealth - (int)(healthPortionsForSwitchingWeaponSide * multiplier);
 
         kingSeaLaughingEvent = RuntimeManager.CreateInstance("event:/SFX/KingSea/Laughing");
         
