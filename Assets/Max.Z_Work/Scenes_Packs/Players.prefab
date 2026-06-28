@@ -325,11 +325,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5574792362155695689}
-  - {fileID: 2520392910112970034}
-  - {fileID: 3923163817367686111}
-  - {fileID: 1270615830485940546}
-  - {fileID: 6936600076691604167}
+  - {fileID: 143444482262736216}
+  - {fileID: 5986545681900545231}
+  - {fileID: 7813519590808732543}
+  - {fileID: 4051438970219886332}
   - {fileID: 3321422359040981711}
   - {fileID: 470068852384664285}
   m_Father: {fileID: 0}
@@ -391,72 +390,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96ba9ed0adfba3d4e899e70ec09f4c09, type: 3}
---- !u!4 &1270615830485940546 stripped
+--- !u!4 &7813519590808732543 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2469011466092523067, guid: 96ba9ed0adfba3d4e899e70ec09f4c09, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6885617003875292166, guid: 96ba9ed0adfba3d4e899e70ec09f4c09, type: 3}
   m_PrefabInstance: {fileID: 3738430267515574137}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &4098414804244283232
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 7683628016141891939}
-    m_Modifications:
-    - target: {fileID: 6874490469135271864, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
-      propertyPath: m_Name
-      value: Pinguin_Player_Animation_BackUp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484177590414172457, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -602.02295
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484177590414172457, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484177590414172457, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -934.2118
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484177590414172457, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484177590414172457, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484177590414172457, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484177590414172457, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484177590414172457, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484177590414172457, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8484177590414172457, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
---- !u!4 &5574792362155695689 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8484177590414172457, guid: b0564e29df755984c9abafdb45e8a3be, type: 3}
-  m_PrefabInstance: {fileID: 4098414804244283232}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8078462233161711381
 PrefabInstance:
@@ -466,10 +403,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7683628016141891939}
     m_Modifications:
-    - target: {fileID: 1179863516008791506, guid: 372baf5104704714cbb58cee2fcb2529, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -322.2
-      objectReference: {fileID: 0}
     - target: {fileID: 5198821784473979369, guid: 372baf5104704714cbb58cee2fcb2529, type: 3}
       propertyPath: m_LocalPosition.x
       value: 617.3823
@@ -519,9 +452,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 372baf5104704714cbb58cee2fcb2529, type: 3}
---- !u!4 &6936600076691604167 stripped
+--- !u!4 &4051438970219886332 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1179863516008791506, guid: 372baf5104704714cbb58cee2fcb2529, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5198821784473979369, guid: 372baf5104704714cbb58cee2fcb2529, type: 3}
   m_PrefabInstance: {fileID: 8078462233161711381}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8458618426964890868
@@ -535,10 +468,6 @@ PrefabInstance:
     - target: {fileID: 3785572105201841221, guid: 80d53620fdb9fb948ad6ce3519139ae1, type: 3}
       propertyPath: m_Name
       value: Pinguin_Player_Green
-      objectReference: {fileID: 0}
-    - target: {fileID: 6312137217798209990, guid: 80d53620fdb9fb948ad6ce3519139ae1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 555.6
       objectReference: {fileID: 0}
     - target: {fileID: 8403313778633099692, guid: 80d53620fdb9fb948ad6ce3519139ae1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -585,9 +514,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80d53620fdb9fb948ad6ce3519139ae1, type: 3}
---- !u!4 &2520392910112970034 stripped
+--- !u!4 &143444482262736216 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6312137217798209990, guid: 80d53620fdb9fb948ad6ce3519139ae1, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8403313778633099692, guid: 80d53620fdb9fb948ad6ce3519139ae1, type: 3}
   m_PrefabInstance: {fileID: 8458618426964890868}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9151251617621390300
@@ -642,17 +571,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pinguin_Player_Blue
       objectReference: {fileID: 0}
-    - target: {fileID: 5228158448215488515, guid: 49a92e175afaa3648912f2675a40d246, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 224
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49a92e175afaa3648912f2675a40d246, type: 3}
---- !u!4 &3923163817367686111 stripped
+--- !u!4 &5986545681900545231 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5228158448215488515, guid: 49a92e175afaa3648912f2675a40d246, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3308946469240575763, guid: 49a92e175afaa3648912f2675a40d246, type: 3}
   m_PrefabInstance: {fileID: 9151251617621390300}
   m_PrefabAsset: {fileID: 0}

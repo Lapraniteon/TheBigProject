@@ -147,10 +147,10 @@ public class PlayerController : MonoBehaviour
             transform.localRotation = Quaternion.LookRotation(direction);
             //move forward (joystick input is weird seemingly) using the playerspeed.
             _controller.Move(transform.right * playerSpeed * Time.deltaTime);
-            playerAnimator.SetTrigger("Walk");
+            playerAnimator.SetBool("IsWalking", true);
         }
         else
-            playerAnimator.SetTrigger("Idle");
+            playerAnimator.SetBool("IsWalking", false);
     }
     
     

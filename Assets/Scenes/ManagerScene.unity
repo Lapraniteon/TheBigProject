@@ -196,10 +196,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerModels:
-  - {fileID: 619652735803132074, guid: 96ba9ed0adfba3d4e899e70ec09f4c09, type: 3}
-  - {fileID: 4216905974886112067, guid: 372baf5104704714cbb58cee2fcb2529, type: 3}
-  - {fileID: 7085539150710824594, guid: 49a92e175afaa3648912f2675a40d246, type: 3}
-  - {fileID: 9026327882775406423, guid: 80d53620fdb9fb948ad6ce3519139ae1, type: 3}
+  - {fileID: 5450578476226889039, guid: 96ba9ed0adfba3d4e899e70ec09f4c09, type: 3}
+  - {fileID: 5361696626892113777, guid: 372baf5104704714cbb58cee2fcb2529, type: 3}
+  - {fileID: 4097804225479545181, guid: 49a92e175afaa3648912f2675a40d246, type: 3}
+  - {fileID: 3785572105201841221, guid: 80d53620fdb9fb948ad6ce3519139ae1, type: 3}
   playerModelPosition: {x: 0, y: -1, z: 0}
   cars:
   - {fileID: 6784978547375891139, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
