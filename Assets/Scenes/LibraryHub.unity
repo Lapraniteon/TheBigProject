@@ -14468,7 +14468,7 @@ MonoBehaviour:
     m_Bits: 4
   m_ShadowRenderingLayersMask:
     serializedVersion: 0
-    m_Bits: 1
+    m_Bits: 0
   m_Version: 4
   m_LightLayerMask: 1
   m_ShadowLayerMask: 1
@@ -14522,7 +14522,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_RenderingLayerMask: 4
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
