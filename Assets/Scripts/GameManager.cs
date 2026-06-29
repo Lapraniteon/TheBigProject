@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private PlayerInputManager playerInputManager;
+
+    public static event Action PlayerJoin;
+    private bool firstPlayerJoin = false;
     
     
     
@@ -101,6 +104,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("OnPlayerJoined");
         if (SceneManager.GetActiveScene().name == "LibraryHub")
         {
+            if (firstPlayerJoin == false)
+            {
+                PlayerJoin?.Invoke();
+                firstPlayerJoin = true;
+            }
             //Assign playerInput to the player array, name it and prepare it's number in collections.
             PlayerController controller = playerInput.gameObject.GetComponent<PlayerController>();
             players.Add(controller);
