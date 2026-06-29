@@ -158,6 +158,8 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
             }
         }
 
+        bool _arePicking = true;
+        Tween bubbleTween = null;
         IEnumerator WaitForPlayersToDecideDirection()
         {
             animator.SetInteger("CrystalSugar", 0);
@@ -178,23 +180,39 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
                     direction = newDirection;
                     //Debug.Log("Decision timer interrupted");
                 }
-
+                
                 if (directionPickWaitTimer >= 0.1f)
                 {
                     // If the players have decided on something the 3 seconds are now running.
                     // "!" bubble
-                    float scale = 150f / directionPickWaitTime * (directionPickWaitTime - directionPickWaitTimer);
-                    exclamationBubble.sizeDelta = new Vector2(scale, scale);
+                    
                     thinkingBubble.gameObject.SetActive(false);
                     exclamationBubble.gameObject.SetActive(true);
+
+                    if (!_arePicking)
+                    {
+                        bubbleTween?.Kill();
+                        exclamationBubble.sizeDelta = new Vector2(150f, 150f);
+                        bubbleTween = exclamationBubble.DOSizeDelta(Vector2.zero, directionPickWaitTime).SetEase(Ease.InSine);
+                    }
+
+                    _arePicking = true;
                 }
                 else
                 {
                     // While the players have not decided yet.
                     // "?" bubble
-                    exclamationBubble.sizeDelta = new Vector2(150f, 150f);
+                    
                     thinkingBubble.gameObject.SetActive(true);
                     exclamationBubble.gameObject.SetActive(false);
+
+                    if (_arePicking)
+                    {
+                        bubbleTween?.Kill();
+                        bubbleTween = thinkingBubble.DOSizeDelta(Vector2.zero, .25f).SetEase(Ease.OutBack).From();
+                    }
+                    
+                    _arePicking = false;
                 }
                 
             }
