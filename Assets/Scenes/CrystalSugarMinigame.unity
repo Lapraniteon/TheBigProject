@@ -14127,7 +14127,7 @@ MonoBehaviour:
   raycastOrigin: {fileID: 1664546389}
   wallLayer: CrystalSugarMazeWall
   directionalPad: {fileID: 638098816}
-  directionPickWaitTime: 3
+  directionPickWaitTime: 2
   directionPickWaitTimer: 3.0113416
   movementSpeedMultiplier: 3
   rotateSpeedMultiplier: 3
