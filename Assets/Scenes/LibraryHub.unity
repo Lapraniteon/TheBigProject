@@ -33745,12 +33745,12 @@ GameObject:
   - component: {fileID: 6713792232934926224}
   - component: {fileID: 1000086593634870178}
   m_Layer: 5
-  m_Name: Join button (1)
+  m_Name: BigJoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &4836665482421859836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36226,6 +36226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7528961562185473739}
+  - component: {fileID: 7528961562185473740}
   m_Layer: 5
   m_Name: Main Hub UI assets
   m_TagString: Untagged
@@ -36757,6 +36758,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7528961562185473740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7053035070097856844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba3b3124cb3c9a4b955f141c4ddc47b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LibraryHubUI
+  bigJoin: {fileID: 4822561746559037698}
+  smallJoin: {fileID: 415481160430815943}
 --- !u!33 &7633140324190485737
 MeshFilter:
   m_ObjectHideFlags: 10
