@@ -10,8 +10,8 @@ public class KingSeaScript : MonoBehaviour
     [SerializeField]private int kingSeaMaxHealth;
     [SerializeField]private int snowballDamage;
     [SerializeField]private int healthPortionsForSwitchingWeaponSide;
-    [SerializeField]private int leftArmHealthTrigger;
-    [SerializeField]private int rightArmHealthTrigger;
+    [SerializeField] [Tooltip("(percentage")] private int leftArmHealthTrigger;
+    [SerializeField] [Tooltip("(percentage")] private int rightArmHealthTrigger;
     [SerializeField]private GameObject leftArm;
     [SerializeField]private GameObject rightArm;
     
@@ -28,6 +28,8 @@ public class KingSeaScript : MonoBehaviour
     public bool HasWon { get; private set; }
 
     private EventInstance kingSeaLaughingEvent;
+
+    private float _healthMultiplier;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,11 +37,11 @@ public class KingSeaScript : MonoBehaviour
         // Scale HP
         _numberOfPlayers = GameManager.Instance.players.Count;
 
-        float multiplier = 1f + (_numberOfPlayers - 1) * .75f;
-        kingSeaMaxHealth = (int)(kingSeaMaxHealth * multiplier);
+        _healthMultiplier = 1f + (_numberOfPlayers - 1) * .75f;
+        kingSeaMaxHealth = (int)(kingSeaMaxHealth * _healthMultiplier);
         
         kingSeaHealth = kingSeaMaxHealth;
-        _threshold = kingSeaHealth - (int)(healthPortionsForSwitchingWeaponSide * multiplier);
+        _threshold = kingSeaHealth - (int)(healthPortionsForSwitchingWeaponSide * _healthMultiplier);
 
         kingSeaLaughingEvent = RuntimeManager.CreateInstance("event:/SFX/KingSea/Laughing");
         
@@ -68,16 +70,16 @@ public class KingSeaScript : MonoBehaviour
         
         if (kingSeaHealth <= _threshold)
         {
-            _threshold -= healthPortionsForSwitchingWeaponSide;
+            _threshold -= (int)(healthPortionsForSwitchingWeaponSide * _healthMultiplier);
             SwitchSides();
         }
 
-        if (kingSeaHealth == leftArmHealthTrigger)
+        if (kingSeaHealth == (int)(leftArmHealthTrigger * _healthMultiplier))
         {
             leftArm.SetActive(true);
         }
 
-        if (kingSeaHealth == rightArmHealthTrigger)
+        if (kingSeaHealth == (int)(rightArmHealthTrigger * _healthMultiplier))
         {
             rightArm.SetActive(true);
         }

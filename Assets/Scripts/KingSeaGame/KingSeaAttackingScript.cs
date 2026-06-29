@@ -10,6 +10,8 @@ public class KingSeaAttackingScript : MonoBehaviour
     [SerializeField]private GameObject platform2;
     [SerializeField] private float splitDistance;
 
+    [SerializeField] private Collider armCollider;
+
     private void Start()
     {
         Attacking();
@@ -30,6 +32,7 @@ public class KingSeaAttackingScript : MonoBehaviour
     //Split the platform
     private void PlatformsSplitting()
     {
+        armCollider.enabled = true;
         platform1.transform.DOMoveX(platform1.transform.position.x - splitDistance / 2, platformSplittingDuration).SetEase(Ease.OutSine);
         platform2.transform.DOMoveX(platform2.transform.position.x + splitDistance / 2, platformSplittingDuration).SetEase(Ease.OutSine);
         Retreating();
