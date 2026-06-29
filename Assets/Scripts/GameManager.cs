@@ -151,6 +151,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < players.Count; i++)
         {
             players[i].transform.position = spawnPoints[i].transform.position;
+            players[i].transform.rotation = spawnPoints[i].transform.rotation;
             Physics.SyncTransforms(); //Makes sure the player teleports because the CharacterController often stops this.
             //Debug.Log(players[i].transform.position + spawnPoints[i].transform.position);
         }

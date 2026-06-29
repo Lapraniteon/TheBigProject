@@ -140,17 +140,27 @@ public class PlayerController : MonoBehaviour
         
         //assign them (correctly somehow) to the vector3 direction.
         Vector3 direction = new Vector3(-vertical, 0, horizontal);
-        //if the vector isn't too small (controller would otherwise move when the joystick is in the middle).
         if (direction.sqrMagnitude > 0.1f)
         {
-            //rotate player in accordance with the vector
-            transform.localRotation = Quaternion.LookRotation(direction);
-            //move forward (joystick input is weird seemingly) using the playerspeed.
-            _controller.Move(transform.right * playerSpeed * Time.deltaTime);
-            playerAnimator.SetBool("IsWalking", true);
+            if (SceneManager.GetActiveScene().name == "DariusLegsMinigame")
+            {
+                Vector3 dariusDirection = new Vector3(horizontal, 0, 0);
+                _controller.Move(dariusDirection * playerSpeed * Time.deltaTime);
+            }
+            else
+            {
+                //rotate player in accordance with the vector
+                transform.localRotation = Quaternion.LookRotation(direction);
+                //move forward (joystick input is weird seemingly) using the playerspeed.
+                _controller.Move(transform.right * playerSpeed * Time.deltaTime);
+                playerAnimator.SetBool("IsWalking", true);
+                //if the vector isn't too small (controller would otherwise move when the joystick is in the middle).
+            }
         }
         else
+        {
             playerAnimator.SetBool("IsWalking", false);
+        }
     }
     
     
@@ -196,7 +206,6 @@ public class PlayerController : MonoBehaviour
         {
             StopMovement();
         }
-        
         Physics.SyncTransforms();
     }
     
