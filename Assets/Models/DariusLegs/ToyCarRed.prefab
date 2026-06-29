@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7331927264967044407}
   - component: {fileID: 5760385885349562143}
   - component: {fileID: 370243015905672841}
+  - component: {fileID: 3523247992632984262}
   m_Layer: 0
   m_Name: FrontLeftWheel
   m_TagString: Untagged
@@ -90,6 +91,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3523247992632984262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927767394164641390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b23fe2d870e2645b3160973da13d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wheel
+  singleRotationTime: 0.3
 --- !u!1 &6784978547375891139
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +183,7 @@ GameObject:
   - component: {fileID: 7678841593544976099}
   - component: {fileID: 4855449723771306085}
   - component: {fileID: 403733899934432953}
+  - component: {fileID: 5043215765660185767}
   m_Layer: 0
   m_Name: BackRightWheel
   m_TagString: Untagged
@@ -248,6 +263,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5043215765660185767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7607395669104420475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b23fe2d870e2645b3160973da13d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wheel
+  singleRotationTime: 0.3
 --- !u!1 &7612749693645068804
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +287,7 @@ GameObject:
   - component: {fileID: 9047439990134935890}
   - component: {fileID: 1483673808759145563}
   - component: {fileID: 6310372409381899108}
+  - component: {fileID: 1284550100179403069}
   m_Layer: 0
   m_Name: BackLeftWheel
   m_TagString: Untagged
@@ -274,7 +303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7612749693645068804}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.000000029802319, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -43.315468, y: 29.812164, z: -64.33745}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -338,6 +367,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1284550100179403069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612749693645068804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b23fe2d870e2645b3160973da13d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  singleRotationTime: 0.3
 --- !u!1 &8400640490195252278
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +391,7 @@ GameObject:
   - component: {fileID: 8076375683387973721}
   - component: {fileID: 2028958982050181254}
   - component: {fileID: 7231155718016102058}
+  - component: {fileID: 5620292185621347043}
   m_Layer: 0
   m_Name: FrontRightWheel
   m_TagString: Untagged
@@ -428,6 +471,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5620292185621347043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8400640490195252278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b23fe2d870e2645b3160973da13d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wheel
+  singleRotationTime: 0.3
 --- !u!1 &8933454669568515702
 GameObject:
   m_ObjectHideFlags: 0

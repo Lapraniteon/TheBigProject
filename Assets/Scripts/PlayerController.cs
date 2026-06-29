@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -105,16 +106,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        // // Slight downward velocity to keep grounded stable unless a jump is in progress.
-        // if (_playerVelocity.y < 0)
-        // {
-        //     _playerVelocity.y = -2f;
-        // }
-        
-        //Applies gravity to the player.
-        
-        
-
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.5f, LayerMask.GetMask("Ground")))
         {
             if (_jumped)
@@ -128,8 +119,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             _playerVelocity.y += _gravityValue * Time.deltaTime;
-            //Debug.Log(_playerVelocity.y);
-            //Mathf.Clamp(_playerVelocity.y, -25f, Mathf.Infinity);
         }
         
         _controller.Move(_playerVelocity * Time.deltaTime);
@@ -140,17 +129,47 @@ public class PlayerController : MonoBehaviour
         
         //assign them (correctly somehow) to the vector3 direction.
         Vector3 direction = new Vector3(-vertical, 0, horizontal);
-        //if the vector isn't too small (controller would otherwise move when the joystick is in the middle).
+        Vector3 dariusDirection = new Vector3(horizontal, 0, 0);
         if (direction.sqrMagnitude > 0.1f)
         {
-            //rotate player in accordance with the vector
-            transform.localRotation = Quaternion.LookRotation(direction);
-            //move forward (joystick input is weird seemingly) using the playerspeed.
-            _controller.Move(transform.right * playerSpeed * Time.deltaTime);
-            playerAnimator.SetBool("IsWalking", true);
+            //movement specific to Darius
+            if (SceneManager.GetActiveScene().name == "DariusLegsMinigame")
+            {
+                _controller.Move(dariusDirection * playerSpeed * Time.deltaTime);
+                //rotate left
+                if (dariusDirection.x == -1)
+                {
+                    transform.DOLocalRotate(new Vector3(0, -120, 0), 0.2f);
+                }
+                //rotate right
+                else if (dariusDirection.x == 1)
+                {
+                    transform.DOLocalRotate(new Vector3(0, -60, 0), 0.2f);
+                }
+            }
+            //normal movement
+            else
+            {
+                //rotate player in accordance with the vector
+                transform.localRotation = Quaternion.LookRotation(direction);
+                //move forward (joystick input is weird seemingly) using the playerspeed.
+                _controller.Move(transform.right * playerSpeed * Time.deltaTime);
+                playerAnimator.SetBool("IsWalking", true);
+                //if the vector isn't too small (controller would otherwise move when the joystick is in the middle).
+            }
         }
         else
+        {
             playerAnimator.SetBool("IsWalking", false);
+        }
+        //rotate back to neutral in Darius
+        if (SceneManager.GetActiveScene().name == "DariusLegsMinigame")
+        {
+            if (dariusDirection.x == 0)
+            {
+                transform.DOLocalRotate(new Vector3(0, -90, 0), 0.2f);
+            }
+        }
     }
     
     
@@ -196,7 +215,6 @@ public class PlayerController : MonoBehaviour
         {
             StopMovement();
         }
-        
         Physics.SyncTransforms();
     }
     
