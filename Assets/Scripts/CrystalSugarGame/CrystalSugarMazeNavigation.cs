@@ -7,6 +7,7 @@ using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using Random = System.Random;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
@@ -41,8 +42,8 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
     private EventInstance _miscNoiseInstance;
     
     [Header("Thinking bubble")]
-    [InfoBox("This should be replaced with an image of some kind later.")]
-    [SerializeField] private TMP_Text thinkingBubbleText;
+    [SerializeField] private RectTransform thinkingBubble;
+    [SerializeField] private RectTransform exclamationBubble;
 
     [SerializeField]
     private Transform[] spawnPoints;
@@ -157,6 +158,8 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
             }
         }
 
+        bool _arePicking = true;
+        Tween bubbleTween = null;
         IEnumerator WaitForPlayersToDecideDirection()
         {
             animator.SetInteger("CrystalSugar", 0);
@@ -177,25 +180,45 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
                     direction = newDirection;
                     //Debug.Log("Decision timer interrupted");
                 }
-
+                
                 if (directionPickWaitTimer >= 0.1f)
                 {
                     // If the players have decided on something the 3 seconds are now running.
                     // "!" bubble
-                    thinkingBubbleText.fontSize = 180f / 3f * (3f - directionPickWaitTimer);
-                    thinkingBubbleText.text = "!";
+                    
+                    thinkingBubble.gameObject.SetActive(false);
+                    exclamationBubble.gameObject.SetActive(true);
+
+                    if (!_arePicking)
+                    {
+                        bubbleTween?.Kill();
+                        exclamationBubble.sizeDelta = new Vector2(150f, 150f);
+                        bubbleTween = exclamationBubble.DOSizeDelta(Vector2.zero, directionPickWaitTime).SetEase(Ease.InSine);
+                    }
+
+                    _arePicking = true;
                 }
                 else
                 {
                     // While the players have not decided yet.
                     // "?" bubble
-                    thinkingBubbleText.fontSize = 180f;
-                    thinkingBubbleText.text = "?";
+                    
+                    thinkingBubble.gameObject.SetActive(true);
+                    exclamationBubble.gameObject.SetActive(false);
+
+                    if (_arePicking)
+                    {
+                        bubbleTween?.Kill();
+                        bubbleTween = thinkingBubble.DOSizeDelta(Vector2.zero, .25f).SetEase(Ease.OutBack).From();
+                    }
+                    
+                    _arePicking = false;
                 }
                 
             }
             
-            thinkingBubbleText.text = "";
+            thinkingBubble.gameObject.SetActive(false);
+            exclamationBubble.gameObject.SetActive(false);
             
             Debug.Log($"Picked direction: {direction}");
             // Convert the chosen direction to an angle based on CS' current orientation
