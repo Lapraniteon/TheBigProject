@@ -13,6 +13,7 @@ TagManager:
   - DariusDoor
   - KingSeaDeath
   - WaterPlane
+  - KingSeaArm
   layers:
   - Default
   - TransparentFX

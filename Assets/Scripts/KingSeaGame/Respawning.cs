@@ -32,11 +32,14 @@ public class Respawning : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("WaterPlane"))
+        if (other.CompareTag("WaterPlane") || other.CompareTag("KingSeaArm"))
         {
             RuntimeManager.PlayOneShot("event:/SFX/KingSea/Fall in Water");
             Instantiate(splashParticles, transform.position, Quaternion.identity);
             _kingSeaScript.Laugh();
+            
+            if (other.CompareTag("KingSeaArm"))
+                Respawn();
         }
         
         if (other.CompareTag("KingSeaDeath"))
