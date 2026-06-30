@@ -54,7 +54,7 @@ public class LightShineGameManager : MonoBehaviour
         RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
         
         DOTween.Sequence()
-            .AppendInterval(3f)
+            .AppendInterval(5f)
             .AppendCallback(() => GameManager.Instance.FinishedMinigame())
             .Play();
         
