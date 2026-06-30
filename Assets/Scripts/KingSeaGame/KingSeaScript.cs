@@ -101,7 +101,7 @@ public class KingSeaScript : MonoBehaviour
         
         DOTween.Sequence()
             .AppendInterval(3f)
-            .AppendCallback(() => GameManager.Instance.FinishedMinigame())
+            .AppendCallback(() => StartCoroutine(GameManager.Instance.FinishedMinigame()))
             .Play();
     }
 

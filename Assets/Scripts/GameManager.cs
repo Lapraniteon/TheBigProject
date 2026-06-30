@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using FMOD.Studio;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,13 @@ public class GameManager : MonoBehaviour
     public String[] scenes;
     public Boolean[] minigamesWon;
     public String[] actionMaps;
+
+    [SerializeField]
+    private int endScreenWaitTime = 3;
+    [SerializeField]
+    private GameObject endscreen;
+    [SerializeField]
+    private Sprite[] endScreens;
     
     
     public static GameManager Instance;
@@ -121,15 +130,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void FinishedMinigame()
+    public IEnumerator FinishedMinigame()
     {
-        //wait a little or implement a victorious animation?
         string minigameScene = SceneManager.GetActiveScene().name;
         int sceneIndex = Array.IndexOf(scenes, minigameScene);
 
-        if (sceneIndex >= minigamesWon.Length)
-            return;
+        //if (sceneIndex >= minigamesWon.Length)
+            //return;
+            
+        endscreen.SetActive(true);
+        endscreen.GetComponent<Image>().sprite = endScreens[sceneIndex];
+
+        yield return new WaitForSeconds(endScreenWaitTime);
         
+        endscreen.SetActive(false);
         minigamesWon[sceneIndex] = true;
         //Debug.Log("Selected this scenenumber: " + sceneIndex);
         StartCoroutine(SceneController.Instance.LoadScene("LibraryHub"));

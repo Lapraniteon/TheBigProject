@@ -55,7 +55,7 @@ public class LightShineGameManager : MonoBehaviour
         
         DOTween.Sequence()
             .AppendInterval(5f)
-            .AppendCallback(() => GameManager.Instance.FinishedMinigame())
+            .AppendCallback(() => StartCoroutine(GameManager.Instance.FinishedMinigame()))
             .Play();
         
         yield return null;
