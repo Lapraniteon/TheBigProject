@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     private PlayerInputManager playerInputManager;
 
     public static event Action PlayerJoin;
-    private bool firstPlayerJoin = false;
+    public bool firstPlayerJoin = false;
     
     
     

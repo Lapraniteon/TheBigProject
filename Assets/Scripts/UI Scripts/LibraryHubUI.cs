@@ -7,7 +7,12 @@ public class LibraryHubUI : MonoBehaviour
 
     private void Start()
     {
-        
+        bigJoin.SetActive(false);
+
+        if (!GameManager.Instance.firstPlayerJoin)
+        {
+            bigJoin.SetActive(true);
+        }
     }
 
     private void DisableJoiningButton()
