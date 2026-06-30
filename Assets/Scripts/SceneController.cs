@@ -47,6 +47,9 @@ public class SceneController : MonoBehaviour
     {
         if (_sceneIsLoading == false)
         {
+            //boolean to check if a scene is loading for the continue button.
+            _sceneIsLoading = true;
+            
             Debug.Log("Loading Scene: " + sceneName + " via SceneController");
             
             if (sceneName != "LibraryHub" && sceneName != "ManagerScene")
@@ -67,9 +70,6 @@ public class SceneController : MonoBehaviour
             }
 
             SetLoadingScreen(sceneName);
-            
-            //boolean to check if a scene is loading for the continue button.
-            _sceneIsLoading = true;
             
             //load the new scene
             var scene = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
