@@ -194,6 +194,9 @@ public class GameManager : MonoBehaviour
             GameObject car = player.gameObject.transform.GetChild(1).gameObject;
             Debug.Log(car.name);
             car.SetActive(active);
+            
+            // Make the player sit or stand up
+            player.playerAnimator.SetFloat("Sitting", active ? 1 : 0);
         }
     }
 
