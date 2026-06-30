@@ -13139,7 +13139,7 @@ MonoBehaviour:
   gateSpawnInterval: 200
   doorClosingDistance: 5
   darius: {fileID: 802001311}
-  catchupTime: 34.5
+  catchupTime: 54.5
   finalCatchDistance: 50
 --- !u!114 &1392743123
 MonoBehaviour:
