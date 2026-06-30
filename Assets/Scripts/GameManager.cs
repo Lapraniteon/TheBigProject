@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using FMOD.Studio;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -37,8 +38,9 @@ public class GameManager : MonoBehaviour
 
     public static event Action PlayerJoin;
     public bool firstPlayerJoin = false;
-    
-    
+
+    public bool GamePaused { get; private set; }
+    [SerializeField] private PauseMenuController pauseMenu;
     
     void Awake()
     {
@@ -75,6 +77,14 @@ public class GameManager : MonoBehaviour
         foreach (var player in players)
         {
             string actionMapName = actionMaps[sceneIndex];
+            player.gameObject.GetComponent<PlayerController>().SwitchCurrentActionMap(actionMapName);
+        }
+    }
+
+    public void SwitchActionMapsByName(string actionMapName)
+    {
+        foreach (var player in players)
+        {
             player.gameObject.GetComponent<PlayerController>().SwitchCurrentActionMap(actionMapName);
         }
     }
@@ -200,14 +210,41 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void TogglePause()
+    {
+        SetPause(!GamePaused);
+    }
+
+    public void SetPause(bool state)
+    {
+        GamePaused = state;
+        pauseMenu.SetState();
+
+        Time.timeScale = state ? 0f : 1f;
+        
+        if (GamePaused)
+            SwitchActionMapsByName("Pause Menu");
+        else
+            SwitchActionMaps(SceneManager.GetActiveScene().name);
+    }
+
+    private void ResetAndRestartEntireGame()
+    {
+        throw new NotImplementedException();
+    }
+
     private void OnEnable()
     {
         PlayerController.Interaction += InteractionDetected;
+        PlayerController.Pause += TogglePause;
+        PlayerController.RestartGame += ResetAndRestartEntireGame;
     }
 
     private void OnDisable()
     {
         PlayerController.Interaction -= InteractionDetected;
+        PlayerController.Pause -= TogglePause;
+        PlayerController.RestartGame -= ResetAndRestartEntireGame;
     }
     
     public static bool IsFmodEventPlaying(EventInstance instance)

@@ -32,6 +32,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "510f57b1-5b09-459b-8e1e-82818f2d4e20",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -144,6 +153,17 @@
                     "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fee153a4-2413-40e6-953b-5609fadd5122",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -164,6 +184,15 @@
                     "name": "Continue",
                     "type": "Button",
                     "id": "af65894e-e34f-42c7-8b58-e5d098c133ee",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "3e1508d7-1744-4db4-83b7-3fdaad23e600",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -258,6 +287,17 @@
                     "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67c5e2b0-3ceb-4515-ade6-a518e9e633bb",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -278,6 +318,15 @@
                     "name": "Continue",
                     "type": "Button",
                     "id": "a9079467-5b62-46a9-be7d-b116966b5374",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "cfa6fc72-96c6-4ade-996a-1dccde6de11f",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -372,6 +421,17 @@
                     "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "556b9d0c-6c22-4dcd-83c8-afcc0ea8be6b",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -401,6 +461,15 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "8dbdc3a4-8c67-4ce5-b3c8-e8e9b72547e0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "b30a29cb-5cbe-4b50-a1ca-f575e999901d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -528,6 +597,17 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0dbfb7d4-d73a-430f-84a0-b5c903756af9",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -548,6 +628,15 @@
                     "name": "Continue",
                     "type": "Button",
                     "id": "c21917be-44ca-40ab-be69-342c1056a4b1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "de63d5ee-3f9c-44f7-83c2-598caf336806",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -640,6 +729,96 @@
                     "processors": "",
                     "groups": "",
                     "action": "Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f6ebecb-1af8-4364-acbc-1f9a69984e55",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Pause Menu",
+            "id": "ee613d9c-1a57-4ee0-a6e0-f126d955b51d",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "dd45301d-d29b-4ecb-a4aa-039056d7f1ad",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ButtonReturnToLibrary",
+                    "type": "Button",
+                    "id": "84b18ff2-403a-4149-bf79-72bebba49e57",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ButtonRestart",
+                    "type": "Button",
+                    "id": "ce15690d-1525-47d2-a358-487975e8520d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f09a121c-4566-4f0f-9536-d9fef1999709",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5d60e0e-7b84-4e85-b8d4-1db50ac1cc0f",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf7b7a8f-2a8e-43d2-afdb-b62997a7d25f",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonReturnToLibrary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "10d7022d-c52b-4152-b392-db35507a565b",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonRestart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
