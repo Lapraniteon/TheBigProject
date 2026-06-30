@@ -74,7 +74,7 @@ public class DariusLegsGameManager : MonoBehaviour
         yield return new WaitForSeconds(respawnDelay); // Replace with animation at some point
         
         player.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
-        player.transform.position = Vector3.zero;
+        player.transform.position = Vector3.up;
         player.RespawnActive(false);
         
         //worldMovement.SetGateSpawnPaused(false);

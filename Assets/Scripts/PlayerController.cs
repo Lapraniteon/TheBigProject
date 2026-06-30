@@ -210,6 +210,7 @@ public class PlayerController : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "DariusLegsMinigame")
         {
             carModel.SetActive(!respawn);
+            playerAnimator.SetFloat("Sitting", 1f);
         }
         if (respawn)
         {
