@@ -297,6 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 193998423}
   - component: {fileID: 193998425}
+  - component: {fileID: 193998426}
   - component: {fileID: 193998424}
   m_Layer: 0
   m_Name: GameManager
@@ -332,19 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90605ceb62e73194dbe87aa78af5bbcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  playerModels:
-  - {fileID: 5450578476226889039, guid: 96ba9ed0adfba3d4e899e70ec09f4c09, type: 3}
-  - {fileID: 5361696626892113777, guid: 372baf5104704714cbb58cee2fcb2529, type: 3}
-  - {fileID: 4097804225479545181, guid: 49a92e175afaa3648912f2675a40d246, type: 3}
-  - {fileID: 3785572105201841221, guid: 80d53620fdb9fb948ad6ce3519139ae1, type: 3}
-  playerModelPosition: {x: 0, y: -1, z: 0}
-  cars:
-  - {fileID: 6784978547375891139, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
-  - {fileID: 5031464750626649084, guid: 68ba84bf5ed04314da4877efd244da67, type: 3}
-  - {fileID: 6938230388985514380, guid: 93e7be2bfa87acb4c8ad1ec6c0260cf3, type: 3}
-  - {fileID: 2490360461841579387, guid: 9262c4dad4226fa4abbe03a448539828, type: 3}
-  carPosition: {x: 0.5, y: -1, z: 0}
-  childModelRotation: {x: 0, y: 90, z: 0}
   players: []
   scenes:
   - LightShineMinigame
@@ -415,6 +403,31 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &193998426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193998422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0491aa704b260dd4bbb051082891c53c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerJoin
+  playerModels:
+  - {fileID: 5450578476226889039, guid: 96ba9ed0adfba3d4e899e70ec09f4c09, type: 3}
+  - {fileID: 5361696626892113777, guid: 372baf5104704714cbb58cee2fcb2529, type: 3}
+  - {fileID: 4097804225479545181, guid: 49a92e175afaa3648912f2675a40d246, type: 3}
+  - {fileID: 3785572105201841221, guid: 80d53620fdb9fb948ad6ce3519139ae1, type: 3}
+  playerModelPosition: {x: 0, y: -1, z: 0}
+  cars:
+  - {fileID: 6784978547375891139, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
+  - {fileID: 5031464750626649084, guid: 68ba84bf5ed04314da4877efd244da67, type: 3}
+  - {fileID: 6938230388985514380, guid: 93e7be2bfa87acb4c8ad1ec6c0260cf3, type: 3}
+  - {fileID: 2490360461841579387, guid: 9262c4dad4226fa4abbe03a448539828, type: 3}
+  carPosition: {x: 0.5, y: -1, z: 0}
+  childModelRotation: {x: 0, y: 90, z: 0}
 --- !u!1 &262255880
 GameObject:
   m_ObjectHideFlags: 0
