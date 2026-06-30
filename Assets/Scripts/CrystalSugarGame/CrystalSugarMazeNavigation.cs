@@ -104,7 +104,7 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
         
         DOTween.Sequence()
             .AppendInterval(5f)
-            .AppendCallback(() => GameManager.Instance.FinishedMinigame())
+            .AppendCallback(() => StartCoroutine(GameManager.Instance.FinishedMinigame()))
             .Play();
         
     }

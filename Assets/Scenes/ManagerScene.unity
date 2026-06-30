@@ -297,6 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 193998423}
   - component: {fileID: 193998425}
+  - component: {fileID: 193998426}
   - component: {fileID: 193998424}
   m_Layer: 0
   m_Name: GameManager
@@ -332,19 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90605ceb62e73194dbe87aa78af5bbcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  playerModels:
-  - {fileID: 5450578476226889039, guid: 96ba9ed0adfba3d4e899e70ec09f4c09, type: 3}
-  - {fileID: 5361696626892113777, guid: 372baf5104704714cbb58cee2fcb2529, type: 3}
-  - {fileID: 4097804225479545181, guid: 49a92e175afaa3648912f2675a40d246, type: 3}
-  - {fileID: 3785572105201841221, guid: 80d53620fdb9fb948ad6ce3519139ae1, type: 3}
-  playerModelPosition: {x: 0, y: -1, z: 0}
-  cars:
-  - {fileID: 6784978547375891139, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
-  - {fileID: 5031464750626649084, guid: 68ba84bf5ed04314da4877efd244da67, type: 3}
-  - {fileID: 6938230388985514380, guid: 93e7be2bfa87acb4c8ad1ec6c0260cf3, type: 3}
-  - {fileID: 2490360461841579387, guid: 9262c4dad4226fa4abbe03a448539828, type: 3}
-  carPosition: {x: 0.5, y: -1, z: 0}
-  childModelRotation: {x: 0, y: 90, z: 0}
   players: []
   scenes:
   - LightShineMinigame
@@ -360,6 +348,13 @@ MonoBehaviour:
   - King Sea
   - Darius Legs
   - General Gameplay
+  endScreenWaitTime: 3
+  endscreen: {fileID: 895394344}
+  endScreens:
+  - {fileID: 21300000, guid: 5baffeb90020cbf42a007958ec433a32, type: 3}
+  - {fileID: 21300000, guid: 780524744f8226f4abe528b28049307e, type: 3}
+  - {fileID: 21300000, guid: 54af990bd7df7fd489119729c9afa4d4, type: 3}
+  - {fileID: 21300000, guid: 780b9a07f20b49042b8e727c333d8309, type: 3}
   playerInputManager: {fileID: 193998425}
   firstPlayerJoin: 0
   pauseMenu: {fileID: 297443712}
@@ -415,6 +410,31 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &193998426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193998422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0491aa704b260dd4bbb051082891c53c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerJoin
+  playerModels:
+  - {fileID: 5450578476226889039, guid: 96ba9ed0adfba3d4e899e70ec09f4c09, type: 3}
+  - {fileID: 5361696626892113777, guid: 372baf5104704714cbb58cee2fcb2529, type: 3}
+  - {fileID: 4097804225479545181, guid: 49a92e175afaa3648912f2675a40d246, type: 3}
+  - {fileID: 3785572105201841221, guid: 80d53620fdb9fb948ad6ce3519139ae1, type: 3}
+  playerModelPosition: {x: 0, y: -1, z: 0}
+  cars:
+  - {fileID: 6784978547375891139, guid: 5684d50b8a4c1dc43aa26fbf153779b5, type: 3}
+  - {fileID: 5031464750626649084, guid: 68ba84bf5ed04314da4877efd244da67, type: 3}
+  - {fileID: 6938230388985514380, guid: 93e7be2bfa87acb4c8ad1ec6c0260cf3, type: 3}
+  - {fileID: 2490360461841579387, guid: 9262c4dad4226fa4abbe03a448539828, type: 3}
+  carPosition: {x: 0.5, y: -1, z: 0}
+  childModelRotation: {x: 0, y: 90, z: 0}
 --- !u!1 &262255880
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +591,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 32767
   m_TargetDisplay: 0
 --- !u!224 &297443711
 RectTransform:
@@ -587,6 +607,7 @@ RectTransform:
   m_Children:
   - {fileID: 9165051417871344671}
   - {fileID: 1102529616}
+  - {fileID: 895394345}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -912,6 +933,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668731236}
   m_CullTransparentMesh: 1
+--- !u!1 &895394344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 895394345}
+  - component: {fileID: 895394347}
+  - component: {fileID: 895394346}
+  m_Layer: 5
+  m_Name: Endscreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &895394345
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895394344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 297443711}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &895394346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895394344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &895394347
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895394344}
+  m_CullTransparentMesh: 1
 --- !u!1 &999606172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,7 +1137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1128046806
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1516,13 +1612,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0c86a4b5197f6d34c8aa9541e2a23935, type: 3}
   - {fileID: 21300000, guid: 3d068bb1b3629a44588d66dd9ba5119c, type: 3}
   - {fileID: 21300000, guid: 6c3b4b4492e721544967d4c6dcde85d0, type: 3}
-  - {fileID: 21300000, guid: 10c9ca6de56d9874fbff20b53d723708, type: 3}
-  - {fileID: 21300000, guid: 1f6a53b3022ca724eb1de04e3c1163fe, type: 3}
+  - {fileID: 21300000, guid: 007b1481c8f6f264a841c6992d81d41c, type: 3}
+  - {fileID: 21300000, guid: e8333ccf51ac4784f80c3aa7f3ea4f7b, type: 3}
   _progressBar: {fileID: 1128046807}
   _progressBarTarget: 0
   _continueInstruction: {fileID: 2005815255}
   _sceneIsLoading: 0
   _continuePressed: 0
+  _continueDelay: 2.5
   bookEnterSfx:
     Guid:
       Data1: 2113294314
@@ -1578,11 +1675,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1102529616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -175}
-  m_SizeDelta: {x: 200, y: 200}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 25}
+  m_SizeDelta: {x: 300, y: 300}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!95 &2005815257
 Animator:
   serializedVersion: 7

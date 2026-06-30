@@ -1,33 +1,26 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using FMOD.Studio;
-using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Player Information")] 
-    [SerializeField] 
-    private GameObject[] playerModels;
-    [SerializeField] 
-    private Vector3 playerModelPosition;
-    
-    [SerializeField]
-    private GameObject[] cars;
-    [SerializeField]
-    private Vector3 carPosition;
-    
-    [SerializeField]
-    private Vector3 childModelRotation;
-    
-    
     public List<PlayerController> players = new ();
     
     public String[] scenes;
     public Boolean[] minigamesWon;
     public String[] actionMaps;
+
+    [SerializeField]
+    private int endScreenWaitTime = 3;
+    [SerializeField]
+    private GameObject endscreen;
+    [SerializeField]
+    private Sprite[] endScreens;
     
     
     public static GameManager Instance;
@@ -35,10 +28,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private PlayerInputManager playerInputManager;
-
-    public static event Action PlayerJoin;
+    
     public bool firstPlayerJoin = false;
-
+    
     public bool GamePaused { get; private set; }
     [SerializeField] private PauseMenuController pauseMenu;
     
@@ -47,7 +39,6 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(this);
         }
         else
         {
@@ -109,43 +100,7 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    public void OnPlayerJoined(PlayerInput playerInput)
-    {
-        Debug.Log("OnPlayerJoined");
-        if (SceneManager.GetActiveScene().name == "LibraryHub")
-        {
-            if (firstPlayerJoin == false)
-            {
-                PlayerJoin?.Invoke();
-                firstPlayerJoin = true;
-            }
-            //Assign playerInput to the player array, name it and prepare it's number in collections.
-            PlayerController controller = playerInput.gameObject.GetComponent<PlayerController>();
-            players.Add(controller);
-            playerInput.gameObject.name = "Player " + players.Count; //Rename to the player number
-            
-            int playerNumber = players.Count - 1; //number to get the right variable from the arrays.
-            
-            //Add the playermodel with the right color as a child.
-            GameObject playerModel = Instantiate(playerModels[playerNumber], playerInput.gameObject.transform.position + playerModelPosition, playerInput.gameObject.transform.rotation, playerInput.gameObject.transform);
-            playerModel.transform.localRotation = Quaternion.Euler(childModelRotation);
-            playerModel.gameObject.name = "playerModel";
-            controller.playerAnimator = playerModel.GetComponent<Animator>();
-            
-            //Add the right colour car as a child and disable it.
-            GameObject car = Instantiate(cars[players.IndexOf(playerInput.gameObject.GetComponent<PlayerController>())], playerInput.gameObject.transform.position + carPosition, playerInput.transform.rotation, playerInput.gameObject.transform);
-            car.transform.localRotation = Quaternion.Euler(childModelRotation);
-            car.gameObject.name = "carModel";
-            car.SetActive(false);
-       
-            //Set the position of the joined player to the corresponding spawnpoint.
-            GameObject libraryManager = GameObject.Find("LibraryManager");
-            playerInput.transform.position = libraryManager.GetComponent<LibraryManager>().spawnPoints[playerNumber].transform.position; 
-            SceneManager.MoveGameObjectToScene(playerInput.gameObject, SceneManager.GetSceneByName("ManagerScene"));
-            Physics.SyncTransforms(); //Makes sure the player teleports because the CharacterController often stops this.
-            //Debug.Log("Spawned Player " + playerNumber + " at " + playerSpawnPoints[playerNumber].transform.position);
-        }
-    }
+    
 
     public void PlayerInputsActive(bool playerInputsActive)
     {
@@ -175,15 +130,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void FinishedMinigame()
+    public IEnumerator FinishedMinigame()
     {
-        //wait a little or implement a victorious animation?
         string minigameScene = SceneManager.GetActiveScene().name;
         int sceneIndex = Array.IndexOf(scenes, minigameScene);
 
-        if (sceneIndex >= minigamesWon.Length)
-            return;
+        //if (sceneIndex >= minigamesWon.Length)
+            //return;
+            
+        endscreen.SetActive(true);
+        endscreen.GetComponent<Image>().sprite = endScreens[sceneIndex];
+
+        yield return new WaitForSeconds(endScreenWaitTime);
         
+        endscreen.SetActive(false);
         minigamesWon[sceneIndex] = true;
         //Debug.Log("Selected this scenenumber: " + sceneIndex);
         StartCoroutine(SceneController.Instance.LoadScene("LibraryHub"));
