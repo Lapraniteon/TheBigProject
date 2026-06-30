@@ -100,6 +100,7 @@ public class SceneController : MonoBehaviour
                 _continueInstruction.SetActive(true);
                 
                 //wait for keypress to finish loading.
+                _continuePressed = false;
                 yield return new WaitUntil(() => _continuePressed);
                 //fully load the scene
                 scene.allowSceneActivation = true;
