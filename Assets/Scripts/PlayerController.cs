@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
 
     public static event Action Continue;
 
+    public static event Action Pause;
+    public static event Action ReturnToLibrary;
+    public static event Action RestartGame;
+
     private CharacterController _controller;
     private Vector3 _playerVelocity;
 
@@ -70,6 +74,24 @@ public class PlayerController : MonoBehaviour
     {
         Continue?.Invoke();
         Debug.Log("Continue Inputted");
+    }
+
+    public void OnPause(InputValue value)
+    {
+        Pause?.Invoke();
+        Debug.Log("Pause");
+    }
+    
+    public void OnButtonReturnToLibrary(InputValue value)
+    {
+        ReturnToLibrary?.Invoke();
+        Debug.Log("Return to Library");
+    }
+    
+    public void OnButtonRestart(InputValue value)
+    {
+        RestartGame?.Invoke();
+        Debug.Log("Restart Inputted");
     }
 
     public virtual void OnInteraction(InputValue value)
