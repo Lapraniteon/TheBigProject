@@ -155,14 +155,22 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    private void LoadLibrary()
+    {
+        GameManager.Instance.SetPause(false);
+        StartCoroutine(LoadScene("LibraryHub"));
+    }
+
     //Subscription to the PlayerController Continue event.
     private void OnEnable()
     {
         PlayerController.Continue += ContinuePressed;
+        PlayerController.ReturnToLibrary += LoadLibrary;
     }
 
     private void OnDisable()
     {
         PlayerController.Continue -= ContinuePressed;
+        PlayerController.ReturnToLibrary -= LoadLibrary;
     }
 }
