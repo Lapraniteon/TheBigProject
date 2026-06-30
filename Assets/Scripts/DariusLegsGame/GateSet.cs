@@ -8,6 +8,8 @@ public class GateSet : MonoBehaviour
     public Sequence movementSequence;
 
     [SerializeField] private Door[] doors;
+
+    public DariusController dariusController;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -28,6 +30,11 @@ public class GateSet : MonoBehaviour
             .Join(transform.DOLocalMoveY(transform.position.y - spawnHeightOffset, totalDistance / globalMovementSpeed / 3f)
                 .SetEase(Ease.OutSine))
             .InsertCallback((totalDistance - despawnDistance - doorClosingDistance) / globalMovementSpeed, CloseDoors)
+            .AppendCallback(() =>
+            {
+                if (Random.Range(0f, 1f) <= 0.5f)
+                    dariusController.LookBack();
+            })
             .AppendCallback(DestroySelf);
 
         movementSequence.Play();

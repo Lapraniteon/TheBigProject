@@ -79,6 +79,7 @@ public class WorldMovement : MonoBehaviour
     {
         Vector3 offset = new Vector3(0f, -8f, 0f);
         GateSet gate = Instantiate(gatePrefab, gateSpawnPoint.position + offset, Quaternion.identity);
+        gate.dariusController = darius;
         gate.StartMovement(_despawnDistance, offset.y, globalMovementSpeed, darius.transform.position.z - doorClosingDistance);
     }
 

@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.2660199, g: 0.78266376, b: 0.9245283, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.0014
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -5696,6 +5696,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2035193870204720570, guid: 6648b6d28787a6f47ba479594c87d855, type: 3}
   m_PrefabInstance: {fileID: 618634639}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &618634641 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2344245351613257905, guid: 6648b6d28787a6f47ba479594c87d855, type: 3}
+  m_PrefabInstance: {fileID: 618634639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &620790764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7717,6 +7722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b76c4880d9fe54cb6c4385f8afef63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  dariusAnimator: {fileID: 618634641}
 --- !u!1 &817872614
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class DariusController : MonoBehaviour
 {
+
+    [SerializeField] private Animator dariusAnimator;
+    
     public void StartBackwardsMovement(float destinationZ, float duration)
     {
         Sequence sequence = DOTween.Sequence();
@@ -12,6 +15,11 @@ public class DariusController : MonoBehaviour
             .AppendCallback(MovementFinished);
 
         sequence.Play();
+    }
+
+    public void LookBack()
+    {
+        dariusAnimator.SetTrigger("LookBack");
     }
 
     private void MovementFinished()
