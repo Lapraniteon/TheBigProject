@@ -35968,7 +35968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5295202249412306826, guid: 03c1f5ca95069af4394fbc6b6499ab8b, type: 3}
       propertyPath: completionThresholdX
-      value: 205
+      value: 195
       objectReference: {fileID: 0}
     - target: {fileID: 5295202249412306826, guid: 03c1f5ca95069af4394fbc6b6499ab8b, type: 3}
       propertyPath: movementSpeedMultiplier
