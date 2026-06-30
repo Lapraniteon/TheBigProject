@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b14466480bdbfe64fbc9c967d3fc519d
+guid: bc49c15bde5326c449ef678cd1cdf2af
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,34 +95,12 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Join button on start (1)_0
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 1
-        width: 456
-        height: 557
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 102f685c9ecb5664494c4081cd5a0a45
-      internalID: 1507288412
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 28f23ffa9e7474f4ca874ce1a031380d
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -130,25 +108,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":300.0,"y":64.0},"gridSpriteOffset":{"x":200.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
-    nameFileIdTable:
-      Join button on start (1)_0: 1507288412
-      Join button on start (1)_1: -1060351843
-      Join button on start (1)_10: 766965044
-      Join button on start (1)_11: 1439329683
-      Join button on start (1)_12: -88536590
-      Join button on start (1)_13: -326331825
-      Join button on start (1)_14: 1189710711
-      Join button on start (1)_2: 75689444
-      Join button on start (1)_3: -983976158
-      Join button on start (1)_4: 146763034
-      Join button on start (1)_5: -1978828991
-      Join button on start (1)_6: -575951725
-      Join button on start (1)_7: 1729978748
-      Join button on start (1)_8: 1025633395
-      Join button on start (1)_9: 1285859530
+      entries: []
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
