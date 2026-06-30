@@ -1137,7 +1137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1128046806
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1619,6 +1619,7 @@ MonoBehaviour:
   _continueInstruction: {fileID: 2005815255}
   _sceneIsLoading: 0
   _continuePressed: 0
+  _continueDelay: 2.5
   bookEnterSfx:
     Guid:
       Data1: 2113294314
@@ -1674,11 +1675,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1102529616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -175}
-  m_SizeDelta: {x: 200, y: 200}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 25}
+  m_SizeDelta: {x: 300, y: 300}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!95 &2005815257
 Animator:
   serializedVersion: 7

@@ -17,6 +17,7 @@ public class SceneController : MonoBehaviour
     
     [SerializeField] private bool _sceneIsLoading;
     [SerializeField] private bool _continuePressed;
+    [SerializeField] private float _continueDelay;
 
     [Header("FMOD Events")]
     [SerializeField] private EventReference bookEnterSfx;
@@ -94,6 +95,7 @@ public class SceneController : MonoBehaviour
                 
                 //Deactivate Progressbar.
                 _progressBar.gameObject.SetActive(false);
+                yield return new WaitForSeconds(_continueDelay);
                 //Activate the continue Instruction
                 _continueInstruction.SetActive(true);
                 
