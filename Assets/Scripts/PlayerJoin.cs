@@ -40,6 +40,7 @@ public class PlayerJoin : MonoBehaviour
             
             //Add the playermodel with the right color as a child.
             GameObject playerModel = Instantiate(playerModels[playerNumber], playerInput.gameObject.transform.position + playerModelPosition, playerInput.gameObject.transform.rotation, playerInput.gameObject.transform);
+            SceneManager.MoveGameObjectToScene(playerInput.gameObject, SceneManager.GetSceneByName("ManagerScene"));
             playerModel.transform.localRotation = Quaternion.Euler(childModelRotation);
             playerModel.gameObject.name = "playerModel";
             controller.playerAnimator = playerModel.GetComponent<Animator>();
@@ -53,7 +54,6 @@ public class PlayerJoin : MonoBehaviour
             //Set the position of the joined player to the corresponding spawnpoint.
             GameObject libraryManager = GameObject.Find("LibraryManager");
             playerInput.transform.position = libraryManager.GetComponent<LibraryManager>().spawnPoints[playerNumber].transform.position; 
-            SceneManager.MoveGameObjectToScene(playerInput.gameObject, SceneManager.GetSceneByName("ManagerScene"));
             Physics.SyncTransforms(); //Makes sure the player teleports because the CharacterController often stops this.
             //Debug.Log("Spawned Player " + playerNumber + " at " + playerSpawnPoints[playerNumber].transform.position);
         }

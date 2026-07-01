@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using FMOD.Studio;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -190,7 +191,21 @@ public class GameManager : MonoBehaviour
 
     private void ResetAndRestartEntireGame()
     {
-        throw new NotImplementedException();
+        Debug.Log("Restarting entire game");
+        firstPlayerJoin = false;
+        endscreen.SetActive(false);
+        for (int i = 0; i < minigamesWon.Length; i++)
+        {
+            minigamesWon[i] = false;
+        }
+
+        foreach (var player in players)
+        {
+            Destroy(player.gameObject);
+        }
+        players.Clear();
+        SetPause(false);
+        SceneController.Instance.Start();
     }
 
     private void OnEnable()

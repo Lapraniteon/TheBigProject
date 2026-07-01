@@ -25,4 +25,9 @@ public class LibraryHubUI : MonoBehaviour
     {
         PlayerJoin.PlayerJoined += DisableJoiningButton;
     }
+
+    private void OnDisable()
+    {
+        PlayerJoin.PlayerJoined -= DisableJoiningButton;
+    }
 }

@@ -34,8 +34,13 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void Start()
     {
+        Debug.Log("SceneController::Start");
+        _continueInstruction.SetActive(false);
+        _loaderCanvas.SetActive(false);
+        _sceneIsLoading = false;
+        _continuePressed = false;
         StartCoroutine(LoadScene("LibraryHub"));
     }
 
