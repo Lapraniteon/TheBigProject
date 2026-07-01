@@ -11,6 +11,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public List<PlayerController> players = new ();
+    public float dariusPlayerSpeed = 15f;
+    public float playerSpeed = 6.5f;
     
     public String[] scenes;
     public Boolean[] minigamesWon;

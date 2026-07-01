@@ -11,10 +11,8 @@ public class DariusLegsGameManager : MonoBehaviour
 
     [Space] 
     [SerializeField] private float respawnDelay;
-    [Space]
 
-    private float dariusPlayerSpeed = 15f;
-    private float playerSpeed = 6.5f;
+    
     public static DariusLegsGameManager Instance
     {
         get
@@ -44,8 +42,6 @@ public class DariusLegsGameManager : MonoBehaviour
         
         worldMovement = FindFirstObjectByType<WorldMovement>();
         GameManager.Instance.PlayersToSpawnPoints(spawnPoints);
-        
-        GameManager.Instance.AdjustPlayerSpeed(dariusPlayerSpeed);
         
         RuntimeManager.PlayOneShot("event:/SFX/DariusLegs/Grumble");
     }
@@ -100,7 +96,7 @@ public class DariusLegsGameManager : MonoBehaviour
         Debug.Log("Players won! Darius reached");
         worldMovement.StopAllMovement();
         RuntimeManager.PlayOneShot("event:/BGM/MUS_VictorySting");
-        GameManager.Instance.AdjustPlayerSpeed(playerSpeed);
+        
         
         DOTween.Sequence()
             //.AppendInterval(3f)

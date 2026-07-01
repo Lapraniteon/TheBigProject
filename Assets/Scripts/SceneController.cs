@@ -66,6 +66,7 @@ public class SceneController : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "DariusLegsMinigame")
             {
                 GameManager.Instance.SetCarActive(false);
+                GameManager.Instance.AdjustPlayerSpeed(GameManager.Instance.playerSpeed);
                 Debug.Log("Disabled Cars");
             }
             //unload the current scene unless it's the ManagerScene
@@ -122,6 +123,7 @@ public class SceneController : MonoBehaviour
             if (sceneName == "DariusLegsMinigame")
             {
                 GameManager.Instance.SetCarActive(true);
+                GameManager.Instance.AdjustPlayerSpeed(GameManager.Instance.dariusPlayerSpeed);
                 Debug.Log("Enabled Cars");
             }
             GameManager.Instance.FlipPlayerJoining(sceneName); //disable or enable player joining dependent on the scene.
