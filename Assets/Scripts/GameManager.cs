@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -20,10 +21,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private int endScreenWaitTime = 3;
-    [SerializeField]
-    private GameObject endscreen;
-    [SerializeField]
-    private Sprite[] endScreens;
+    [FormerlySerializedAs("endscreen")] [SerializeField]
+    private GameObject miniGameEndscreen;
+    [FormerlySerializedAs("endScreens")] [SerializeField]
+    private Sprite[] miniGameEndScreens;
+    
+    public GameObject endScreen;
     
     
     public static GameManager Instance;
@@ -141,12 +144,12 @@ public class GameManager : MonoBehaviour
         //if (sceneIndex >= minigamesWon.Length)
             //return;
             
-        endscreen.SetActive(true);
-        endscreen.GetComponent<Image>().sprite = endScreens[sceneIndex];
+        miniGameEndscreen.SetActive(true);
+        miniGameEndscreen.GetComponent<Image>().sprite = miniGameEndScreens[sceneIndex];
 
         yield return new WaitForSeconds(endScreenWaitTime);
         
-        endscreen.SetActive(false);
+        miniGameEndscreen.SetActive(false);
         minigamesWon[sceneIndex] = true;
         //Debug.Log("Selected this scenenumber: " + sceneIndex);
         StartCoroutine(SceneController.Instance.LoadScene("LibraryHub"));
@@ -173,6 +176,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameFinished()
+    {
+        endScreen.SetActive(true);
+        SwitchActionMapsByName("EndScreen");
+    }
+
     public void TogglePause()
     {
         SetPause(!GamePaused);
@@ -195,7 +204,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Restarting entire game");
         firstPlayerJoin = false;
-        endscreen.SetActive(false);
+        miniGameEndscreen.SetActive(false);
+        endScreen.SetActive(false);
         for (int i = 0; i < minigamesWon.Length; i++)
         {
             minigamesWon[i] = false;

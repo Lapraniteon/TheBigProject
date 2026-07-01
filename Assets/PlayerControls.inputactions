@@ -823,6 +823,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "EndScreen",
+            "id": "e8d0a6c7-c932-4d72-91c3-ac0156878d98",
+            "actions": [
+                {
+                    "name": "ButtonRestart",
+                    "type": "Button",
+                    "id": "3a56fecb-0490-4e7b-bdb4-b02e8f77ed23",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fdccbf87-f3ff-4b4a-8b32-b48cc1e34782",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonRestart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

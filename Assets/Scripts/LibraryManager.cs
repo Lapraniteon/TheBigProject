@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LibraryManager : MonoBehaviour
@@ -39,8 +41,15 @@ public class LibraryManager : MonoBehaviour
 
         if (gameCompleted)
         {
-            lights[4].gameObject.SetActive(true);
+            StartCoroutine(GameFinished());
         }
+    }
+
+    private IEnumerator GameFinished()
+    {
+        lights[4].gameObject.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        GameManager.Instance.GameFinished();
     }
 
     
