@@ -12,6 +12,7 @@ public class DariusController : MonoBehaviour
 
         sequence
             .Append(transform.DOLocalMoveZ(destinationZ, duration).SetEase(Ease.Linear))
+            .InsertCallback(sequence.Duration() - 1f, DariusLegsGameManager.Instance.FinalPlayerPush)
             .AppendCallback(MovementFinished);
 
         sequence.Play();

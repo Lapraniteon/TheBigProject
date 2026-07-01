@@ -19,7 +19,7 @@ public class WorldMovement : MonoBehaviour
     [SerializeField] private Transform gateSpawnPoint;
     [SerializeField] private GateSet gatePrefab;
     [SerializeField] [Tooltip("Spawn interval in units.")] private float gateSpawnInterval;
-    private float _despawnDistance = 20f;
+    private float _despawnDistance = 30f;
     [SerializeField] [Tooltip("Distance behind Darius at which the doors close.")] private float doorClosingDistance;
     private Sequence _gateSpawningLoop;
     

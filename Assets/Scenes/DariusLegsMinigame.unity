@@ -8843,7 +8843,7 @@ Transform:
   m_GameObject: {fileID: 951081874}
   serializedVersion: 2
   m_LocalRotation: {x: 0.12284317, y: -0.1282644, z: 0.024194216, w: 0.9838051}
-  m_LocalPosition: {x: 9.54, y: 8.99, z: -23.5}
+  m_LocalPosition: {x: 9.46, y: 10, z: -23.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13145,7 +13145,7 @@ MonoBehaviour:
   gateSpawnInterval: 200
   doorClosingDistance: 5
   darius: {fileID: 802001311}
-  catchupTime: 54.5
+  catchupTime: 56.5
   finalCatchDistance: 50
 --- !u!114 &1392743123
 MonoBehaviour:
