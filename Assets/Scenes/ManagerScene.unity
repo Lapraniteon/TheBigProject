@@ -1614,6 +1614,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6c3b4b4492e721544967d4c6dcde85d0, type: 3}
   - {fileID: 21300000, guid: 007b1481c8f6f264a841c6992d81d41c, type: 3}
   - {fileID: 21300000, guid: e8333ccf51ac4784f80c3aa7f3ea4f7b, type: 3}
+  loadingDelay: 2
   _progressBar: {fileID: 1128046807}
   _progressBarTarget: 0
   _continueInstruction: {fileID: 2005815255}
