@@ -80,6 +80,14 @@ public class DariusLegsGameManager : MonoBehaviour
         //worldMovement.SetGateSpawnPaused(false);
     }
 
+    public void FinalPlayerPush()
+    {
+        foreach (PlayerController player in players)
+        {
+            player.transform.DOLocalMoveZ(transform.position.z + 30f, 1f).SetEase(Ease.InBack);
+        }
+    }
+
     public void EndLevel()
     {
         bool allEliminated = true;
@@ -95,7 +103,7 @@ public class DariusLegsGameManager : MonoBehaviour
         GameManager.Instance.AdjustPlayerSpeed(playerSpeed);
         
         DOTween.Sequence()
-            .AppendInterval(3f)
+            //.AppendInterval(3f)
             .AppendCallback(() => StartCoroutine(GameManager.Instance.FinishedMinigame()))
             .Play();
     }
