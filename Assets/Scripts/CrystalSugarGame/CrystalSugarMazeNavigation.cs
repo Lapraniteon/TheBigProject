@@ -173,7 +173,7 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
 
                 Vector2 newDirection = directionalPad.ChosenDirection();
                 
-                if (direction != newDirection || newDirection == Vector2.zero)
+                if (direction != newDirection || newDirection == Vector2.zero || direction == Vector2.zero)
                 {
                     // Interrupt and restart timer
                     directionPickWaitTimer = 0f;
