@@ -59,6 +59,8 @@ public class CrystalSugarMazeNavigation : MonoBehaviour
 
         RuntimeManager.PlayOneShot("event:/SFX/Crystal Sugar/Level Start");
         
+        directionalPad.ResetDirectionsStorage();
+        
         DOTween.Sequence().AppendInterval(3f).AppendCallback(StartMovement).Play();
     }
 

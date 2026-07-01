@@ -13,6 +13,17 @@ public class DirectionalPad : MonoBehaviour
         {"West", 0}
     };
 
+    public void ResetDirectionsStorage()
+    {
+        directions = new()
+        {
+            {"North", 0},
+            {"East", 0},
+            {"South", 0},
+            {"West", 0}
+        };
+    }
+
     public Vector2 ChosenDirection()
     {
         int maxValue = directions.Max(kvp => kvp.Value);
