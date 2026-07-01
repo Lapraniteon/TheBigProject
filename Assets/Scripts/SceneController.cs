@@ -11,6 +11,7 @@ public class SceneController : MonoBehaviour
 
     [SerializeField] private GameObject _loaderCanvas;
     [SerializeField] private Sprite[] loadingImages;
+    [SerializeField] private float loadingDelay;
     [SerializeField] private Slider _progressBar;
     [SerializeField] private float _progressBarTarget;
     [SerializeField] private GameObject _continueInstruction;
@@ -87,6 +88,7 @@ public class SceneController : MonoBehaviour
             if (sceneName == "LibraryHub")
             {
                 yield return new WaitUntil(() => scene.progress == 1f);
+                yield return new WaitForSeconds(loadingDelay);
                 SceneManager.SetActiveScene(SceneManager.GetSceneByName("LibraryHub")); 
             }
             //Otherwise wait for ContinuePress and sceneload
