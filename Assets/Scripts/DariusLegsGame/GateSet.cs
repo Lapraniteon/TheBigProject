@@ -1,6 +1,8 @@
+using System;
 using DG.Tweening;
 using FMODUnity;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GateSet : MonoBehaviour
 {
@@ -10,15 +12,6 @@ public class GateSet : MonoBehaviour
     [SerializeField] private Door[] doors;
 
     public DariusController dariusController;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
-    {
-        /*foreach (Transform door in doors)
-        {
-            door.gameObject.SetActive(false);
-        }*/
-    }
 
     public void StartMovement(float despawnDistance, float spawnHeightOffset, float globalMovementSpeed, float doorClosingDistance)
     {
@@ -66,5 +59,15 @@ public class GateSet : MonoBehaviour
     private void DestroySelf()
     {
         Destroy(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        PlayerController.ReturnToLibrary += DestroySelf;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.ReturnToLibrary -= DestroySelf;
     }
 }
