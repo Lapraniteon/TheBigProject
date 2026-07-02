@@ -6062,7 +6062,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 290, y: 100, z: 400.00006}
+  m_Size: {x: 260, y: 100, z: 400.00006}
   m_Center: {x: -126.294754, y: 50, z: 200.00002}
 --- !u!23 &7118471666864704197
 MeshRenderer:
@@ -6197,7 +6197,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 290, y: 100.00001, z: 400.00006}
+  m_Size: {x: 260, y: 100.00001, z: 400.00006}
   m_Center: {x: 125, y: 50.000004, z: 200.00002}
 --- !u!23 &8757576945234212355
 MeshRenderer:
@@ -6267,7 +6267,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 290, y: 100.00001, z: 400.00006}
+  m_Size: {x: 260, y: 100.00001, z: 400.00006}
   m_Center: {x: 135, y: 50.000004, z: 200.00002}
 --- !u!1 &8853050222594226887
 GameObject:
@@ -6325,7 +6325,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 290, y: 100, z: 400.00006}
+  m_Size: {x: 260, y: 100, z: 400.00006}
   m_Center: {x: -132.66501, y: 50, z: 200.00002}
 --- !u!114 &9090392896897935785
 MonoBehaviour:
