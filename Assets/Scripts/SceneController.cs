@@ -56,8 +56,9 @@ public class SceneController : MonoBehaviour
         {
             //boolean to check if a scene is loading for the continue button.
             _sceneIsLoading = true;
-            
             Debug.Log("Loading Scene: " + sceneName + " via SceneController");
+            GameManager.Instance.SwitchActionMapsByName("Loading");
+            GameManager.Instance.StopPlayerMovement();
             
             if (sceneName != "LibraryHub" && sceneName != "ManagerScene")
                 RuntimeManager.PlayOneShot(bookEnterSfx);

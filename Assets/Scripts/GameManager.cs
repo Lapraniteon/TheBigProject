@@ -136,6 +136,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void StopPlayerMovement()
+    {
+        foreach (PlayerController player in players)
+        {
+            player.StopMovement();
+        }
+    }
+
     public IEnumerator FinishedMinigame()
     {
         string minigameScene = SceneManager.GetActiveScene().name;

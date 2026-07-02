@@ -25,15 +25,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Continue",
-                    "type": "Button",
-                    "id": "c254a3cb-2705-443b-a3f5-e6d2583b65a1",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "510f57b1-5b09-459b-8e1e-82818f2d4e20",
@@ -129,28 +120,6 @@
                     "processors": "",
                     "groups": ";Keyboard",
                     "action": "Interaction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fbe129eb-6ee8-42ed-902e-8a7c20e1ebcc",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Continue",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "964fb04c-2955-4fab-951d-599d800a295d",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -315,15 +284,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Continue",
-                    "type": "Button",
-                    "id": "a9079467-5b62-46a9-be7d-b116966b5374",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "cfa6fc72-96c6-4ade-996a-1dccde6de11f",
@@ -397,28 +357,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "91d4efb4-c1b2-4b70-9f78-4534b0a73a0d",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Continue",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "16d7626c-f762-4bfe-88ae-acedec7dca56",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -625,15 +563,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Continue",
-                    "type": "Button",
-                    "id": "c21917be-44ca-40ab-be69-342c1056a4b1",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "de63d5ee-3f9c-44f7-83c2-598caf336806",
@@ -709,28 +638,6 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "ea0a228c-4774-47e6-8b6e-40c6c1ec58b1",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Continue",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bc2a4264-184a-468a-b01b-d2325f371827",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Continue",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -847,6 +754,45 @@
                     "processors": "",
                     "groups": "",
                     "action": "ButtonRestart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Loading",
+            "id": "08a30612-40ce-4ec7-a5a1-3d3c8ade9203",
+            "actions": [
+                {
+                    "name": "Continue",
+                    "type": "Button",
+                    "id": "66cf4614-d93a-4580-841f-7658faf8eb57",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fd40ad12-0814-49c5-8b77-385eee091991",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd52f3a2-970b-4f4a-a007-daa6b85e0891",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
