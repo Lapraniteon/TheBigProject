@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 895394347}
   - component: {fileID: 895394346}
   m_Layer: 5
-  m_Name: miniGameEndscreen
+  m_Name: MiniGameEndscreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
