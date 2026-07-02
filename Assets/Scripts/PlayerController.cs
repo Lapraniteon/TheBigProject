@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public List<PlayerControllerCollection> playerControllers = new ();
 
     [SerializeField]
-    private GameObject playerModel;
+    public GameObject playerModel;
     [SerializeField] 
     public Animator playerAnimator;
     [SerializeField]

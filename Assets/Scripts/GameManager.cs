@@ -184,6 +184,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetRespawnsFalse()
+    {
+        foreach (PlayerController player in players)
+        {
+            player.RespawnActive(false);
+        }
+    }
+
     public void GameFinished()
     {
         endScreen.SetActive(true);

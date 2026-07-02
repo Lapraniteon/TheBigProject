@@ -59,6 +59,7 @@ public class SceneController : MonoBehaviour
             Debug.Log("Loading Scene: " + sceneName + " via SceneController");
             GameManager.Instance.SwitchActionMapsByName("Loading");
             GameManager.Instance.StopPlayerMovement();
+            GameManager.Instance.SetRespawnsFalse();
             
             if (sceneName != "LibraryHub" && sceneName != "ManagerScene")
                 RuntimeManager.PlayOneShot(bookEnterSfx);
