@@ -16,6 +16,7 @@ public class MovingShieldScript : MonoBehaviour
     void Start()
     {
         _shieldIndex = 1;
+        shieldPosition = 0;
     }
 
     private void ShieldMoving()
