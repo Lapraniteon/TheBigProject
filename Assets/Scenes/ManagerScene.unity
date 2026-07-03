@@ -354,8 +354,8 @@ MonoBehaviour:
   miniGameEndscreen: {fileID: 895394344}
   miniGameEndScreens:
   - {fileID: 21300000, guid: 5baffeb90020cbf42a007958ec433a32, type: 3}
-  - {fileID: 21300000, guid: 780524744f8226f4abe528b28049307e, type: 3}
-  - {fileID: 21300000, guid: 54af990bd7df7fd489119729c9afa4d4, type: 3}
+  - {fileID: 21300000, guid: f3e78876a956cb045a2a7a58cccba579, type: 3}
+  - {fileID: 21300000, guid: 27a153e0be1055a498f0248275774d02, type: 3}
   - {fileID: 21300000, guid: 780b9a07f20b49042b8e727c333d8309, type: 3}
   endScreen: {fileID: 1822211156}
   playerInputManager: {fileID: 193998425}
@@ -2090,8 +2090,8 @@ MonoBehaviour:
   _loaderCanvas: {fileID: 1102529615}
   loadingImages:
   - {fileID: 21300000, guid: 0c86a4b5197f6d34c8aa9541e2a23935, type: 3}
-  - {fileID: 21300000, guid: 3d068bb1b3629a44588d66dd9ba5119c, type: 3}
-  - {fileID: 21300000, guid: 6c3b4b4492e721544967d4c6dcde85d0, type: 3}
+  - {fileID: 21300000, guid: 0937009afaecf4d4983f23c3917b8303, type: 3}
+  - {fileID: 21300000, guid: a2340faf210f7534396f2b4a5ffc7247, type: 3}
   - {fileID: 21300000, guid: 007b1481c8f6f264a841c6992d81d41c, type: 3}
   - {fileID: 21300000, guid: a4ea4228b4d45564cb1d90a82fec68f9, type: 3}
   loadingDelay: 2
