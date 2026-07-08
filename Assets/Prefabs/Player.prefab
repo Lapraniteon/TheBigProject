@@ -192,7 +192,7 @@ MonoBehaviour:
     m_ActionId: 8706f14b-9317-4414-b97a-20d6dd4b88a4
     m_ActionName: 'Darius Legs/Movement[/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/Keyboard/a,/Keyboard/d]'
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Controller
+  m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: General Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
