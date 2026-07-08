@@ -133,6 +133,17 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "11aee275-c9e5-490e-ac46-2c1c1dab6423",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -263,6 +274,17 @@
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
+                    "groups": ";Controller",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21bef705-f579-474a-b1c9-f1897b2b0bcc",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
                     "groups": "",
                     "action": "Pause",
                     "isComposite": false,
@@ -364,6 +386,17 @@
                     "name": "",
                     "id": "556b9d0c-6c22-4dcd-83c8-afcc0ea8be6b",
                     "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec354ccd-7f06-4183-b0fb-3bb30c223cc5",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -538,8 +571,30 @@
                 },
                 {
                     "name": "",
+                    "id": "975f1217-efa9-4d0f-9eca-6f9728c13d55",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0dbfb7d4-d73a-430f-84a0-b5c903756af9",
                     "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e1aee447-997b-488b-9da0-6033c2be52fd",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -649,6 +704,17 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f728681-32d3-4e47-936e-c13c2536be3c",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -709,6 +775,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7a7de7e6-1424-4e7d-ac81-abb37c7c7cb3",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "cf7b7a8f-2a8e-43d2-afdb-b62997a7d25f",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -720,8 +797,30 @@
                 },
                 {
                     "name": "",
+                    "id": "379a0d7c-e6f2-40a3-8f50-d7bf0463f58f",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonReturnToLibrary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "10d7022d-c52b-4152-b392-db35507a565b",
                     "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonRestart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96e2edf9-3e3d-4f91-b717-cf44a36cf6b1",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -750,6 +849,17 @@
                     "name": "",
                     "id": "fdccbf87-f3ff-4b4a-8b32-b48cc1e34782",
                     "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonRestart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "248b3c92-78a1-42c4-89aa-971571d0ed22",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
